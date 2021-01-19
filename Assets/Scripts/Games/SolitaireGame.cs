@@ -1,0 +1,163 @@
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml.Linq;
+
+public class SolitaireGame : MonoBehaviour
+{
+	public GameType gameType;
+
+	public Transform stockHolder;
+	public List<CardPile> allPiles = new List<CardPile>();
+
+	public CardPile stock, waste;
+	public SelectionPile cardSelection;
+	
+	public List<CardPile> allowedPiles = new List<CardPile>();
+	
+	public Card card;
+	public CardPile cardPile;
+	
+	public int seed = 123456;
+	
+	void Awake()
+	{
+		NotificationCenter.DefaultCenter.AddObserver(this, GameEvents.ShowHint);	
+	}
+	
+	// Use this for initialization
+	void Start ()
+	{
+		
+	}
+
+	void Update()
+	{
+
+	}
+
+	public virtual IEnumerator Initialize()
+	{
+		yield return null;
+	}
+	
+	public virtual IEnumerator ShuffleAndDeal()
+	{
+		yield return null;
+	}
+	
+	public bool suffle = false;
+
+	public virtual bool CheckCard(Card card)
+	{
+		return false;
+	}
+	
+	public Card GetCard(int number, CardSuit suit)
+	{
+		Card c = null;
+		
+		for(int i = 0; i < stock.cards.Count; i++)
+		{
+			c = stock.cards[i];
+			
+			if (c.number == number && c.suit == suit)
+			{
+				stock.RemoveCard(c);
+				break;
+			}
+		}
+		
+		return c;
+	}
+	
+	public bool GetCardHit(ref RaycastHit returned)
+	{
+		RaycastHit hit = new RaycastHit();
+		Ray ray = GameManager.Instance.MainCam.ScreenPointToRay(Input.mousePosition);
+		
+		int layerMask = 1 << 9;
+		bool hitTarget = false;
+		
+		if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
+		{	
+			returned = hit;
+			hitTarget = true;
+		}
+	
+		return hitTarget;
+		
+	}
+	
+	public virtual IEnumerator RestoreState(XDocument xdoc)
+	{
+		yield return null;	
+	}
+	
+	public bool showingHint = false;
+	
+	public virtual void HintRequest()
+	{
+		
+	}
+	
+	public virtual void ShowHint(NotificationCenter.Notification n)
+	{
+		
+	}
+
+	public void MenuState()
+    {
+		foreach (CardPile pile in allPiles)
+		{
+			foreach (Card card in pile.cards)
+			{
+				if (!card.IsTurned())
+				{
+					card.sprite.transform.localEulerAngles = new Vector3(0, 180, 0);
+				}
+			}
+		}
+	}
+
+	public void GatherDeck()
+    {
+		CardPile deck = stock;
+
+		foreach (CardPile pile in allPiles)
+		{
+			if (pile == null)
+				continue;
+
+			foreach (Card c in pile.cards)
+			{
+				if (c != null)
+				{
+					c.Turn(true);
+					deck.AddCard(c);
+				}
+			}
+			pile.cardZ = 0;
+			pile.nextPos = Vector3.zero;
+			pile.Clear();			
+		}
+
+
+		deck.AlignCards();
+		stock = deck;
+	}
+
+
+}
+
+public enum GameType
+{
+	Klondyke,
+	Spider,
+	Freecell,
+	Golf,
+	Pyramid,
+	EightOff,
+	Clock
+}

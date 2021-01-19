@@ -1,0 +1,4319 @@
+fileFormatVersion: 2
+guid: 450294ad4877e4fc6ae8030d7e6161ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8919708144412820859
+    second: SolitaireAtlas 1_0
+  - first:
+      213: 1532692339388385501
+    second: SolitaireAtlas 1_1
+  - first:
+      213: -2802573982801938069
+    second: SolitaireAtlas 1_2
+  - first:
+      213: -6755055516922256248
+    second: SolitaireAtlas 1_3
+  - first:
+      213: 2174692330020333296
+    second: SolitaireAtlas 1_4
+  - first:
+      213: -5619860189549241732
+    second: SolitaireAtlas 1_5
+  - first:
+      213: 7515451360056697112
+    second: SolitaireAtlas 1_6
+  - first:
+      213: 7635919275966656081
+    second: SolitaireAtlas 1_7
+  - first:
+      213: -6173923490741256881
+    second: SolitaireAtlas 1_8
+  - first:
+      213: -25788362048212451
+    second: SolitaireAtlas 1_9
+  - first:
+      213: -2042045607838436076
+    second: SolitaireAtlas 1_10
+  - first:
+      213: -4004096070845856266
+    second: SolitaireAtlas 1_11
+  - first:
+      213: -7199396494992871243
+    second: SolitaireAtlas 1_12
+  - first:
+      213: 2707028303078369108
+    second: SolitaireAtlas 1_13
+  - first:
+      213: -3522495369620453258
+    second: SolitaireAtlas 1_14
+  - first:
+      213: -5223302525940808742
+    second: SolitaireAtlas 1_15
+  - first:
+      213: -8418867938085223673
+    second: SolitaireAtlas 1_16
+  - first:
+      213: 7268924535076537981
+    second: SolitaireAtlas 1_17
+  - first:
+      213: -6053835352950418028
+    second: SolitaireAtlas 1_18
+  - first:
+      213: -4349734211918254999
+    second: SolitaireAtlas 1_19
+  - first:
+      213: -3533091286984783234
+    second: SolitaireAtlas 1_20
+  - first:
+      213: 6552364583504377145
+    second: SolitaireAtlas 1_21
+  - first:
+      213: 1299063952763872294
+    second: SolitaireAtlas 1_22
+  - first:
+      213: 4755679556752198387
+    second: SolitaireAtlas 1_23
+  - first:
+      213: -594506950369900189
+    second: SolitaireAtlas 1_24
+  - first:
+      213: 8436936472788283843
+    second: SolitaireAtlas 1_25
+  - first:
+      213: 6375075562746330459
+    second: SolitaireAtlas 1_26
+  - first:
+      213: 7273242486190468235
+    second: SolitaireAtlas 1_27
+  - first:
+      213: 154949498894735062
+    second: SolitaireAtlas 1_28
+  - first:
+      213: -7298646468127963579
+    second: SolitaireAtlas 1_29
+  - first:
+      213: 7749152273368196302
+    second: SolitaireAtlas 1_30
+  - first:
+      213: -3439685310022609473
+    second: SolitaireAtlas 1_31
+  - first:
+      213: 2342953500163852363
+    second: SolitaireAtlas 1_32
+  - first:
+      213: -2744758344050743057
+    second: SolitaireAtlas 1_33
+  - first:
+      213: 3390946075992246767
+    second: SolitaireAtlas 1_34
+  - first:
+      213: 6414864253766982589
+    second: SolitaireAtlas 1_35
+  - first:
+      213: 7224942776577120132
+    second: SolitaireAtlas 1_36
+  - first:
+      213: 9072958051135003388
+    second: SolitaireAtlas 1_37
+  - first:
+      213: -3616261800920942360
+    second: SolitaireAtlas 1_38
+  - first:
+      213: -7570020714277455544
+    second: SolitaireAtlas 1_39
+  - first:
+      213: -1439824640241266711
+    second: SolitaireAtlas 1_40
+  - first:
+      213: 7775613640364517852
+    second: SolitaireAtlas 1_41
+  - first:
+      213: -6102253112938206682
+    second: SolitaireAtlas 1_42
+  - first:
+      213: -5047732071188425970
+    second: SolitaireAtlas 1_43
+  - first:
+      213: -8377141427516590686
+    second: SolitaireAtlas 1_44
+  - first:
+      213: -2612808597510887690
+    second: SolitaireAtlas 1_45
+  - first:
+      213: 5428976319709720520
+    second: SolitaireAtlas 1_46
+  - first:
+      213: 920606132293574141
+    second: SolitaireAtlas 1_47
+  - first:
+      213: 5492432714126596390
+    second: SolitaireAtlas 1_48
+  - first:
+      213: 7664063461952055740
+    second: SolitaireAtlas 1_49
+  - first:
+      213: -5327626816010587913
+    second: SolitaireAtlas 1_50
+  - first:
+      213: 4733761646248489809
+    second: SolitaireAtlas 1_51
+  - first:
+      213: 7334688743085290631
+    second: SolitaireAtlas 1_52
+  - first:
+      213: -749711259089427129
+    second: SolitaireAtlas 1_53
+  - first:
+      213: 8979949293548454367
+    second: SolitaireAtlas 1_54
+  - first:
+      213: -8713209474042903685
+    second: SolitaireAtlas 1_55
+  - first:
+      213: 7575449767299033987
+    second: SolitaireAtlas 1_56
+  - first:
+      213: -3109367775683246569
+    second: SolitaireAtlas 1_57
+  - first:
+      213: -3060555023206837783
+    second: SolitaireAtlas 1_58
+  - first:
+      213: 7341694593151163597
+    second: SolitaireAtlas 1_59
+  - first:
+      213: 1164426694828785907
+    second: SolitaireAtlas 1_60
+  - first:
+      213: 3923001896061307063
+    second: SolitaireAtlas 1_61
+  - first:
+      213: -321792595229820894
+    second: SolitaireAtlas 1_62
+  - first:
+      213: -7267295200144698446
+    second: SolitaireAtlas 1_63
+  - first:
+      213: -1213845442000188826
+    second: SolitaireAtlas 1_64
+  - first:
+      213: 3969102948794323026
+    second: SolitaireAtlas 1_65
+  - first:
+      213: 8977289738567585073
+    second: SolitaireAtlas 1_66
+  - first:
+      213: 8834340436662006802
+    second: SolitaireAtlas 1_67
+  - first:
+      213: 1068170774283179244
+    second: SolitaireAtlas 1_68
+  - first:
+      213: -5859109194717585180
+    second: SolitaireAtlas 1_69
+  - first:
+      213: 4058691362498504305
+    second: SolitaireAtlas 1_70
+  - first:
+      213: 6300880074600959607
+    second: SolitaireAtlas 1_71
+  - first:
+      213: 7804248753312955649
+    second: SolitaireAtlas 1_72
+  - first:
+      213: 7537388673025393955
+    second: SolitaireAtlas 1_73
+  - first:
+      213: -7055807677668649632
+    second: SolitaireAtlas 1_74
+  - first:
+      213: 239230726124564337
+    second: SolitaireAtlas 1_75
+  - first:
+      213: 7020632188732485969
+    second: SolitaireAtlas 1_76
+  - first:
+      213: 1481451982769045643
+    second: SolitaireAtlas 1_77
+  - first:
+      213: -5157795974213352808
+    second: SolitaireAtlas 1_78
+  - first:
+      213: -4429636687854489294
+    second: SolitaireAtlas 1_79
+  - first:
+      213: 4883198610039839410
+    second: SolitaireAtlas 1_80
+  - first:
+      213: -2622972271047559661
+    second: SolitaireAtlas 1_81
+  - first:
+      213: 872369467816472751
+    second: SolitaireAtlas 1_82
+  - first:
+      213: 8569092101748388287
+    second: SolitaireAtlas 1_83
+  - first:
+      213: -4877201976379302563
+    second: SolitaireAtlas 1_84
+  - first:
+      213: 8460288880240348061
+    second: SolitaireAtlas 1_85
+  - first:
+      213: 2644374204165822133
+    second: SolitaireAtlas 1_86
+  - first:
+      213: 8034848575746578243
+    second: SolitaireAtlas 1_87
+  - first:
+      213: 4165685846210562061
+    second: SolitaireAtlas 1_88
+  - first:
+      213: 2905015133205540034
+    second: SolitaireAtlas 1_89
+  - first:
+      213: -8233254932676145607
+    second: SolitaireAtlas 1_90
+  - first:
+      213: 7702896685930728448
+    second: SolitaireAtlas 1_91
+  - first:
+      213: -1743682570030028871
+    second: SolitaireAtlas 1_92
+  - first:
+      213: -4307294732325816221
+    second: SolitaireAtlas 1_93
+  - first:
+      213: -7835265963110640843
+    second: SolitaireAtlas 1_94
+  - first:
+      213: -2285861004242442779
+    second: SolitaireAtlas 1_95
+  - first:
+      213: -5086731117738024182
+    second: SolitaireAtlas 1_96
+  - first:
+      213: 1590639088222880931
+    second: SolitaireAtlas 1_97
+  - first:
+      213: 3209126291054543120
+    second: SolitaireAtlas 1_98
+  - first:
+      213: 1424947694965662997
+    second: SolitaireAtlas 1_99
+  - first:
+      213: 3414392637787203467
+    second: SolitaireAtlas 1_100
+  - first:
+      213: 3873819127597374792
+    second: SolitaireAtlas 1_101
+  - first:
+      213: -3901368952611413441
+    second: SolitaireAtlas 1_102
+  - first:
+      213: -5810544480155606148
+    second: SolitaireAtlas 1_103
+  - first:
+      213: -8529255984127511416
+    second: SolitaireAtlas 1_104
+  - first:
+      213: 7733324961990001929
+    second: SolitaireAtlas 1_105
+  - first:
+      213: 6321912280712533713
+    second: SolitaireAtlas 1_106
+  - first:
+      213: 7627895433645919382
+    second: SolitaireAtlas 1_107
+  - first:
+      213: -8581863720778173625
+    second: SolitaireAtlas 1_108
+  - first:
+      213: 5389010725820617150
+    second: SolitaireAtlas 1_109
+  - first:
+      213: 2520576462236888248
+    second: SolitaireAtlas 1_110
+  - first:
+      213: 6676303374727833183
+    second: SolitaireAtlas 1_111
+  - first:
+      213: 3003834798722726486
+    second: SolitaireAtlas 1_112
+  - first:
+      213: 2097986831097239191
+    second: SolitaireAtlas 1_113
+  - first:
+      213: 3841270536033420442
+    second: SolitaireAtlas 1_114
+  - first:
+      213: 206573884474788304
+    second: SolitaireAtlas 1_115
+  - first:
+      213: -582873514461715071
+    second: SolitaireAtlas 1_116
+  - first:
+      213: 710185521073490081
+    second: SolitaireAtlas 1_117
+  - first:
+      213: 7769603800740901696
+    second: SolitaireAtlas 1_118
+  - first:
+      213: -8087220049578011849
+    second: SolitaireAtlas 1_119
+  - first:
+      213: 3833515171250413727
+    second: SolitaireAtlas 1_120
+  - first:
+      213: -749323557159162569
+    second: SolitaireAtlas 1_121
+  - first:
+      213: -189563985895705583
+    second: SolitaireAtlas 1_122
+  - first:
+      213: -1743654136606411104
+    second: SolitaireAtlas 1_123
+  - first:
+      213: 7326894453677931285
+    second: SolitaireAtlas 1_124
+  - first:
+      213: 1814362381715372733
+    second: SolitaireAtlas 1_125
+  - first:
+      213: -169959495113958644
+    second: SolitaireAtlas 1_126
+  - first:
+      213: 1305092562044359956
+    second: SolitaireAtlas 1_127
+  - first:
+      213: 4505169980728255013
+    second: SolitaireAtlas 1_128
+  - first:
+      213: 5493722419701670154
+    second: SolitaireAtlas 1_129
+  - first:
+      213: 8160855078102679594
+    second: SolitaireAtlas 1_130
+  - first:
+      213: -6441428903420998237
+    second: SolitaireAtlas 1_131
+  - first:
+      213: 8755464622174372068
+    second: SolitaireAtlas 1_132
+  - first:
+      213: -6206929138811131863
+    second: SolitaireAtlas 1_133
+  - first:
+      213: -4196938428450635864
+    second: SolitaireAtlas 1_134
+  - first:
+      213: 6096417603580369841
+    second: SolitaireAtlas 1_135
+  - first:
+      213: 2767312951538758074
+    second: SolitaireAtlas 1_136
+  - first:
+      213: -3625299294896709552
+    second: SolitaireAtlas 1_137
+  - first:
+      213: -2403603249123340426
+    second: SolitaireAtlas 1_138
+  - first:
+      213: -8152290316041101982
+    second: SolitaireAtlas 1_139
+  - first:
+      213: 8840495702891333835
+    second: SolitaireAtlas 1_140
+  - first:
+      213: 2971103842183679486
+    second: SolitaireAtlas 1_141
+  - first:
+      213: -9028697832607138705
+    second: SolitaireAtlas 1_142
+  - first:
+      213: -7784304036703093212
+    second: SolitaireAtlas 1_143
+  - first:
+      213: 4314377227953602516
+    second: SolitaireAtlas 1_144
+  - first:
+      213: 1193799758720439519
+    second: SolitaireAtlas 1_145
+  - first:
+      213: 3358233958552180020
+    second: SolitaireAtlas 1_146
+  - first:
+      213: -6013134549164510257
+    second: SolitaireAtlas 1_147
+  - first:
+      213: 9028734134715501618
+    second: SolitaireAtlas 1_148
+  - first:
+      213: 7856387731532667696
+    second: SolitaireAtlas 1_149
+  - first:
+      213: 8680539127330753950
+    second: SolitaireAtlas 1_150
+  - first:
+      213: -2921578539945114962
+    second: SolitaireAtlas 1_151
+  - first:
+      213: 6905765216780709081
+    second: SolitaireAtlas 1_152
+  - first:
+      213: -1147675844093124202
+    second: SolitaireAtlas 1_153
+  - first:
+      213: 3492265169723038257
+    second: SolitaireAtlas 1_154
+  - first:
+      213: 6861494137931048512
+    second: SolitaireAtlas 1_155
+  - first:
+      213: -8218798819195906281
+    second: SolitaireAtlas 1_156
+  - first:
+      213: -4940536474429753996
+    second: SolitaireAtlas 1_157
+  - first:
+      213: 3998993821687141130
+    second: SolitaireAtlas 1_158
+  - first:
+      213: 508088937198806649
+    second: SolitaireAtlas 1_159
+  - first:
+      213: 2910993983775548600
+    second: PileBorder
+  - first:
+      213: -921267320091332644
+    second: SolitaireAtlas 1_161
+  - first:
+      213: 1136732228271895872
+    second: SolitaireAtlas 1_162
+  - first:
+      213: -8508109800714780062
+    second: SolitaireAtlas 1_163
+  - first:
+      213: 5430454587287737986
+    second: SolitaireAtlas 1_164
+  - first:
+      213: 5533346832868745047
+    second: SolitaireAtlas 1_165
+  - first:
+      213: 5735352222720098191
+    second: SolitaireAtlas 1_166
+  - first:
+      213: -6639854282107665617
+    second: SolitaireAtlas 1_167
+  - first:
+      213: -7623525613076852358
+    second: SolitaireAtlas 1_168
+  - first:
+      213: 5669677996332610363
+    second: SolitaireAtlas 1_169
+  - first:
+      213: 846146000121914737
+    second: Heart
+  - first:
+      213: 2882215596219040724
+    second: SolitaireAtlas 1_11
+  - first:
+      213: 6875440744263647043
+    second: Spade
+  - first:
+      213: -8566884448360563719
+    second: Club
+  - first:
+      213: 4263133502362599569
+    second: Diamond
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 5
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 2
+    aniso: 4
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_1
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 542
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd80537ef87354510800000000000000
+      internalID: 1532692339388385501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_2
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 542
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b69b652bfc14b19d0800000000000000
+      internalID: -2802573982801938069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_3
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 546
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8846ec31cc83142a0800000000000000
+      internalID: -6755055516922256248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_4
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 545
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f6e0a2f62f0e2e10800000000000000
+      internalID: 2174692330020333296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_5
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 545
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ade82deee3202b0800000000000000
+      internalID: -5619860189549241732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_6
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 546
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 811e7e2813f3c4860800000000000000
+      internalID: 7515451360056697112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_7
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 545
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15eec89ef1c38f960800000000000000
+      internalID: 7635919275966656081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_8
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 545
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d7de7cb41d15aa0800000000000000
+      internalID: -6173923490741256881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_9
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 545
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12f6c01f9164aff0800000000000000
+      internalID: -25788362048212451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 533
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f502b296d79e68c0800000000000000
+      internalID: -4004096070845856266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_12
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 536
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b0f1c6280b961c90800000000000000
+      internalID: -7199396494992871243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_13
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 536
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4572ae136eb419520800000000000000
+      internalID: 2707028303078369108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_14
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 542
+        width: 24
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67880d2df159d1fc0800000000000000
+      internalID: -3522495369620453258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_15
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 535
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3c5e2e60a1387b0800000000000000
+      internalID: -5223302525940808742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_16
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 535
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7034183273c2a2b80800000000000000
+      internalID: -8418867938085223673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_17
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 536
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d76cb5c2a5860e460800000000000000
+      internalID: 7268924535076537981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_18
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 541
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49550b232d47cfba0800000000000000
+      internalID: -6053835352950418028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_19
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 535
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96caf37b7c3a2a3c0800000000000000
+      internalID: -4349734211918254999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_20
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 535
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a8e309130f7fec0800000000000000
+      internalID: -3533091286984783234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_21
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 536
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935f0ae6fdcaeea50800000000000000
+      internalID: 6552364583504377145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_22
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 551
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 624610548c3370210800000000000000
+      internalID: 1299063952763872294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_23
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 546
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa4dc53c519ff140800000000000000
+      internalID: 4755679556752198387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_24
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 546
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36983b61413efb7f0800000000000000
+      internalID: -594506950369900189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_25
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 546
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c1351d6505061570800000000000000
+      internalID: 8436936472788283843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_26
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 545
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5db4cd9271d87850800000000000000
+      internalID: 6375075562746330459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_27
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 545
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c69a2818fbfe460800000000000000
+      internalID: 7273242486190468235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_28
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 541
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d6debf8fbd762200800000000000000
+      internalID: 154949498894735062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_29
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 524
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 546c21605bff5ba90800000000000000
+      internalID: -7298646468127963579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_30
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 524
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec4a5849fe48a8b60800000000000000
+      internalID: 7749152273368196302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_31
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 524
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb519fc4f68c340d0800000000000000
+      internalID: -3439685310022609473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_32
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 502
+        width: 28
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48468e7bc7d38020800000000000000
+      internalID: 2342953500163852363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_33
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 524
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe8e09414d8a8e9d0800000000000000
+      internalID: -2744758344050743057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_34
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 524
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9c5087d7f0f0f20800000000000000
+      internalID: 3390946075992246767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 507
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbbd1282d0d260950800000000000000
+      internalID: 6414864253766982589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_36
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 512
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48757680d27244460800000000000000
+      internalID: 7224942776577120132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_37
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 510
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfa1ce3e64f99ed70800000000000000
+      internalID: 9072958051135003388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_38
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 509
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e8fa454d0570ddc0800000000000000
+      internalID: -3616261800920942360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_39
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 509
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849b42f9442e1f690800000000000000
+      internalID: -7570020714277455544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_40
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 510
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef80934e17b40ce0800000000000000
+      internalID: -1439824640241266711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_41
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 509
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd9eb90b86788eb60800000000000000
+      internalID: 7775613640364517852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_42
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 509
+        width: 11
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62aebc9ff11705ba0800000000000000
+      internalID: -6102253112938206682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_43
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 509
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03977fdc6ad2f9b0800000000000000
+      internalID: -5047732071188425970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_44
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 509
+        width: 13
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a53aa3714a6ebb80800000000000000
+      internalID: -8377141427516590686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_45
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 509
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6e64f7c607dbbd0800000000000000
+      internalID: -2612808597510887690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_46
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 515
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf2e46e239975b40800000000000000
+      internalID: 5428976319709720520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_47
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 515
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd97655666a6cc00800000000000000
+      internalID: 920606132293574141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_48
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 517
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 629104e047a093c40800000000000000
+      internalID: 5492432714126596390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_49
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 520
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb9e3b9dc193c5a60800000000000000
+      internalID: 7664063461952055740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_50
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 521
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f0f7d743a77016b0800000000000000
+      internalID: -5327626816010587913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_51
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 521
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15372000323b1b140800000000000000
+      internalID: 4733761646248489809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_52
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 521
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784b7ad0d8c0ac560800000000000000
+      internalID: 7334688743085290631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_53
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 521
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7452dddf49d7895f0800000000000000
+      internalID: -749711259089427129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_54
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 521
+        width: 11
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1c9fefd403f9c70800000000000000
+      internalID: 8979949293548454367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_55
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 527
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b73ca1ed526741780800000000000000
+      internalID: -8713209474042903685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_56
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 522
+        width: 8
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38baca94d67612960800000000000000
+      internalID: 7575449767299033987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_57
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 493
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7168a5e6b7e49d4d0800000000000000
+      internalID: -3109367775683246569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_58
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 498
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e118320c69b685d0800000000000000
+      internalID: -3060555023206837783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_59
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 497
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc5e22a550f2e560800000000000000
+      internalID: 7341694593151163597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_60
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 493
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f08048d8efd82010800000000000000
+      internalID: 1164426694828785907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_61
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 493
+        width: 6
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b80be3807d417630800000000000000
+      internalID: 3923001896061307063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_62
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 500
+        width: 8
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228b9fde653c88bf0800000000000000
+      internalID: -321792595229820894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_63
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 505
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b3597de481652b90800000000000000
+      internalID: -7267295200144698446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_64
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 501
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a0a51700e872fe0800000000000000
+      internalID: -1213845442000188826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_65
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 509
+        width: 29
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25057db4a16151730800000000000000
+      internalID: 3969102948794323026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_66
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 433
+        width: 5
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13d8419147db59c70800000000000000
+      internalID: 8977289738567585073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_67
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 481
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 214bb1022d1e99a70800000000000000
+      internalID: 8834340436662006802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_68
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 488
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce45a98e8a7e2de00800000000000000
+      internalID: 1068170774283179244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_69
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 483
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e022a4fa3340bea0800000000000000
+      internalID: -5859109194717585180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_70
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 481
+        width: 13
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1766ba25a4e535830800000000000000
+      internalID: 4058691362498504305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_71
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 489
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e4dea5b09317750800000000000000
+      internalID: 6300880074600959607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_72
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 491
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10df00874e24e4c60800000000000000
+      internalID: 7804248753312955649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_73
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 492
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3254bb5301f2a9860800000000000000
+      internalID: 7537388673025393955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_74
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 491
+        width: 15
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0651619ec4cb41e90800000000000000
+      internalID: -7055807677668649632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_75
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 491
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17f6302f31be15300800000000000000
+      internalID: 239230726124564337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_76
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 491
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 151b21c57cb4e6160800000000000000
+      internalID: 7020632188732485969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_77
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 494
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b804fb0babc2f8410800000000000000
+      internalID: 1481451982769045643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_78
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 491
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892c21d73e3db68b0800000000000000
+      internalID: -5157795974213352808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_79
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 492
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2313560d6e4c682c0800000000000000
+      internalID: -4429636687854489294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_80
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 499
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ba1b17734b94c340800000000000000
+      internalID: 4883198610039839410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_81
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 464
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 316b288dd94599bd0800000000000000
+      internalID: -2622972271047559661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_82
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 458
+        width: 8
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0f812b8674b1c00800000000000000
+      internalID: 872369467816472751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_83
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 469
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb171549dd78be670800000000000000
+      internalID: 8569092101748388287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_84
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 473
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d141c94a2b05cb0800000000000000
+      internalID: -4877201976379302563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_85
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 474
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9bc9eb79ebf86570800000000000000
+      internalID: 8460288880240348061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_86
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 479
+        width: 16
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b692840454b2b420800000000000000
+      internalID: 2644374204165822133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_87
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 475
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3479d6d8534818f60800000000000000
+      internalID: 8034848575746578243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_88
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 475
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d08c045d43d7fc930800000000000000
+      internalID: 4165685846210562061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_89
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 475
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cca9d94fdfa05820800000000000000
+      internalID: 2905015133205540034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_90
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 475
+        width: 4
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93e0b98a24a9dbd80800000000000000
+      internalID: -8233254932676145607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_91
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 479
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c4f6269bf26ea60800000000000000
+      internalID: 7702896685930728448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_92
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 469
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b7e154e0f13dc7e0800000000000000
+      internalID: -1743682570030028871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_93
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 473
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 368fec0134a6934c0800000000000000
+      internalID: -4307294732325816221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_94
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 473
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 533d41c9e1b834390800000000000000
+      internalID: -7835265963110640843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_95
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 465
+        width: 8
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e52634178df640e0800000000000000
+      internalID: -2285861004242442779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_96
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 465
+        width: 13
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03ac43cffc4869b0800000000000000
+      internalID: -5086731117738024182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_97
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 456
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4406bb2d5131610800000000000000
+      internalID: 1590639088222880931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_98
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 457
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0114ca9eb5b198c20800000000000000
+      internalID: 3209126291054543120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_99
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 449
+        width: 9
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515a0fdf06e66c310800000000000000
+      internalID: 1424947694965662997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_100
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 463
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b87e30b830c526f20800000000000000
+      internalID: 3414392637787203467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_101
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 455
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d1e80e8f192c530800000000000000
+      internalID: 3873819127597374792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_102
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 445
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f32ebd1ab9d8bd9c0800000000000000
+      internalID: -3901368952611413441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_103
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 452
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c73e7b4b49ccc5fa0800000000000000
+      internalID: -5810544480155606148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_104
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 449
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88474b35fdef1a980800000000000000
+      internalID: -8529255984127511416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_105
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 430
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 905431c741a425b60800000000000000
+      internalID: 7733324961990001929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_106
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 439
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6dc0179b1fbb750800000000000000
+      internalID: 6321912280712533713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_107
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 432
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69c0a4a8b7abbd960800000000000000
+      internalID: 7627895433645919382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_108
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 426
+        width: 8
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74374342a6817e880800000000000000
+      internalID: -8581863720778173625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_109
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 440
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb1de43f3bc99ca40800000000000000
+      internalID: 5389010725820617150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_110
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 446
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bc27d410f2eaf220800000000000000
+      internalID: 2520576462236888248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_111
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 430
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56e467fb8ef6ac50800000000000000
+      internalID: 6676303374727833183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_112
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 441
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a33dd95d3cfa920800000000000000
+      internalID: 3003834798722726486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_113
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 385
+        width: 7
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7969ff248eb8d1d10800000000000000
+      internalID: 2097986831097239191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_114
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 414
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a94427a533fee4530800000000000000
+      internalID: 3841270536033420442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_115
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 417
+        width: 9
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d90efb7ad5edd200800000000000000
+      internalID: 206573884474788304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_116
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 407
+        width: 7
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 185a68570a739e7f0800000000000000
+      internalID: -582873514461715071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_117
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 431
+        width: 5
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a8063cf7f51bd900800000000000000
+      internalID: 710185521073490081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_118
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 424
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 043bfacdd7d23db60800000000000000
+      internalID: 7769603800740901696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_119
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 425
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7335c7c763c64cf80800000000000000
+      internalID: -8087220049578011849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_120
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 417
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f90a377ccb1633530800000000000000
+      internalID: 3833515171250413727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_122
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 374
+        width: 23
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 114ba762f888e5df0800000000000000
+      internalID: -189563985895705583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_123
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 397
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a63f601dcb4dc7e0800000000000000
+      internalID: -1743654136606411104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_124
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 405
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51bb042afab5ea560800000000000000
+      internalID: 7326894453677931285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_125
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 385
+        width: 10
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbaf9f729f8ed2910800000000000000
+      internalID: 1814362381715372733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_126
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 400
+        width: 7
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b178b5dbe24adf0800000000000000
+      internalID: -169959495113958644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_127
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 411
+        width: 4
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41598af35ce9c1210800000000000000
+      internalID: 1305092562044359956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_128
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 402
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522af026a34958e30800000000000000
+      internalID: 4505169980728255013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_129
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 408
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a01eae80f6f9d3c40800000000000000
+      internalID: 5493722419701670154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_130
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 402
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a20c0c9947e214170800000000000000
+      internalID: 8160855078102679594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_131
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 389
+        width: 6
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ad48ad5a827b96a0800000000000000
+      internalID: -6441428903420998237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_132
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 346
+        width: 40
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e004387fa8a18970800000000000000
+      internalID: 8755464622174372068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_133
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 387
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928242f75de8cd9a0800000000000000
+      internalID: -6206929138811131863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_134
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 405
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af73045cba71c5c0800000000000000
+      internalID: -4196938428450635864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_135
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 379
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb98df9283da9450800000000000000
+      internalID: 6096417603580369841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_136
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 374
+        width: 7
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab13ec2b778776620800000000000000
+      internalID: 2767312951538758074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_137
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 384
+        width: 8
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 050253bbf7950bdc0800000000000000
+      internalID: -3625299294896709552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_138
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 380
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67f470b649fa4aed0800000000000000
+      internalID: -2403603249123340426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_139
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 386
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26d5386762f3dde80800000000000000
+      internalID: -8152290316041101982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_140
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 377
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc88439b000cfaa70800000000000000
+      internalID: 8840495702891333835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_141
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 347
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efd0820f33b7b3920800000000000000
+      internalID: 2971103842183679486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_142
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 364
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6cbc17482f93b280800000000000000
+      internalID: -9028697832607138705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_143
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 353
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e3cacb8b898f390800000000000000
+      internalID: -7784304036703093212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_144
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 361
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df7533fa3fbfdb30800000000000000
+      internalID: 4314377227953602516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_145
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 341
+        width: 7
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd49a773e8a319010800000000000000
+      internalID: 1193799758720439519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_146
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 361
+        width: 9
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435182c1ef7da9e20800000000000000
+      internalID: 3358233958552180020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_147
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 358
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc3bb6a8cfd0d8ca0800000000000000
+      internalID: -6013134549164510257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_148
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 364
+        width: 13
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c4927fbd18c4d70800000000000000
+      internalID: 9028734134715501618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_149
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 353
+        width: 12
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03bddb3540f770d60800000000000000
+      internalID: 7856387731532667696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_150
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 350
+        width: 15
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9dcd674858777870800000000000000
+      internalID: 8680539127330753950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_151
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 340
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2ca2f0cc77477d0800000000000000
+      internalID: -2921578539945114962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_152
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 343
+        width: 31
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dc667850e436df50800000000000000
+      internalID: 6905765216780709081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_153
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 343
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 691688386e2a210f0800000000000000
+      internalID: -1147675844093124202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_154
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 340
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13a9fc64ba4077030800000000000000
+      internalID: 3492265169723038257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_155
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 339
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0462ecf809ce83f50800000000000000
+      internalID: 6861494137931048512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_156
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 339
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7179d6dd406f0fd80800000000000000
+      internalID: -8218798819195906281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_157
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 339
+        width: 7
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 475f0c9a040bf6bb0800000000000000
+      internalID: -4940536474429753996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_158
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 341
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03d4a871b74f7730800000000000000
+      internalID: 3998993821687141130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PileBorder
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 93
+        width: 198
+        height: 244
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 5, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b4ad3aea9de56820800000000000000
+      internalID: 2910993983775548600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_159
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 1023
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9766a0842381d0700800000000000000
+      internalID: 508088937198806649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 297
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415b4a1c65239a3e0800000000000000
+      internalID: -2042045607838436076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_121
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 93
+        width: 225
+        height: 225
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d22b1e13ed995f0800000000000000
+      internalID: -749323557159162569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_161
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 1023
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdfa7c2e0400733f0800000000000000
+      internalID: -921267320091332644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_162
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 257
+        width: 224
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04572ee50fb76cf00800000000000000
+      internalID: 1136732228271895872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_163
+      rect:
+        serializedVersion: 2
+        x: 956
+        y: 256
+        width: 63
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2624062d63f1de980800000000000000
+      internalID: -8508109800714780062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 587
+        width: 1022
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a7d1883b4d63480800000000000000
+      internalID: -8919708144412820859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_164
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 339
+        width: 216
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2861d24eca9dc5b40800000000000000
+      internalID: 5430454587287737986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_165
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 508
+        width: 59
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f9c28a0a56acc40800000000000000
+      internalID: 5533346832868745047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_166
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 439
+        width: 78
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8f7af89570189f40800000000000000
+      internalID: 5735352222720098191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_167
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 338
+        width: 95
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23cd9ab5bf7ad3a0800000000000000
+      internalID: -6639854282107665617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_168
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 341
+        width: 62
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a71567898dbc33690800000000000000
+      internalID: -7623525613076852358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SolitaireAtlas 1_169
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 434
+        width: 6
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b33f042391ebeae40800000000000000
+      internalID: 5669677996332610363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Heart
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 535
+        width: 60
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1756265dd4d1ebb00800000000000000
+      internalID: 846146000121914737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spade
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 480
+        width: 60
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34ff414ede87a6f50800000000000000
+      internalID: 6875440744263647043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Club
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 423
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb76a7cbff4c1980800000000000000
+      internalID: -8566884448360563719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Diamond
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 373
+        width: 50
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190c3665551b92b30800000000000000
+      internalID: 4263133502362599569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
