@@ -137,8 +137,6 @@ public class Klondyke : SolitaireGame
 
 		yield return new WaitForSeconds(27 * .03f);
 
-		j = 0;
-
 		// TODO turn last cards while dealing
 		foreach (CardPile pileau in pileaus)
 		{
@@ -286,18 +284,8 @@ public class Klondyke : SolitaireGame
             if (selectedCard.Number == lastNum + 1)
             {
 				movedCards.Add(cards[0]);
-				
-				if (hint)
-				{
-					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].pile));
-					return true;
-				}
-				
-				
-                CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelection.sourcePile, targetPile, "Foundation move Klondyke");
-                cmdMoveToFoundation.Execute(false);
-                commands.Add(cmdMoveToFoundation);
 
+				StoreMoveCommand(movedCards, targetPile);
                 UpdateLastCards();
 				
 				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", movedCards[0].suit));				
@@ -320,19 +308,9 @@ public class Klondyke : SolitaireGame
 							{
 								movedCards.Add(c);
 							}
-							
-							if (hint)
-							{
-								NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].pile));
-								return true;
-							}
-							
-                            // Move to tableau
-                            CmdMoveCards cmdMoveToTableau = new CmdMoveCards(movedCards, cardSelection.sourcePile, toPile, "Tableau move Klondyke (King)");
-                            cmdMoveToTableau.Execute(false);
-                            commands.Add(cmdMoveToTableau);
 
-                            UpdateLastCards();
+							StoreMoveCommand(movedCards, toPile);
+							UpdateLastCards();
 	                    }
 	                }
 					else
@@ -346,18 +324,8 @@ public class Klondyke : SolitaireGame
 							{
 								movedCards.Add(c);
 							}
-							
-							if (hint)
-							{
-								NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].pile));
-								return true;
-							}
-							
-                            // Move to tableau
-                            CmdMoveCards cmdMoveToTableau = new CmdMoveCards(movedCards, cardSelection.sourcePile, pileaus[i], "Tableau move Klondyke");
-                            cmdMoveToTableau.Execute(false);
-                            commands.Add(cmdMoveToTableau);
 
+							StoreMoveCommand(movedCards, pileaus[i]);
                             UpdateLastCards();
                         }
 	                   
@@ -365,16 +333,22 @@ public class Klondyke : SolitaireGame
 				}
             }
 		}
-		
-		if (hint)
-			return false;
+			
 		
 		if (movedCards.Count == 0)
 		{
+			if (hint)
+				return false;
+
 			CancelMove();
 		}
 		else
 		{
+			if (hint)
+            {
+				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].pile));
+				return true;
+			}
 			GameManager.Instance.StoreCommand(new CmdComposite(commands));
 		}
 		
@@ -385,6 +359,13 @@ public class Klondyke : SolitaireGame
 		}
 		
 		return false;
+	}
+
+	void StoreMoveCommand(List<Card> movedCards, CardPile targetPile)
+    {
+		CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelection.sourcePile, targetPile);
+		cmdMoveToFoundation.Execute(false);
+		commands.Add(cmdMoveToFoundation);
 	}
 	
 	void UpdateLastCards()
@@ -416,7 +397,6 @@ public class Klondyke : SolitaireGame
 		{
 			c.transform.parent = toPile.transform;
 			toPile.AddCard(c, .5f, 0);
-			//c.Pile = toPile;
 		}
 		
 		toPile.AlignCards();
@@ -533,9 +513,6 @@ public class Klondyke : SolitaireGame
 			startHit.y -= cards[0].transform.position.y;
 			startHit.x -= cards[0].transform.position.x;
 			startHit.z = 0;
-
-			//iTween.MoveBy(cardSelection.gameObject, iTween.Hash("z", -.45f, "time", .5f, "isLocal", true));
-			//cardSelection.MakeDragGroup();
 		}
 	}
 	

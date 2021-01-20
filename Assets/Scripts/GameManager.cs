@@ -49,10 +49,8 @@ public class GameManager : MonoBehaviour
 		}
 		else if (viewType == "game")
         {
-			state = GameState.Dealing;
 			yield return StartCoroutine(activeGame.ShuffleAndDeal());
 			state = GameState.Running;
-
 		}
         else // menu
         {
@@ -82,23 +80,14 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		Time.timeScale = state == GameState.Paused ? 0 : 1;
+
 		if (state == GameState.Running)
 		{
 			time += Time.deltaTime;
 			timeTxt.text = GetTimeText();
 		}
-		
-		if (state == GameState.Paused)
-		{
-			if (Time.timeScale == 1)
-				Time.timeScale = 0;
-		}
-		else
-		{
-			if (Time.timeScale == 0)
-				Time.timeScale = 1;
-		}
-		
+
 		if ((Application.platform == RuntimePlatform.Android) || Application.platform == RuntimePlatform.OSXEditor)
 		{
 			if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape))
@@ -113,7 +102,7 @@ public class GameManager : MonoBehaviour
 				Application.Quit();
 			else if (state == GameState.Running)
 			{
-				//StartCoroutine(ui.MenuRoutine(false));
+				// TODO menu
 			}
 			
 			backButtonPressed = false;
