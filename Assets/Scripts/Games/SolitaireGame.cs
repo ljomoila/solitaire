@@ -8,15 +8,18 @@ public class SolitaireGame : MonoBehaviour
 {
 	public GameType gameType;
 
-	public Transform stockHolder;
-	public List<CardPile> allPiles = new List<CardPile>();
+	public Transform stockHolder;	
 
 	public CardPile stock, waste;	
 	
 	public int seed = 123456;
-	
-	// Use this for initialization
-	void Start ()
+
+	public List<CardPile> allPiles = new List<CardPile>();
+
+    public List<CardPile> AllowedPiles { get; set; } = new List<CardPile>();
+
+    // Use this for initialization
+    void Start ()
 	{
 		
 	}
@@ -40,7 +43,13 @@ public class SolitaireGame : MonoBehaviour
 	{
 		return false;
 	}
-	
+
+	public virtual bool TryMove(CardPile toPile, List<Card> cards, bool hint = false)
+	{
+		return false;
+	}
+
+
 	public Card GetCard(int number, CardSuit suit)
 	{
 		Card c = null;

@@ -68,10 +68,18 @@ public class CardPile : MonoBehaviour
 		iTween.RotateTo(card.gameObject, iTween.Hash("rotation", Vector3.zero, "time", 0));
 	}
 
+	public void AddCard(List<Card> cards)
+	{
+		foreach (Card card in cards)
+		{
+			AddCard(card);
+		}
+	}
+
 	public virtual void AddCard(Card card, float time, float delay)
 	{
 		AddCard (card);
-		
+
 		this.animTime = time;
 		
 		iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(nextPos.x, nextPos.y, cardZ), "time", time, "delay", delay, "isLocal", true));
@@ -95,14 +103,6 @@ public class CardPile : MonoBehaviour
 	public bool IsEmpty
     {
         get { return cards.Count == 0; }
-    }
-
-    public void AddCard(List<Card> cards)
-    {
-        foreach (Card card in cards)
-        {
-            AddCard(card);
-        }
     }
 
 	internal IEnumerator Shuffle()
@@ -278,7 +278,9 @@ public class CardPile : MonoBehaviour
 	
 	public void Clear()
     {
-        List<Card> cardsToRemove = new List<Card>(cards);
+		Unhighlight();
+
+		List<Card> cardsToRemove = new List<Card>(cards);
 
         foreach (Card card in cardsToRemove)
 		{

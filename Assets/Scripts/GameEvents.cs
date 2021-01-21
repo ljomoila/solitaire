@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class GameEvents : MonoBehaviour {
@@ -23,7 +22,9 @@ public class GameEvents : MonoBehaviour {
 		}
 		return v;
 	}
-	
+
+	public const string OnStoredStateLoaded = "OnStoredStateLoaded";
+
 	public const string PauseRequest = "PauseRequest";
 	
 	public const string FoundationMoveDone = "FoundationMoveDone";

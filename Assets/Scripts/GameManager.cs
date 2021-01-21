@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Linq;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour 
+public class GameManager : StateBase 
 {
 	public Camera MainCam;
 	
@@ -24,59 +24,42 @@ public class GameManager : MonoBehaviour
 	public float time = 0;
 
 	// Use this for initialization
-	void Start ()
+	public override void Start ()
 	{
 		Screen.sleepTimeout = (int) SleepTimeout.NeverSleep;
 
-		StartCoroutine(Initialize());
+		//NotificationCenter.DefaultCenter.AddObserver(this, GameEvents.OnStoredStateLoaded);
 	}
 
-	IEnumerator Initialize()
-	{
+	//void OnStoredStateLoaded(NotificationCenter.Notification n)
+	//{
+
+	//}
+
+	public IEnumerator Initialize(XDocument storedGameState)
+    {
 		yield return null;
 		string viewType = "menu";
-		XDocument previousState = LoadPreviousState();		
 
-		if (previousState != null)
-        {
-			StartCoroutine(activeGame.RestoreState(previousState));
+		if (storedGameState == null)
+		{
+			viewType = storedGameState.Root.Element("view").Value;
+			time = previousState != null ? float.Parse(storedGameState.Root.Element("time").Value) : 0;
 
-			viewType = previousState.Root.Element("view").Value;
-			time = previousState != null ? float.Parse(previousState.Root.Element("time").Value) : 0;
+			StartCoroutine(activeGame.RestoreState(storedGameState));
+
 			yield return null;
 		}
-		else if (viewType == "game")
-        {
-			yield return StartCoroutine(activeGame.ShuffleAndDeal());
-			state = GameState.Running;
-		}
-        else // menu
-        {
-            activeGame.MenuState();
-        }
-
-        // TODO sound settings from xml
-        //AudioController.Play("gameMusic", MainCam.transform);
-
-        yield return null;
-    }
-
-    XDocument LoadPreviousState()
-    {
-		string filename = Application.persistentDataPath + "/gameState.xml";
-
-		if (System.IO.File.Exists(filename))
+		else
 		{
-			return XDocument.Load(filename);
+			yield return StartCoroutine(activeGame.ShuffleAndDeal());
 		}
 
-		return null;
+		state = GameState.Running;
 	}
 	
-	bool backButtonPressed = false;
-	
 	// Update is called once per frame
-	void Update ()
+	public override void UpdateState ()
 	{
 		Time.timeScale = state == GameState.Paused ? 0 : 1;
 
@@ -84,14 +67,6 @@ public class GameManager : MonoBehaviour
 		{
 			time += Time.deltaTime;
 			timeTxt.text = GetTimeText();
-		}
-
-		if ((Application.platform == RuntimePlatform.Android) || Application.platform == RuntimePlatform.OSXEditor)
-		{
-			if (Input.GetKeyDown(KeyCode.B) || Input.GetKeyDown(KeyCode.Escape))
-			{
-				backButtonPressed = true;
-			}
 		}
 	}
 

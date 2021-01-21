@@ -1,4 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Xml;
+using System.Xml.Linq;
+using UnityEngine.UI;
 
 public class StateManager : MonoBehaviour, IBackButtonListener
 {
@@ -6,16 +10,33 @@ public class StateManager : MonoBehaviour, IBackButtonListener
 
     public bool straightToGame = false;
 
+    public GameManager firstState;
+
+    public StateBase activeState;
+
+    float t = 0;
+
     void Awake()
     {
         Instance = this;
     }
 
-    public StateBase firstState;
+    void Start()
+    {
+        StartCoroutine(firstState.Initialize(LoadStoredState()));
+    }
 
-    public StateBase activeState;
+    XDocument LoadStoredState()
+    {
+        string filename = Application.persistentDataPath + "/gameState.xml";
 
-    float t = 0;
+        if (System.IO.File.Exists(filename))
+        {
+            return XDocument.Load(filename);
+        }
+
+        return null;
+    }
 
     public void ActivateState(StateBase s)
     {
@@ -42,12 +63,6 @@ public class StateManager : MonoBehaviour, IBackButtonListener
     }
 
     public bool deactivating = false;
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
