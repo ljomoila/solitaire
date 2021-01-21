@@ -5,11 +5,16 @@ using System.Xml.Linq;
 
 public class Klondyke : SolitaireGame
 {
-	List<CardPile> foundations, pileaus;
-	
+	// TODO position piles according to camera position
 	public Transform wasteHolder, pileauHolder, foundHolder;
-	
-	public float xStep = 1;
+
+	private SelectionPile cardSelection;
+	private List<CardPile> allowedPiles = new List<CardPile>();
+	private List<CardPile> foundations, pileaus;
+
+	public PileSlot pileSlot, foundationSlot;
+
+	private float xStep = 3.5f;
 
 	// Use this for initialization
 	void Start () 
@@ -21,34 +26,20 @@ public class Klondyke : SolitaireGame
 	
 	public override IEnumerator Initialize()
 	{
-		CardPile deck = GameManager.Instance.deckMaker.deck;
-		PileSlot slot = GameManager.Instance.deckMaker.slotDeco;
-
-		stock = Instantiate(deck, Vector3.zero, Quaternion.identity, transform);
-		stock.gameObject.name = "KlondykeStock";
-		stock.transform.position = stockHolder.position;
-		stock.zStep = 0.015f;
 		stock.rnd = new Random();
-		
-		PileSlot stockSlot = Instantiate(slot, stock.transform.position, Quaternion.identity, stock.transform);
-		stockSlot.pileType = CardPileType.Stock;
-		stockSlot.card.pile = stock;
 		
 		waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
 		waste.transform.parent = transform;
 		waste.transform.position = wasteHolder.position;
-		waste.zStep = 0.015f;
+		waste.zStep = stock.zStep;
 		waste.Type = CardPileType.KlondikeWaste;
-		waste.AlignCards();
 		allPiles.Add(waste);
 		allowedPiles.Add(waste);
 		
-		PileSlot wasteSlot = Instantiate(slot, waste.transform.position, Quaternion.identity, waste.transform);
-		wasteSlot.pileType = CardPileType.KlondikeWaste;
-		wasteSlot.card.pile = waste;
+		PileSlot wasteSlot = Instantiate(pileSlot, waste.transform.position, Quaternion.identity, waste.transform);
+		wasteSlot.Initialize(waste);
 		
-		foundations = new List<CardPile>();
-		
+		foundations = new List<CardPile>();		
 		int i = 0;
 		
         for (i = 0; i < 4; i++)
@@ -61,13 +52,10 @@ public class Klondyke : SolitaireGame
 			
 			foundations.Add(foundation);
 			
-			PileSlot s = Instantiate(slot, foundation.transform.position, Quaternion.identity, foundation.transform);
-			s.pileType = CardPileType.Foundation;
-			s.suit = (CardSuit)i;
-			s.card.pile = foundation;
-			s.transform.Translate(0, 0, .05f);
+			FoundationSlot slot = Instantiate(foundationSlot, foundation.transform.position, Quaternion.identity, foundation.transform) as FoundationSlot;
+			slot.Initialize((CardSuit)i, foundation);			
 			
-			foundation.slot = s;
+			foundation.slot = slot;
 			
 			allPiles.Add(foundation);
 			allowedPiles.Add(foundation);
@@ -88,10 +76,10 @@ public class Klondyke : SolitaireGame
 			
 			pileaus.Add(pileau);
 			
-			PileSlot s = Instantiate(slot, pileau.transform.position, Quaternion.identity, pileau.transform);
-			s.pileType = CardPileType.Tableau;
-			s.card.pile = pileau;
-			pileaus[i].slot = s;
+			PileSlot slot = Instantiate(pileSlot, pileau.transform.position, Quaternion.identity, pileau.transform);
+			slot.Initialize(pileau);
+
+			pileaus[i].slot = slot;
 			
 			allPiles.Add(pileau);
 			allowedPiles.Add(pileau);
@@ -154,11 +142,6 @@ public class Klondyke : SolitaireGame
 	// Update is called once per frame
 	void Update () 
 	{
-		if (/*GameManager.Instance.state != GameState.Running || */GameManager.Instance.UICheck())
-		{
-			return;
-		}
-		
 		if (Input.GetMouseButtonDown(0))
 		{
 			RaycastHit hit = new RaycastHit();
@@ -192,7 +175,6 @@ public class Klondyke : SolitaireGame
 					Vector3 pos = hit.point - startHit;
 					pos.z = -0.5f;
 
-					//cardSelection.mover.transform.position = Vector3.Lerp(cardSelection.mover.transform.position, pos,Time.deltaTime * 10);
 					cardSelection.transform.position = Vector3.Lerp(cardSelection.transform.position, pos, Time.deltaTime * 10);
 				}
 				
@@ -285,7 +267,7 @@ public class Klondyke : SolitaireGame
             {
 				movedCards.Add(cards[0]);
 
-				StoreMoveCommand(movedCards, targetPile);
+				StoreMoveCommand(movedCards, targetPile, hint);
                 UpdateLastCards();
 				
 				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", movedCards[0].suit));				
@@ -309,7 +291,7 @@ public class Klondyke : SolitaireGame
 								movedCards.Add(c);
 							}
 
-							StoreMoveCommand(movedCards, toPile);
+							StoreMoveCommand(movedCards, toPile, hint);
 							UpdateLastCards();
 	                    }
 	                }
@@ -325,7 +307,7 @@ public class Klondyke : SolitaireGame
 								movedCards.Add(c);
 							}
 
-							StoreMoveCommand(movedCards, pileaus[i]);
+							StoreMoveCommand(movedCards, pileaus[i], hint);
                             UpdateLastCards();
                         }
 	                   
@@ -337,8 +319,7 @@ public class Klondyke : SolitaireGame
 		
 		if (movedCards.Count == 0)
 		{
-			if (hint)
-				return false;
+			if (hint) return false;
 
 			CancelMove();
 		}
@@ -346,7 +327,7 @@ public class Klondyke : SolitaireGame
 		{
 			if (hint)
             {
-				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].pile));
+				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].Pile));
 				return true;
 			}
 			GameManager.Instance.StoreCommand(new CmdComposite(commands));
@@ -361,8 +342,10 @@ public class Klondyke : SolitaireGame
 		return false;
 	}
 
-	void StoreMoveCommand(List<Card> movedCards, CardPile targetPile)
+	void StoreMoveCommand(List<Card> movedCards, CardPile targetPile, bool hint = false)
     {
+		if (hint) return;
+
 		CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelection.sourcePile, targetPile);
 		cmdMoveToFoundation.Execute(false);
 		commands.Add(cmdMoveToFoundation);
@@ -409,14 +392,14 @@ public class Klondyke : SolitaireGame
 	{
 		CardPile pile = c.Pile;
 
-        if (pile == stock)
+        if (pile.Type == CardPileType.Stock)
         {
             CmdDrawCards cmd = new CmdDrawCards(this, 3);
             cmd.Execute(false);
 
             GameManager.Instance.StoreCommand(cmd);
         } 
-        else if (pile == waste)
+        else if (pile.Type == CardPileType.KlondikeWaste)
 		{
             if (pile.IsEmpty == false)
             {
@@ -524,9 +507,6 @@ public class Klondyke : SolitaireGame
 		{
 			CardPile pile = allowedPiles[i];
 
-			if (pile.Type == CardPileType.Foundation)
-				continue;
-
 			hintCards.Clear();
 			
 			for (int j = 0; j < pile.cards.Count; j++)
@@ -563,6 +543,10 @@ public class Klondyke : SolitaireGame
 	public override void ShowHint(NotificationCenter.Notification n)
 	{
 		CardPile pile = n.data["pile"] as CardPile;
+
+		// no hint when theres only one card in foundation
+		if (pile.Type == CardPileType.Foundation && pile.cards.Count == 1)
+			return;
 		
 		List<Card> hintCards = new List<Card>();
 		
@@ -579,7 +563,7 @@ public class Klondyke : SolitaireGame
 			}
 		}
 		else
-		{
+		{			
 			hintCards.Add(pile.GetLastCard());
 		}
 		
@@ -639,7 +623,7 @@ public class Klondyke : SolitaireGame
 					CardSuit suit = (CardSuit) System.Enum.Parse(typeof(CardSuit), cardNode.Element("suit").Value);   
 
 					Card c = GetCard(number, suit);
-					c.pile = cpile;
+					c.Pile = cpile;
 					c.Turn(System.Convert.ToBoolean(cardNode.Element("turned").Value));
 					
 					cpile.AddCard(c);

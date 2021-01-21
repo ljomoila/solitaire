@@ -9,8 +9,6 @@ public class DeckMaker : MonoBehaviour
 	public CardPile deck;
 	public PileSlot slotDeco;
 	
-	public float cardZ = .002f;
-	
 	float yStep = 0.1535f;
 	float xStep = 0.06257325f;
 	
@@ -35,6 +33,7 @@ public class DeckMaker : MonoBehaviour
 
 			int xIndex = 0;
 			int yIndex = 0;
+			float zPos = 0;
 			
 	        for (int i = 0; i < numberOfCards; i++)
 	        {
@@ -42,11 +41,11 @@ public class DeckMaker : MonoBehaviour
 				int numberIndex = i % 13 + 1;
 				
 				Card newCard = Instantiate(card, Vector3.zero, Quaternion.identity);
-				newCard.Init(numberIndex, (CardSuit)suitIndex);
+				newCard.Initialize(numberIndex, (CardSuit)suitIndex);
 				newCard.Pile = newDeck;
 				
 				newCard.transform.parent = newDeck.transform;
-				newCard.transform.Translate(0, 0, -.05f);
+				newCard.transform.Translate(0, 0, zPos);
 
 				if (yIndex == 6)
 				{
@@ -60,12 +59,13 @@ public class DeckMaker : MonoBehaviour
 				
 				cardTextureOffsets[i] = new Vector2(xIndex*xStep, yIndex*yStep);
 				// TODO fix texture instead of this ugly thing
-				// TODO fix ace of clubs texture
+				// TODO fix ace of clubs in texture
 				Vector2 textureOffset = i > 0 ? cardTextureOffsets[i-1] : new Vector2(0.500586f, 0.614f);
 				newCard.spriteSkinned.GetComponent<Renderer>().materials[1].SetTextureOffset("_MainTex", textureOffset);
 
 				newDeck.cards.Add(newCard);
 				yIndex++;
+				zPos -= .015f;
 			}
 
 			card.gameObject.SetActive(false);

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour 
 {
-	public Camera MainCam;//, MenuCam, UICamera, AnimCamera;
+	public Camera MainCam;
 	
 	public DeckMaker deckMaker;
 	
@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
 	{
 		Screen.sleepTimeout = (int) SleepTimeout.NeverSleep;
 
-		StartCoroutine(StartRoutine());
+		StartCoroutine(Initialize());
 	}
 
-	IEnumerator StartRoutine()
+	IEnumerator Initialize()
 	{
 		yield return null;
 		string viewType = "menu";
@@ -107,18 +107,6 @@ public class GameManager : MonoBehaviour
 			
 			backButtonPressed = false;
 		}
-	}
-
-	//public SolitaireUI ui;
-
-    Vector3 playCamPos, playCamRot;
-
-	public void ShowMenu(GameObject go)
-	{
-		//if (ui.switchingView)
-		//	return;
-
-		//StartCoroutine(ui.MenuRoutine(go == null));
 	}
 
 
@@ -240,19 +228,6 @@ public class GameManager : MonoBehaviour
 		}
 		
 		return timeStr;		
-	}
-	
-	public bool UICheck()
-	{
-		//Ray ray = UICamera.ScreenPointToRay (Input.mousePosition);
-		//RaycastHit hit;		
-		//if (Physics.Raycast (ray, out hit, Mathf.Infinity, 1 << 8)) 
-		//{		
-		//	return true;
-		//} 
-			
-		
-		return false;
 	}
 
 

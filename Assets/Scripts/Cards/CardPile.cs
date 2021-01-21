@@ -20,6 +20,7 @@ public class CardPile : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		
 	}
 	
 	// Update is called once per frame
@@ -59,14 +60,6 @@ public class CardPile : MonoBehaviour
 		card.gameObject.layer = 9; // TODO naming
 
 		iTween.RotateTo(card.gameObject, iTween.Hash("rotation", Vector3.zero, "time", 0));
-
-		//card.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
-
-		//if (!card.GetComponent<Rigidbody>().isKinematic)
-		//{
-		//	card.GetComponent<Rigidbody>().isKinematic = true;
-		//	DestroyObject(card.gameObject.GetComponent<HingeJoint>());
-		//}
 	}
 
 	public virtual void AddCard(Card card, float time, float delay)
@@ -332,19 +325,15 @@ public class CardPile : MonoBehaviour
 		if (slot == null)
 			return;
 
-		Color c = slot.border.color;
-		c.a = .3f;
-		slot.border.color = c;
+		slot.Unhighlight();
     }
 
     internal void Highlight()
     {
 		if (slot == null)
 			return;
-		
-		Color c = slot.border.color;
-		c.a = 1f;
-		slot.border.color = c;		
+
+		slot.Highlight();
     }
 }
 

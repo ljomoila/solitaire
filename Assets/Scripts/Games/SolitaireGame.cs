@@ -11,13 +11,7 @@ public class SolitaireGame : MonoBehaviour
 	public Transform stockHolder;
 	public List<CardPile> allPiles = new List<CardPile>();
 
-	public CardPile stock, waste;
-	public SelectionPile cardSelection;
-	
-	public List<CardPile> allowedPiles = new List<CardPile>();
-	
-	public Card card;
-	public CardPile cardPile;
+	public CardPile stock, waste;	
 	
 	public int seed = 123456;
 	
@@ -46,8 +40,6 @@ public class SolitaireGame : MonoBehaviour
 	{
 		yield return null;
 	}
-	
-	public bool suffle = false;
 
 	public virtual bool CheckCard(Card card)
 	{
@@ -94,9 +86,7 @@ public class SolitaireGame : MonoBehaviour
 	{
 		yield return null;	
 	}
-	
-	public bool showingHint = false;
-	
+		
 	public virtual void HintRequest()
 	{
 		

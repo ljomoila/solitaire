@@ -17,7 +17,7 @@ public class Card : MonoBehaviour
 
 	}
 	
-	public void Init(int number, CardSuit suit)
+	public void Initialize(int number, CardSuit suit)
 	{
 		this.number = number;
 		this.suit = suit;
@@ -30,7 +30,7 @@ public class Card : MonoBehaviour
 	
 	public void Pick(int indexInPile)
 	{
-		// TODO fix animation: at the moment z-index problem, if more than 3 cards
+		// TODO fix animation: at the moment z-index problem, if more than 3 cards pile
 		if (indexInPile > 2)
 			return;
 
