@@ -12311,7 +12311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourcePile: {fileID: 0}
   cards: []
-  Type: 1
+  Type: 0
   slot: {fileID: 0}
   cardCount: 0
   xStep: -0.5
@@ -25396,7 +25396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourcePile: {fileID: 0}
   cards: []
-  Type: 5
+  Type: 0
   slot: {fileID: 0}
   cardCount: 0
   xStep: -0.5
@@ -49294,7 +49294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourcePile: {fileID: 0}
   cards: []
-  Type: 6
+  Type: 0
   slot: {fileID: 0}
   cardCount: 0
   xStep: -0.5
@@ -49516,7 +49516,7 @@ MonoBehaviour:
   - {fileID: 378887940}
   - {fileID: 1827784051}
   - {fileID: 1603325832}
-  Type: 5
+  Type: 0
   slot: {fileID: 0}
   cardCount: 0
   xStep: 0
@@ -76907,7 +76907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCam: {fileID: 1494594570}
-  deckMaker: {fileID: 1043698813}
+  deckMaker: {fileID: 0}
   activeGame: {fileID: 1496531209}
   timeTxt: {fileID: 2047913198}
   state: 0
@@ -82311,7 +82311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sourcePile: {fileID: 0}
   cards: []
-  Type: 4
+  Type: 0
   slot: {fileID: 0}
   cardCount: 0
   xStep: -0.5
@@ -111422,6 +111422,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7715337952782190484, guid: 43d3882210e584ee283d6f4e6dadebec,
+        type: 3}
+      propertyPath: pile
+      value: 
+      objectReference: {fileID: 2111629786}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43d3882210e584ee283d6f4e6dadebec, type: 3}
 --- !u!4 &1523193244 stripped
@@ -145627,7 +145632,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2111629785}
   - component: {fileID: 2111629786}
-  - component: {fileID: 2111629787}
   m_Layer: 0
   m_Name: KlondykeDeck
   m_TagString: Untagged
@@ -145779,23 +145783,6 @@ MonoBehaviour:
   nextPos: {x: 0, y: 0}
   animTime: 0
   cardZ: 0
---- !u!114 &2111629787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2111629784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f37df39a43934dab844e8e31ce69f72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  spriteSkinned: {fileID: 0}
-  suit: 0
-  pile: {fileID: 2111629786}
-  number: 1
 --- !u!1 &2111781293
 GameObject:
   m_ObjectHideFlags: 0

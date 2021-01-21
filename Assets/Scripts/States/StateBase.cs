@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class StateBase : MonoBehaviour
 {
@@ -43,6 +42,11 @@ public class StateBase : MonoBehaviour
 		}
 	}
 
+	public void SetCollidersEnabled(bool v)
+	{
+		SetCollidersEnabled(v, transform);
+	}
+
 	public void SetCollidersEnabled(bool v, Transform t)
 	{
 		BoxCollider c = t.GetComponent<BoxCollider>();
@@ -61,10 +65,6 @@ public class StateBase : MonoBehaviour
 		}
 	}
 
-	public void SetCollidersEnabled(bool v)
-	{
-		SetCollidersEnabled(v, transform);
-	}
 
 	// Use this for initialization
 	public virtual void Start()

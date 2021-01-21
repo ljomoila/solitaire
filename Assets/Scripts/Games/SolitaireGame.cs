@@ -129,7 +129,7 @@ public class SolitaireGame : MonoBehaviour
 				}
 			}
 			pile.cardZ = 0;
-			pile.nextPos = Vector3.zero;
+			pile.NextPos = Vector3.zero;
 			pile.Clear();			
 		}
 

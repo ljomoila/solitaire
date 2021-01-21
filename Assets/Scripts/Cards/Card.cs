@@ -76,8 +76,6 @@ public class Card : MonoBehaviour
 				sprite.transform.localEulerAngles = new Vector3(0, 0, 0);
 		}
 
-		pile.animTime = 0;
-
 		Invoke("Align", time - .1f);
 	}
 

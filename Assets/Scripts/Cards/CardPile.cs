@@ -28,25 +28,21 @@ public class CardPile : MonoBehaviour
 	{
 	
 	}
-	
-	public virtual void MakeDragGroup()
-	{
-	}
-	
-	private CardSuit suit;
 
-    public CardSuit CardSuit
-    {
-        get { return suit; }
-        set
-        {
-            suit = value;
-        }
-    }
-	
-	public Vector2 nextPos;
-	
-	public float animTime = 0;
+    public CardSuit CardSuit { get; set; }
+
+    Vector2 nextPos;
+	public Vector2 NextPos
+	{
+		get { return nextPos; }
+		set
+		{
+			nextPos = value;
+		}
+	}
+
+
+	float animTime = 0;
 
 	public virtual void AddCard(Card card)
 	{

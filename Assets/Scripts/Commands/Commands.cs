@@ -86,8 +86,8 @@ public class CmdDrawCards : Cmd
     {
 		waste.AlignCards();
 		
-		waste.nextPos = Vector2.zero;
-		float t = .25f;
+		Vector2 nextPos = waste.NextPos = Vector2.zero;
+        float t = .25f;
 		
 		int i = cardInfos.Count;
 		
@@ -105,14 +105,16 @@ public class CmdDrawCards : Cmd
 			else
 			{
 				waste.AddCard(card);
-				card.transform.localPosition = new Vector3(waste.nextPos.x, waste.nextPos.y, waste.cardZ);
+				card.transform.localPosition = new Vector3(nextPos.x, nextPos.y, waste.cardZ);
 				card.Turn(false);
 				
 				if (!immediate)
 					AudioController.Play("cardTurn");
 			}
 
-			waste.nextPos.x += .5f;
+			nextPos.x += .5f;
+
+            waste.NextPos = nextPos;
 			waste.cardZ -= .05f;
 			
 			i--;
