@@ -28,6 +28,5 @@ public class GameEvents : MonoBehaviour {
 	public const string PauseRequest = "PauseRequest";
 	
 	public const string FoundationMoveDone = "FoundationMoveDone";
-	public const string ShowHint = "ShowHint";
 	
 }

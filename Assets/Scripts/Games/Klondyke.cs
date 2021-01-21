@@ -16,6 +16,9 @@ public class Klondyke : SolitaireGame
 	private float xStep = 3.5f;
 	private int stockDrawAmount = 3;
 
+	private List<Cmd> commands = new List<Cmd>();
+
+	private Vector3 startHit;
 
 	// Use this for initialization
 	void Start () 
@@ -40,31 +43,9 @@ public class Klondyke : SolitaireGame
 		PileSlot wasteSlot = Instantiate(pileSlot, waste.transform.position, Quaternion.identity, waste.transform);
 		wasteSlot.Initialize(waste);
 		
-		foundations = new List<CardPile>();		
-		int i = 0;
-		
-        for (i = 0; i < 4; i++)
-        {
-			CardPile foundation = new GameObject("Foundation "+(CardSuit)i).AddComponent<CardPile>();
-			foundation.Type = CardPileType.Foundation;
-			foundation.transform.parent = transform;
-			foundation.transform.position = new Vector3(foundHolder.position.x + (xStep*i), foundHolder.position.y, foundHolder.position.z);
-			foundation.CardSuit = (CardSuit)i;
-			
-			foundations.Add(foundation);
-			
-			FoundationSlot slot = Instantiate(foundationSlot, foundation.transform.position, Quaternion.identity, foundation.transform) as FoundationSlot;
-			slot.Initialize((CardSuit)i, foundation);			
-			
-			foundation.slot = slot;
-			
-			allPiles.Add(foundation);
-			AllowedPiles.Add(foundation);
-        }
-		
 		pileaus = new List<CardPile>();
 		
-		for (i = 0; i < 7; i++)
+		for (int i = 0; i < 7; i++)
         {
 			CardPile pile = new GameObject("Tableu "+i).AddComponent<CardPile>();
 			pile.gameObject.name = "KlondykeTableu " + (i + 1);
@@ -84,6 +65,27 @@ public class Klondyke : SolitaireGame
 			
 			allPiles.Add(pile);
 			AllowedPiles.Add(pile);
+		}
+
+		foundations = new List<CardPile>();
+
+		for (int i = 0; i < 4; i++)
+		{
+			CardPile foundation = new GameObject("Foundation " + (CardSuit)i).AddComponent<CardPile>();
+			foundation.Type = CardPileType.Foundation;
+			foundation.transform.parent = transform;
+			foundation.transform.position = new Vector3(foundHolder.position.x + (xStep * i), foundHolder.position.y, foundHolder.position.z);
+			foundation.CardSuit = (CardSuit)i;
+
+			foundations.Add(foundation);
+
+			FoundationSlot slot = Instantiate(foundationSlot, foundation.transform.position, Quaternion.identity, foundation.transform) as FoundationSlot;
+			slot.Initialize((CardSuit)i, foundation);
+
+			foundation.slot = slot;
+
+			allPiles.Add(foundation);
+			AllowedPiles.Add(foundation);
 		}
 
 		yield return null;
@@ -137,8 +139,6 @@ public class Klondyke : SolitaireGame
 			yield return new WaitForSeconds(.025f);
 		}
 	}
-
-    Vector3 startHit;
 	
 	// Update is called once per frame
 	void Update () 
@@ -162,14 +162,13 @@ public class Klondyke : SolitaireGame
 			}
 		}
 	}
-	
-	List<Cmd> commands = new List<Cmd>();
-	
+
+
 	public override bool TryMove(CardPile toPile, List<Card> cards, bool hint = false)
 	{
 		commands.Clear();
 
-		if (toPile == cardSelectionState.Pile.sourcePile && cards.Count == 1)
+		if (cards.Count == 1 && toPile == cards[0].Pile.sourcePile)
 		{
 			toPile = foundations[(int)cards[0].suit];
 		}
@@ -230,29 +229,29 @@ public class Klondyke : SolitaireGame
 					}
 				}
             }
-		}
-			
+		}			
 		
 		if (movedCards.Count > 0)
 		{
-			StoreMoveCommand(movedCards, toPile, hint);
-			UpdateLastCards();
-
 			if (hint)
             {
-				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.ShowHint, iTween.Hash("pile", cards[0].Pile));				
+				ShowHint(cards[0].Pile);
 			}
+			else
+            {
+				StoreMoveCommand(movedCards, toPile);
+				UpdateLastCards();
 
-			GameManager.Instance.StoreCommand(new CmdComposite(commands));
+				GameManager.Instance.StoreCommand(new CmdComposite(commands));
+			}
+			
 		}
 
 		return movedCards.Count > 0;
 	}
 
-	void StoreMoveCommand(List<Card> movedCards, CardPile targetPile, bool hint = false)
+	void StoreMoveCommand(List<Card> movedCards, CardPile targetPile)
     {
-		if (hint) return;
-
 		CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelectionState.Pile.sourcePile, targetPile, "Move cards to: " + targetPile.Type);
 		cmdMoveToFoundation.Execute(false);
 		commands.Add(cmdMoveToFoundation);
@@ -278,8 +277,6 @@ public class Klondyke : SolitaireGame
 	{
 		CardPile pile = c.Pile;
 
-		Debug.Log(pile + " " + c);
-
         if (pile.Type == CardPileType.Stock)
         {
             CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
@@ -292,9 +289,7 @@ public class Klondyke : SolitaireGame
 		{
             if (pile.IsEmpty == false)
             {
-                Card lastWasteCard = pile.GetLastCard();
-				
-				Select(new List<Card>() { lastWasteCard });
+				Select(new List<Card>() { pile.GetLastCard() });
             }
             return;
         }		
@@ -364,8 +359,6 @@ public class Klondyke : SolitaireGame
 	
 	void Select(List<Card> cards)
 	{
-		if (cards.Count == 0) return;
-
 		if (cardSelectionState == null)
 			cardSelectionState = new GameObject("SelectionPile").AddComponent<CardSelectionState>();
 
@@ -379,17 +372,14 @@ public class Klondyke : SolitaireGame
 	public override void HintRequest()
 	{
 		List<Card> hintCards = new List<Card>();
-		
-		for (int i = 0; i < AllowedPiles.Count; i++)
-		{
-			CardPile pile = AllowedPiles[i];
 
+		// TODO foreach loops for these
+		foreach(CardPile pile in AllowedPiles) 
+		{
 			hintCards.Clear();
-			
-			for (int j = 0; j < pile.cards.Count; j++)
+
+			foreach(Card card in pile.cards)
 			{				
-				Card card = pile.cards[j];
-				
 				if (!card.IsTurned())
 				{
 					hintCards.Add(card);
@@ -400,30 +390,29 @@ public class Klondyke : SolitaireGame
 						hintCards.Add(pile.GetLastCard());
 					}
 				}
-				
-				if (hintCards.Count > 0)
+			}
+			if (hintCards.Count > 0)
+			{
+				foreach(CardPile toPile in AllowedPiles)
 				{
-					for (int h = 0; h < AllowedPiles.Count; h++)
+					if (TryMove(toPile, hintCards, true))
 					{
-						CardPile toPile = AllowedPiles[h];
-						
-						if (TryMove(toPile, hintCards, true))
-						{
-							return;	
-						}
+						ShowHint(hintCards[0].Pile);
+						return;
 					}
 				}
 			}
 		}
 	}
 	
-	public override void ShowHint(NotificationCenter.Notification n)
+	void ShowHint(CardPile pile)
 	{
-		CardPile pile = n.data["pile"] as CardPile;
-
 		// no hint when theres only one card in foundation
 		if (pile.Type == CardPileType.Foundation && pile.cards.Count == 1)
+        {
+			Debug.Log("Foundation hint");
 			return;
+        }
 		
 		List<Card> hintCards = new List<Card>();
 		

@@ -95,11 +95,6 @@ public class SolitaireGame : MonoBehaviour
 	{
 		
 	}
-	
-	public virtual void ShowHint(NotificationCenter.Notification n)
-	{
-		
-	}
 
 	public void MenuState()
     {
