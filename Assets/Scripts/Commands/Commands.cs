@@ -105,7 +105,7 @@ public class CmdDrawCards : Cmd
 			else
 			{
 				waste.AddCard(card);
-				card.transform.localPosition = new Vector3(nextPos.x, nextPos.y, waste.cardZ);
+				card.transform.localPosition = new Vector3(nextPos.x, nextPos.y, waste.CardZ);
 				card.Turn(false);
 				
 				if (!immediate)
@@ -115,7 +115,7 @@ public class CmdDrawCards : Cmd
 			nextPos.x += .5f;
 
             waste.NextPos = nextPos;
-			waste.cardZ -= .05f;
+			waste.CardZ -= .05f;
 			
 			i--;
         }

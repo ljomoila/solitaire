@@ -15,11 +15,15 @@ public class Klondyke : SolitaireGame
 	public PileSlot pileSlot, foundationSlot;
 
 	private float xStep = 3.5f;
+	private int stockDrawAmount = 3;
+
 
 	// Use this for initialization
 	void Start () 
 	{
 		gameType = GameType.Klondyke;
+
+		NotificationCenter.DefaultCenter.AddObserver(this, GameEvents.ShowHint);
 
 		StartCoroutine(Initialize());
 	}
@@ -150,7 +154,7 @@ public class Klondyke : SolitaireGame
 			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
 			{
 				Card c = hit.collider.gameObject.GetComponent<Card>();
-				iTween[] tweens = hit.collider.gameObject.GetComponents<iTween>() as iTween[];
+				iTween[] tweens = hit.collider.gameObject.GetComponents<iTween>();
 				
 				if (c == null || tweens.Length > 0)
 					return;
@@ -269,8 +273,9 @@ public class Klondyke : SolitaireGame
 
 				StoreMoveCommand(movedCards, targetPile, hint);
                 UpdateLastCards();
-				
-				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", movedCards[0].suit));				
+
+				if (!hint)
+					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", movedCards[0].suit));				
 			}
 		}
 		
@@ -346,7 +351,7 @@ public class Klondyke : SolitaireGame
     {
 		if (hint) return;
 
-		CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelection.sourcePile, targetPile);
+		CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelection.sourcePile, targetPile, "Move cards to: " + targetPile.Type);
 		cmdMoveToFoundation.Execute(false);
 		commands.Add(cmdMoveToFoundation);
 	}
@@ -394,7 +399,7 @@ public class Klondyke : SolitaireGame
 
         if (pile.Type == CardPileType.Stock)
         {
-            CmdDrawCards cmd = new CmdDrawCards(this, 3);
+            CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
             cmd.Execute(false);
 
             GameManager.Instance.StoreCommand(cmd);
@@ -476,27 +481,27 @@ public class Klondyke : SolitaireGame
 	
 	void Select(List<Card> cards)
 	{
-	    if (cards.Count > 0)
-	    {
-			cardSelection = new GameObject("SelectionPile").AddComponent<SelectionPile>();
-			cardSelection.transform.position = cards[0].transform.position;
-			cardSelection.sourcePile = cards[0].Pile;
-			cardSelection.yStep = cards[0].Pile.yStep;	        
-			
-			int i = 0;
-	        foreach (Card card in cards)
-	        {
-	            cardSelection.AddCard(card);
-				card.Pick(i);
+		if (cards.Count == 0) return;
 
-				i++;
-	        }
-			cardSelection.AlignCards();					
+		cardSelection = new GameObject("SelectionPile").AddComponent<SelectionPile>();
+		cardSelection.transform.position = cards[0].transform.position;
+		cardSelection.sourcePile = cards[0].Pile;
+		cardSelection.yStep = cards[0].Pile.yStep;	        
 			
-			startHit.y -= cards[0].transform.position.y;
-			startHit.x -= cards[0].transform.position.x;
-			startHit.z = 0;
-		}
+		int i = 0;
+	    foreach (Card card in cards)
+	    {
+	        cardSelection.AddCard(card);
+			card.Pick(i);
+
+			i++;
+	    }
+		cardSelection.AlignCards();					
+			
+		startHit.y -= cards[0].transform.position.y;
+		startHit.x -= cards[0].transform.position.x;
+		startHit.z = 0;
+		
 	}
 	
 	public override void HintRequest()

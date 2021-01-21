@@ -61,13 +61,6 @@ public class StateManager : MonoBehaviour, IBackButtonListener
         {
             activeState.UpdateState();
 
-//#if UNITY_EDITOR || UNITY_ANDROID || UNITY_WP8
-//            if (Input.GetKeyDown(KeyCode.Escape))
-//            {
-//                BackButtonPressed();
-//            }
-//#endif
-
             ActiveStateCheck();
         }
     }

@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
 	public Camera MainCam;
 	
-	public DeckMaker deckMaker;
-	
 	public SolitaireGame activeGame;
 	
 	public static GameManager Instance;
@@ -94,18 +92,6 @@ public class GameManager : MonoBehaviour
 			{
 				backButtonPressed = true;
 			}
-		}
-		
-		if (backButtonPressed)
-		{
-			if (state == GameState.Menu)
-				Application.Quit();
-			else if (state == GameState.Running)
-			{
-				// TODO menu
-			}
-			
-			backButtonPressed = false;
 		}
 	}
 

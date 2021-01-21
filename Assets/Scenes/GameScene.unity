@@ -214,7 +214,7 @@ MonoBehaviour:
   sprite: {fileID: 801353963}
   spriteSkinned: {fileID: 1193556170}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &3773281
 MeshFilter:
@@ -2647,7 +2647,7 @@ MonoBehaviour:
   sprite: {fileID: 1037584679}
   spriteSkinned: {fileID: 1148349351}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &85914399
 MeshFilter:
@@ -2813,7 +2813,7 @@ MonoBehaviour:
   sprite: {fileID: 1208069312}
   spriteSkinned: {fileID: 2076355927}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &90801362
 MeshFilter:
@@ -3302,7 +3302,7 @@ MonoBehaviour:
   sprite: {fileID: 220418546}
   spriteSkinned: {fileID: 1156793604}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &118167505
 MeshFilter:
@@ -3657,7 +3657,7 @@ MonoBehaviour:
   sprite: {fileID: 130268432}
   spriteSkinned: {fileID: 1707054650}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &121346966
 MeshFilter:
@@ -8884,7 +8884,7 @@ MonoBehaviour:
   sprite: {fileID: 1866340223}
   spriteSkinned: {fileID: 1746082393}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &134207961
 MeshFilter:
@@ -9975,7 +9975,7 @@ MonoBehaviour:
   sprite: {fileID: 303412191}
   spriteSkinned: {fileID: 705429944}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &176092310
 MeshFilter:
@@ -10122,7 +10122,7 @@ MonoBehaviour:
   sprite: {fileID: 2138900541}
   spriteSkinned: {fileID: 1197176738}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &179729033
 MeshFilter:
@@ -10409,7 +10409,7 @@ MonoBehaviour:
   sprite: {fileID: 1999186513}
   spriteSkinned: {fileID: 1921275487}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &185838520
 MeshFilter:
@@ -10678,7 +10678,7 @@ MonoBehaviour:
   sprite: {fileID: 2086897792}
   spriteSkinned: {fileID: 1040099541}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &190340025
 MeshFilter:
@@ -11096,7 +11096,7 @@ MonoBehaviour:
   sprite: {fileID: 900922296}
   spriteSkinned: {fileID: 323337076}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &198258405
 MeshFilter:
@@ -12255,7 +12255,7 @@ MonoBehaviour:
   sprite: {fileID: 457177217}
   spriteSkinned: {fileID: 741749131}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &235042101
 MeshFilter:
@@ -12319,9 +12319,6 @@ MonoBehaviour:
   xStepTurned: 0
   yStepTurned: 0.25
   zStep: 0.05
-  nextPos: {x: 0, y: 0}
-  animTime: 0
-  cardZ: 0
 --- !u!1 &236794994
 GameObject:
   m_ObjectHideFlags: 0
@@ -13341,7 +13338,7 @@ MonoBehaviour:
   sprite: {fileID: 360887710}
   spriteSkinned: {fileID: 1376980958}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &273749677
 MeshFilter:
@@ -14327,7 +14324,7 @@ MonoBehaviour:
   sprite: {fileID: 525855257}
   spriteSkinned: {fileID: 529256646}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &298167900
 MeshFilter:
@@ -14729,7 +14726,7 @@ MonoBehaviour:
   sprite: {fileID: 1732436400}
   spriteSkinned: {fileID: 1738460667}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &304585879
 MeshFilter:
@@ -14967,7 +14964,7 @@ MonoBehaviour:
   sprite: {fileID: 1187892815}
   spriteSkinned: {fileID: 1547491801}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &312959803
 MeshFilter:
@@ -15531,7 +15528,7 @@ MonoBehaviour:
   sprite: {fileID: 545857850}
   spriteSkinned: {fileID: 2054018359}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &330300706
 MeshFilter:
@@ -15655,7 +15652,7 @@ MonoBehaviour:
   sprite: {fileID: 507596328}
   spriteSkinned: {fileID: 544377038}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &334738952
 MeshFilter:
@@ -16232,7 +16229,7 @@ MonoBehaviour:
   sprite: {fileID: 1029076525}
   spriteSkinned: {fileID: 1176996896}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &346031778
 MeshFilter:
@@ -17216,7 +17213,7 @@ MonoBehaviour:
   sprite: {fileID: 1761149055}
   spriteSkinned: {fileID: 970711038}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &377999704
 MeshFilter:
@@ -17288,7 +17285,7 @@ MonoBehaviour:
   sprite: {fileID: 1706905262}
   spriteSkinned: {fileID: 1778901068}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &378887941
 MeshFilter:
@@ -17849,7 +17846,7 @@ MonoBehaviour:
   sprite: {fileID: 1546862943}
   spriteSkinned: {fileID: 188968727}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &393001386
 MeshFilter:
@@ -17982,7 +17979,7 @@ MonoBehaviour:
   sprite: {fileID: 379136253}
   spriteSkinned: {fileID: 790442660}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &395136140
 MeshFilter:
@@ -22847,7 +22844,7 @@ MonoBehaviour:
   sprite: {fileID: 1777315849}
   spriteSkinned: {fileID: 2064340004}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &397046195
 MeshFilter:
@@ -23187,7 +23184,7 @@ MonoBehaviour:
   sprite: {fileID: 1212605295}
   spriteSkinned: {fileID: 2047917300}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &415534447
 MeshFilter:
@@ -23779,7 +23776,7 @@ MonoBehaviour:
   sprite: {fileID: 1741158937}
   spriteSkinned: {fileID: 613287784}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &435526677
 MeshFilter:
@@ -23964,7 +23961,7 @@ MonoBehaviour:
   sprite: {fileID: 818453044}
   spriteSkinned: {fileID: 2018311774}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &441267841
 MeshFilter:
@@ -24268,7 +24265,7 @@ MonoBehaviour:
   sprite: {fileID: 1837247483}
   spriteSkinned: {fileID: 1020152031}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &452954288
 MeshFilter:
@@ -24340,7 +24337,7 @@ MonoBehaviour:
   sprite: {fileID: 518217861}
   spriteSkinned: {fileID: 1954661059}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &453294685
 MeshFilter:
@@ -24917,7 +24914,7 @@ MonoBehaviour:
   sprite: {fileID: 1138391579}
   spriteSkinned: {fileID: 1782005382}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &465144738
 MeshFilter:
@@ -25248,7 +25245,7 @@ MonoBehaviour:
   sprite: {fileID: 1689270755}
   spriteSkinned: {fileID: 685541876}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &472561840
 MeshFilter:
@@ -25404,9 +25401,6 @@ MonoBehaviour:
   xStepTurned: 0
   yStepTurned: 0
   zStep: 0.05
-  nextPos: {x: 0, y: 0}
-  animTime: 0
-  cardZ: 0
 --- !u!1 &479434264
 GameObject:
   m_ObjectHideFlags: 0
@@ -26825,7 +26819,7 @@ MonoBehaviour:
   sprite: {fileID: 2014427826}
   spriteSkinned: {fileID: 1627295874}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &518128993
 MeshFilter:
@@ -27055,7 +27049,7 @@ MonoBehaviour:
   sprite: {fileID: 1406679284}
   spriteSkinned: {fileID: 1695930433}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &520425856
 MeshFilter:
@@ -28575,7 +28569,7 @@ MonoBehaviour:
   sprite: {fileID: 500059552}
   spriteSkinned: {fileID: 1981301331}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &575316516
 MeshFilter:
@@ -28792,7 +28786,7 @@ MonoBehaviour:
   sprite: {fileID: 1116681735}
   spriteSkinned: {fileID: 337423726}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &583821214
 MeshFilter:
@@ -34871,7 +34865,7 @@ MonoBehaviour:
   sprite: {fileID: 1504152658}
   spriteSkinned: {fileID: 1420641263}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &623765381
 MeshFilter:
@@ -42197,7 +42191,7 @@ MonoBehaviour:
   sprite: {fileID: 1705140022}
   spriteSkinned: {fileID: 283763443}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &700985322
 MeshFilter:
@@ -42514,7 +42508,7 @@ MonoBehaviour:
   sprite: {fileID: 1074239989}
   spriteSkinned: {fileID: 1682920037}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &708132256
 MeshFilter:
@@ -42586,7 +42580,7 @@ MonoBehaviour:
   sprite: {fileID: 1081917801}
   spriteSkinned: {fileID: 1581844499}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &711636894
 MeshFilter:
@@ -47762,7 +47756,7 @@ MonoBehaviour:
   sprite: {fileID: 1137288808}
   spriteSkinned: {fileID: 496074440}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &727231577
 MeshFilter:
@@ -48155,7 +48149,7 @@ MonoBehaviour:
   sprite: {fileID: 552172546}
   spriteSkinned: {fileID: 344569794}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &736228555
 MeshFilter:
@@ -48961,7 +48955,7 @@ MonoBehaviour:
   sprite: {fileID: 1349512215}
   spriteSkinned: {fileID: 1002671846}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &760192150
 MeshFilter:
@@ -49302,9 +49296,6 @@ MonoBehaviour:
   xStepTurned: 0
   yStepTurned: 0.5
   zStep: 0.05
-  nextPos: {x: 0, y: 0}
-  animTime: 0
-  cardZ: 0
 --- !u!1 &772693297
 GameObject:
   m_ObjectHideFlags: 0
@@ -49524,9 +49515,6 @@ MonoBehaviour:
   xStepTurned: 0
   yStepTurned: 0
   zStep: 0.05
-  nextPos: {x: 0, y: 0}
-  animTime: 0
-  cardZ: 0
 --- !u!1 &774902899
 GameObject:
   m_ObjectHideFlags: 0
@@ -55938,7 +55926,7 @@ MonoBehaviour:
   sprite: {fileID: 1558815320}
   spriteSkinned: {fileID: 268112616}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &835445358
 MeshFilter:
@@ -56168,7 +56156,7 @@ MonoBehaviour:
   sprite: {fileID: 580794478}
   spriteSkinned: {fileID: 1711489770}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &841662424
 MeshFilter:
@@ -56456,7 +56444,7 @@ MonoBehaviour:
   sprite: {fileID: 1040387884}
   spriteSkinned: {fileID: 1115128128}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &852356415
 MeshFilter:
@@ -56652,7 +56640,7 @@ MonoBehaviour:
   sprite: {fileID: 1397154211}
   spriteSkinned: {fileID: 1786728411}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &859454108
 MeshFilter:
@@ -56818,7 +56806,7 @@ MonoBehaviour:
   sprite: {fileID: 2058754655}
   spriteSkinned: {fileID: 1397748921}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &863678641
 MeshFilter:
@@ -57359,7 +57347,7 @@ MonoBehaviour:
   sprite: {fileID: 670971514}
   spriteSkinned: {fileID: 1534023247}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &887710829
 MeshFilter:
@@ -63155,7 +63143,7 @@ MonoBehaviour:
   sprite: {fileID: 1061443777}
   spriteSkinned: {fileID: 1245274348}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &908012359
 MeshFilter:
@@ -63556,7 +63544,7 @@ MonoBehaviour:
   sprite: {fileID: 1140423494}
   spriteSkinned: {fileID: 1233803414}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &922103971
 MeshFilter:
@@ -63964,7 +63952,7 @@ MonoBehaviour:
   sprite: {fileID: 498896678}
   spriteSkinned: {fileID: 1765445557}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &931701192
 MeshFilter:
@@ -65254,7 +65242,7 @@ MonoBehaviour:
   sprite: {fileID: 1104476540}
   spriteSkinned: {fileID: 1480006286}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &973330939
 MeshFilter:
@@ -65598,10 +65586,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -65742,7 +65730,7 @@ MonoBehaviour:
   sprite: {fileID: 1691396848}
   spriteSkinned: {fileID: 1482075458}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &997532567
 MeshFilter:
@@ -65845,7 +65833,7 @@ MonoBehaviour:
   sprite: {fileID: 420726731}
   spriteSkinned: {fileID: 290106383}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &999450745
 MeshFilter:
@@ -71099,7 +71087,7 @@ MonoBehaviour:
   sprite: {fileID: 1578006340}
   spriteSkinned: {fileID: 1808391472}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &1013787110
 MeshFilter:
@@ -76873,6 +76861,7 @@ GameObject:
   - component: {fileID: 1043698812}
   - component: {fileID: 1043698813}
   - component: {fileID: 1043698814}
+  - component: {fileID: 1043698816}
   m_Layer: 0
   m_Name: __GameManager
   m_TagString: Untagged
@@ -76907,7 +76896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCam: {fileID: 1494594570}
-  deckMaker: {fileID: 0}
   activeGame: {fileID: 1496531209}
   timeTxt: {fileID: 2047913198}
   state: 0
@@ -76941,6 +76929,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d296f6e704043f59c7b6a6ce3ea6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1043698816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043698810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68e3e6e61feb443cbb5911e7e92cf895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  straightToGame: 0
+  firstState: {fileID: 0}
+  activeState: {fileID: 0}
+  deactivating: 0
+  UICamera: {fileID: 0}
 --- !u!1 &1044384249
 GameObject:
   m_ObjectHideFlags: 0
@@ -78014,7 +78019,7 @@ MonoBehaviour:
   sprite: {fileID: 480614973}
   spriteSkinned: {fileID: 1557160735}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &1070068691
 MeshFilter:
@@ -78480,7 +78485,7 @@ MonoBehaviour:
   sprite: {fileID: 1733288083}
   spriteSkinned: {fileID: 597905454}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &1083836261
 MeshFilter:
@@ -79609,7 +79614,7 @@ MonoBehaviour:
   sprite: {fileID: 517898542}
   spriteSkinned: {fileID: 1200898157}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &1116860335
 MeshFilter:
@@ -79742,7 +79747,7 @@ MonoBehaviour:
   sprite: {fileID: 2066415152}
   spriteSkinned: {fileID: 930395931}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &1117461864
 MeshFilter:
@@ -80364,7 +80369,7 @@ MonoBehaviour:
   sprite: {fileID: 825243228}
   spriteSkinned: {fileID: 14091287}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &1134227871
 MeshFilter:
@@ -81318,7 +81323,7 @@ MonoBehaviour:
   sprite: {fileID: 534540523}
   spriteSkinned: {fileID: 1524982057}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &1158293877
 MeshFilter:
@@ -82193,7 +82198,7 @@ MonoBehaviour:
   sprite: {fileID: 908462647}
   spriteSkinned: {fileID: 1665364916}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &1184640666
 MeshFilter:
@@ -82319,9 +82324,6 @@ MonoBehaviour:
   xStepTurned: 0
   yStepTurned: 0.5
   zStep: 0.05
-  nextPos: {x: 0, y: 0}
-  animTime: 0
-  cardZ: 0
 --- !u!1 &1187642330
 GameObject:
   m_ObjectHideFlags: 0
@@ -82498,7 +82500,7 @@ MonoBehaviour:
   sprite: {fileID: 435880894}
   spriteSkinned: {fileID: 1546142467}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &1190439390
 MeshFilter:
@@ -93286,7 +93288,7 @@ MonoBehaviour:
   sprite: {fileID: 724944711}
   spriteSkinned: {fileID: 1073382332}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &1225441686
 MeshFilter:
@@ -93358,7 +93360,7 @@ MonoBehaviour:
   sprite: {fileID: 1116536832}
   spriteSkinned: {fileID: 125615698}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &1228027078
 MeshFilter:
@@ -93614,7 +93616,7 @@ MonoBehaviour:
   sprite: {fileID: 1613375533}
   spriteSkinned: {fileID: 845972876}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &1241187614
 MeshFilter:
@@ -94739,7 +94741,7 @@ MonoBehaviour:
   sprite: {fileID: 894104787}
   spriteSkinned: {fileID: 479434264}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &1270406886
 MeshFilter:
@@ -94933,7 +94935,7 @@ MonoBehaviour:
   sprite: {fileID: 1354206093}
   spriteSkinned: {fileID: 220513188}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 4
 --- !u!33 &1277353429
 MeshFilter:
@@ -95068,7 +95070,7 @@ MonoBehaviour:
   sprite: {fileID: 2071552501}
   spriteSkinned: {fileID: 539533783}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &1281722416
 MeshFilter:
@@ -96044,7 +96046,7 @@ MonoBehaviour:
   sprite: {fileID: 945679879}
   spriteSkinned: {fileID: 509935600}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &1324400570
 MeshFilter:
@@ -96985,7 +96987,7 @@ MonoBehaviour:
   sprite: {fileID: 332618398}
   spriteSkinned: {fileID: 1612222358}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &1361326714
 MeshFilter:
@@ -97057,7 +97059,7 @@ MonoBehaviour:
   sprite: {fileID: 2134850464}
   spriteSkinned: {fileID: 2057631946}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 11
 --- !u!33 &1361717229
 MeshFilter:
@@ -103104,7 +103106,7 @@ MonoBehaviour:
   sprite: {fileID: 1244125340}
   spriteSkinned: {fileID: 762745125}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &1400766813
 MeshFilter:
@@ -103763,7 +103765,7 @@ MonoBehaviour:
   sprite: {fileID: 1530928689}
   spriteSkinned: {fileID: 180973531}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &1425381188
 MeshFilter:
@@ -109070,7 +109072,7 @@ MonoBehaviour:
   sprite: {fileID: 1667818720}
   spriteSkinned: {fileID: 1901660113}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &1450909700
 MeshFilter:
@@ -109442,7 +109444,7 @@ MonoBehaviour:
   sprite: {fileID: 778434907}
   spriteSkinned: {fileID: 1781225714}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &1468921501
 MeshFilter:
@@ -110455,7 +110457,7 @@ MonoBehaviour:
   sprite: {fileID: 506328952}
   spriteSkinned: {fileID: 898639418}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 6
 --- !u!33 &1495447425
 MeshFilter:
@@ -114488,7 +114490,7 @@ MonoBehaviour:
   sprite: {fileID: 1844055373}
   spriteSkinned: {fileID: 1623663091}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &1592476287
 MeshFilter:
@@ -114725,7 +114727,7 @@ MonoBehaviour:
   sprite: {fileID: 174611323}
   spriteSkinned: {fileID: 1672793073}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &1603325833
 MeshFilter:
@@ -116196,7 +116198,7 @@ MonoBehaviour:
   sprite: {fileID: 457558641}
   spriteSkinned: {fileID: 1384667023}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &1645351662
 MeshFilter:
@@ -116579,7 +116581,7 @@ MonoBehaviour:
   sprite: {fileID: 667289081}
   spriteSkinned: {fileID: 1571450937}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &1656923148
 MeshFilter:
@@ -117137,7 +117139,7 @@ MonoBehaviour:
   sprite: {fileID: 888690167}
   spriteSkinned: {fileID: 126940958}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 13
 --- !u!33 &1665912356
 MeshFilter:
@@ -117322,7 +117324,7 @@ MonoBehaviour:
   sprite: {fileID: 1457578981}
   spriteSkinned: {fileID: 1521891535}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &1670667297
 MeshFilter:
@@ -117515,7 +117517,7 @@ MonoBehaviour:
   sprite: {fileID: 1244093216}
   spriteSkinned: {fileID: 492056968}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &1673207399
 MeshFilter:
@@ -118051,7 +118053,7 @@ MonoBehaviour:
   sprite: {fileID: 1729700876}
   spriteSkinned: {fileID: 356717336}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &1690847839
 MeshFilter:
@@ -118956,7 +118958,7 @@ MonoBehaviour:
   sprite: {fileID: 1472964189}
   spriteSkinned: {fileID: 26702315}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &1713930695
 MeshFilter:
@@ -120018,7 +120020,7 @@ MonoBehaviour:
   sprite: {fileID: 689625688}
   spriteSkinned: {fileID: 1607023204}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &1741053146
 MeshFilter:
@@ -120256,7 +120258,7 @@ MonoBehaviour:
   sprite: {fileID: 1002475643}
   spriteSkinned: {fileID: 50832344}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &1746063334
 MeshFilter:
@@ -120450,7 +120452,7 @@ MonoBehaviour:
   sprite: {fileID: 1267979294}
   spriteSkinned: {fileID: 1415935247}
   suit: 3
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &1750760199
 MeshFilter:
@@ -120993,7 +120995,7 @@ MonoBehaviour:
   sprite: {fileID: 949418928}
   spriteSkinned: {fileID: 84491077}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &1773664853
 MeshFilter:
@@ -121242,7 +121244,7 @@ MonoBehaviour:
   sprite: {fileID: 1445609430}
   spriteSkinned: {fileID: 1486279769}
   suit: 1
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &1775547188
 MeshFilter:
@@ -122415,7 +122417,7 @@ MonoBehaviour:
   sprite: {fileID: 2089164000}
   spriteSkinned: {fileID: 2131238944}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &1802763993
 MeshFilter:
@@ -127511,7 +127513,7 @@ MonoBehaviour:
   sprite: {fileID: 1933628610}
   spriteSkinned: {fileID: 803962628}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &1812972973
 MeshFilter:
@@ -127998,7 +128000,7 @@ MonoBehaviour:
   sprite: {fileID: 110542876}
   spriteSkinned: {fileID: 669686571}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 9
 --- !u!33 &1825924907
 MeshFilter:
@@ -128070,7 +128072,7 @@ MonoBehaviour:
   sprite: {fileID: 890153390}
   spriteSkinned: {fileID: 1268057547}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &1827508333
 MeshFilter:
@@ -128142,7 +128144,7 @@ MonoBehaviour:
   sprite: {fileID: 954524547}
   spriteSkinned: {fileID: 1793246309}
   suit: 3
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 12
 --- !u!33 &1827784052
 MeshFilter:
@@ -129062,7 +129064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1874471644
 RectTransform:
   m_ObjectHideFlags: 0
@@ -129078,10 +129080,10 @@ RectTransform:
   m_Father: {fileID: 663810935}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -452.3, y: -512.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 499.4, y: 55.8}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1874471645
 MonoBehaviour:
@@ -130463,7 +130465,7 @@ MonoBehaviour:
   sprite: {fileID: 432059143}
   spriteSkinned: {fileID: 2024065259}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 2
 --- !u!33 &1931815476
 MeshFilter:
@@ -130803,7 +130805,7 @@ MonoBehaviour:
   sprite: {fileID: 1663342267}
   spriteSkinned: {fileID: 1717327214}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 8
 --- !u!33 &1938659075
 MeshFilter:
@@ -131084,7 +131086,7 @@ MonoBehaviour:
   sprite: {fileID: 1105507887}
   spriteSkinned: {fileID: 1094934238}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 1
 --- !u!33 &1944690245
 MeshFilter:
@@ -136661,7 +136663,7 @@ MonoBehaviour:
   sprite: {fileID: 697787396}
   spriteSkinned: {fileID: 816222847}
   suit: 0
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 3
 --- !u!33 &1973731623
 MeshFilter:
@@ -137073,7 +137075,7 @@ MonoBehaviour:
   sprite: {fileID: 1356609745}
   spriteSkinned: {fileID: 915716863}
   suit: 2
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 7
 --- !u!33 &1981773323
 MeshFilter:
@@ -137207,7 +137209,7 @@ MonoBehaviour:
   sprite: {fileID: 52046454}
   spriteSkinned: {fileID: 192366499}
   suit: 0
-  pile: {fileID: 774593369}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &1983680158
 MeshFilter:
@@ -138441,7 +138443,7 @@ MonoBehaviour:
   sprite: {fileID: 1846603812}
   spriteSkinned: {fileID: 1778909855}
   suit: 1
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 5
 --- !u!33 &2035378907
 MeshFilter:
@@ -145242,7 +145244,7 @@ MonoBehaviour:
   sprite: {fileID: 1106807247}
   spriteSkinned: {fileID: 792430698}
   suit: 2
-  pile: {fileID: 2111629786}
+  pile: {fileID: 0}
   number: 10
 --- !u!33 &2090810595
 MeshFilter:
@@ -145780,9 +145782,6 @@ MonoBehaviour:
   xStepTurned: 0
   yStepTurned: 0
   zStep: 0.015
-  nextPos: {x: 0, y: 0}
-  animTime: 0
-  cardZ: 0
 --- !u!1 &2111781293
 GameObject:
   m_ObjectHideFlags: 0
@@ -147232,5 +147231,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5416810355994267972, guid: c6e5decdcd0ec4e25bd9040cdb18ce5a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6e5decdcd0ec4e25bd9040cdb18ce5a, type: 3}

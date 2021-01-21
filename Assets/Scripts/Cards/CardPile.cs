@@ -17,16 +17,14 @@ public class CardPile : MonoBehaviour
 	public float xStep = 0f, yStep = 0f, xStepTurned = 0f, yStepTurned = 0f;
 	public float zStep = .05f;
 
-	// Use this for initialization
-	void Start () 
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
+	float cardZ = 0;
+	public float CardZ
+    {
+		get { return cardZ; }
+		set
+		{
+			cardZ = value;
+		}
 	}
 
     public CardSuit CardSuit { get; set; }
@@ -43,6 +41,18 @@ public class CardPile : MonoBehaviour
 
 
 	float animTime = 0;
+
+	// Use this for initialization
+	void Start()
+	{
+
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+
+	}
 
 	public virtual void AddCard(Card card)
 	{
@@ -233,8 +243,6 @@ public class CardPile : MonoBehaviour
     {
         AlignCards(0, delay, startIndex);
     }
-	
-	public float cardZ = 0;
 
     public virtual void AlignCards(float time, float delay, int startIndex)
     {

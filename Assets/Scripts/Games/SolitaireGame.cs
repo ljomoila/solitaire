@@ -15,11 +15,6 @@ public class SolitaireGame : MonoBehaviour
 	
 	public int seed = 123456;
 	
-	void Awake()
-	{
-		NotificationCenter.DefaultCenter.AddObserver(this, GameEvents.ShowHint);	
-	}
-	
 	// Use this for initialization
 	void Start ()
 	{
@@ -128,7 +123,7 @@ public class SolitaireGame : MonoBehaviour
 					deck.AddCard(c);
 				}
 			}
-			pile.cardZ = 0;
+			pile.CardZ = 0;
 			pile.NextPos = Vector3.zero;
 			pile.Clear();			
 		}
