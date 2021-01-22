@@ -5,33 +5,27 @@ using System.Xml.Linq;
 
 public class Klondyke : SolitaireGame
 {
-	// TODO position piles according to camera position
+	// TODO position piles according to camera position, no need for these after that
 	public Transform wasteHolder, pileauHolder, foundHolder;
-
-	private CardSelectionState cardSelectionState;	
-	private List<CardPile> foundations, pileaus;
-
+	
 	public PileSlot pileSlot, foundationSlot;
+
+	private List<CardPile> foundations;
 
 	private float xStep = 3.5f;
 	private int stockDrawAmount = 3;
 
 	private List<Cmd> commands = new List<Cmd>();
 
-	private Vector3 startHit;
-
-	// Use this for initialization
-	void Start () 
-	{
+    private void Awake()
+    {
 		gameType = GameType.Klondyke;
 
-		StartCoroutine(Initialize());
-	}
+		DealState = gameObject.AddComponent<DealStateKlondyke>();
+    }
 	
 	public override IEnumerator Initialize()
 	{
-		stock.rnd = new Random();
-		
 		waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
 		waste.transform.parent = transform;
 		waste.transform.position = wasteHolder.position;
@@ -43,7 +37,7 @@ public class Klondyke : SolitaireGame
 		PileSlot wasteSlot = Instantiate(pileSlot, waste.transform.position, Quaternion.identity, waste.transform);
 		wasteSlot.Initialize(waste);
 		
-		pileaus = new List<CardPile>();
+		tableauPiles = new List<CardPile>();
 		
 		for (int i = 0; i < 7; i++)
         {
@@ -56,12 +50,12 @@ public class Klondyke : SolitaireGame
 			pile.yStepTurned = .3f;			
 			pile.cardCount = i+1;
 			
-			pileaus.Add(pile);
+			tableauPiles.Add(pile);
 			
 			PileSlot slot = Instantiate(pileSlot, pile.transform.position, Quaternion.identity, pile.transform);
 			slot.Initialize(pile);
 
-			pileaus[i].slot = slot;
+			tableauPiles[i].slot = slot;
 			
 			allPiles.Add(pile);
 			AllowedPiles.Add(pile);
@@ -90,147 +84,132 @@ public class Klondyke : SolitaireGame
 
 		yield return null;
 	}
-	
-	public override IEnumerator ShuffleAndDeal()
+
+	public override List<Card> Select(Card c)
 	{
-		yield return StartCoroutine(stock.Shuffle());
+		CardPile pile = c.Pile;
+		List<Card> selection = new List<Card>();
 
-		yield return StartCoroutine(Deal());
-	}
+        if (pile.Type == CardPileType.Stock)
+        {
+            CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
+            cmd.Execute(false);
 
-    private IEnumerator Deal()
-    {
-		float t = .25f;
-		int pileCount = 0;
-		int j = 0;
-
-		for (int i = 0; i < 28; i++)
+            GameManager.Instance.StoreCommand(cmd);
+			AudioController.Play("cardSlide");
+		} 
+        else if (pile.Type == CardPileType.KlondikeWaste)
 		{
-			Card card = stock.GetFirstCard();
-			card.Pile = pileaus[pileCount];
-			card.transform.parent = card.Pile.transform;
+            if (!pile.IsEmpty)
+				selection = new List<Card>() { pile.GetLastCard() };            
+        }		
+		else if (pile.Type == CardPileType.Foundation)
+		{
+            foreach(CardPile foundation in foundations)
+            {
+				if (pile != foundation) continue;
+				
+				int startIndex = pile.cards.IndexOf(c);
 
-			card.Pile.AddCardDeal(card, t, i * .03f);
-			AudioController.Play("cardSlide", 1, i * .03f);
+				for (int j = startIndex; j < pile.cards.Count; j++)
+				{
+					Card card = pile.GetCard(j);
 
-			if (pileCount > 0 && pileCount % 6 == 0)
-			{
-				j++;
-				pileCount = j;
+					if (card == null) continue;
 
-				yield return new WaitForSeconds(t);
-			}
-			else
-			{
-				pileCount++;
-			}
+					if (!card.IsTurned())
+						selection.Add(card);					
+				}								
+            }
+		}
+		else // tableu piles
+		{
+            foreach(CardPile tableauPile in tableauPiles)
+            {
+				if (pile != tableauPile) continue;
+
+				int startIndex = pile.cards.IndexOf(c);
+
+				for (int j = startIndex; j < pile.cards.Count; j++)
+				{
+					Card card = pile.GetCard(j);
+
+					if (card == null) continue;
+
+					if (!card.IsTurned())
+						selection.Add(card);					
+				}				
+            } 
 		}
 
-		yield return new WaitForSeconds(27 * .03f);
-
-		// TODO turn last cards while dealing
-		foreach (CardPile pileau in pileaus)
-		{
-			Card c = pileau.GetLastCard();
-			c.Turn(false, .05f);
-
-			AudioController.Play("cardTurn", 1, .025f);
-
-			yield return new WaitForSeconds(.025f);
-		}
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		RaycastHit hit = new RaycastHit();
-		Ray ray = GameManager.Instance.MainCam.ScreenPointToRay(Input.mousePosition);
-
-		if (Input.GetMouseButtonDown(0))
-		{
-			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-			{
-				Card c = hit.collider.gameObject.GetComponent<Card>();
-				iTween[] tweens = hit.collider.gameObject.GetComponents<iTween>();
-				
-				if (c == null || tweens.Length > 0)
-					return;
-				
-				startHit = hit.point;
-				
-	            TrySelecting(c);
-			}
-		}
+		return selection;
 	}
 
-
-	public override bool TryMove(CardPile toPile, List<Card> cards, bool hint = false)
+	public override bool TryMove(CardPile toPile, SelectionPile selectionPile, bool hint = false)
 	{
 		commands.Clear();
 
-		if (cards.Count == 1 && toPile == cards[0].Pile.sourcePile)
-		{
+		List<Card> cards = selectionPile.cards;
+		CardPile sourcePile = selectionPile.sourcePile;
+
+		// single click -> try foundation move
+		if (cards.Count == 1 && toPile == sourcePile)
 			toPile = foundations[(int)cards[0].suit];
-		}
 
 		List<Card> movedCards = new List<Card>();
 
 		if (toPile.Type == CardPileType.Foundation)
 		{
+			if (cards.Count > 1)
+				return false;
+
             Card selectedCard = cards[0];
 			Card lastCard = toPile.GetLastCard();
-			int lastNum = 0;
-            
-            if (lastCard != null)
+
+			if (lastCard != null && lastCard.CardSuit != selectedCard.CardSuit)
+				return false;
+
+			int lastCardNum = lastCard != null ? lastCard.Number : 0;
+
+            if (selectedCard.Number == lastCardNum + 1)
             {
-            	lastNum = lastCard.number;
-            }
-			
-            if (selectedCard.Number == lastNum + 1)
-            {
-				movedCards.Add(cards[0]);
+				movedCards.Add(selectedCard);
 
 				if (!hint)
-					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", movedCards[0].suit));			
+					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
 			}
-		}
-		
+		}		
 		else if (toPile.Type == CardPileType.Tableau)
 		{
-			for (int i = 0; i < pileaus.Count; i++)
+			foreach(CardPile tableauPile in tableauPiles)			
             {
-				if (toPile == pileaus[i])
-                {
-					if (toPile.cards.Count == 0)
-					{
-	                    Card firstCard = cards[0];
-	
-	                    if (firstCard.Number == 13)
-						{
-							foreach(Card c in cards)
-							{
-								movedCards.Add(c);
-							}
-	                    }
-	                }
-					else
-					{
-						Card topMost = cards[0];
-                        Card pileCard = pileaus[i].GetLastCard();
+				if (toPile != tableauPile) continue;
 
-                        if (pileCard.Number - topMost.Number == 1 && Card.IsDifferentSuit(topMost, pileCard))
-                        {
-							foreach(Card c in cards)
-							{
-								movedCards.Add(c);
-							}
-                        }
-	                   
-					}
+				Card firstCard = cards[0];
+				bool move = false;
+
+				if (toPile.cards.Count == 0 && firstCard.Number == 13)
+				{
+					move = true;				
+				}
+				else
+				{
+					Card lastPileCard = tableauPile.GetLastCard();	
+
+					if (lastPileCard == null) continue;				
+
+					if (lastPileCard.Number - firstCard.Number == 1 && Card.IsDifferentSuit(firstCard, lastPileCard))
+						move = true;				
+				}
+				if (move) 
+				{
+					foreach(Card c in cards)
+					{
+						movedCards.Add(c);
+					}	
 				}
             }
-		}			
-		
+		}	
 		if (movedCards.Count > 0)
 		{
 			if (hint)
@@ -239,28 +218,27 @@ public class Klondyke : SolitaireGame
 			}
 			else
             {
-				StoreMoveCommand(movedCards, toPile);
+				StoreMoveCommand(movedCards, sourcePile, toPile);
 				UpdateLastCards();
 
 				GameManager.Instance.StoreCommand(new CmdComposite(commands));
-			}
-			
+			}			
 		}
 
 		return movedCards.Count > 0;
 	}
 
-	void StoreMoveCommand(List<Card> movedCards, CardPile targetPile)
+	void StoreMoveCommand(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
     {
-		CmdMoveCards cmdMoveToFoundation = new CmdMoveCards(movedCards, cardSelectionState.Pile.sourcePile, targetPile, "Move cards to: " + targetPile.Type);
-		cmdMoveToFoundation.Execute(false);
-		commands.Add(cmdMoveToFoundation);
+		CmdMoveCards cmdMoveCards = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
+		cmdMoveCards.Execute(false);
+		commands.Add(cmdMoveCards);
 	}
 	
 	void UpdateLastCards()
     {
-        // Turn last cards
-        foreach (CardPile pile in pileaus)
+        // Turn last cards after movement
+        foreach (CardPile pile in tableauPiles)
         {
             Card lastCard = pile.GetLastCard();
 
@@ -273,107 +251,10 @@ public class Klondyke : SolitaireGame
         }
     }
 	
-	void TrySelecting(Card c)
-	{
-		CardPile pile = c.Pile;
-
-        if (pile.Type == CardPileType.Stock)
-        {
-            CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
-            cmd.Execute(false);
-
-            GameManager.Instance.StoreCommand(cmd);
-			AudioController.Play("cardSlide");
-		} 
-        else if (pile.Type == CardPileType.KlondikeWaste)
-		{
-            if (pile.IsEmpty == false)
-            {
-				Select(new List<Card>() { pile.GetLastCard() });
-            }
-            return;
-        }		
-		else if (pile.Type == CardPileType.Foundation)
-		{
-            for (int i = 0; i < foundations.Count; i++)
-            {
-                if (pile == foundations[i])
-				{
-                    List<Card> selection = new List<Card>();
-
-                    if (pile.cards.Count > 0)
-                    {
-                        int startIndex = pile.cards.IndexOf(c);
-
-                        for (int j = startIndex; j < pile.cards.Count; j++)
-                        {
-                            Card foundationCard = pile.GetCard(j);
-
-                            if (foundationCard != null && foundationCard.IsTurned() == false)
-                            {
-                                selection.Add(foundationCard);
-                            }
-                        }
-                    }
-
-                    if (selection.Count > 0)
-                    {
-						Select(selection);
-                    }
-
-                    return;
-                }
-            }
-		}
-		else // tableu piles
-		{
-            for (int i = 0; i < 7; i++)
-            {
-                if (pile == pileaus[i])
-				{
-                    List<Card> selection = new List<Card>();
-
-                    if (pile.cards.Count > 0)
-                    {
-                        int startIndex = pile.cards.IndexOf(c);
-
-                        for (int j = startIndex; j < pile.cards.Count; j++)
-                        {
-                            Card tableauCard = pile.GetCard(j);
-
-                            if (tableauCard != null && tableauCard.IsTurned() == false)
-                            {
-                                selection.Add(tableauCard);
-                            }
-                        }
-                    }
-                    if (selection.Count > 0)
-                    {
-						Select(selection);
-                    }
-                    return;
-                }
-            } 
-		}
-	}
-	
-	void Select(List<Card> cards)
-	{
-		if (cardSelectionState == null)
-			cardSelectionState = new GameObject("SelectionPile").AddComponent<CardSelectionState>();
-
-		cardSelectionState.Initialize(cards, startHit);
-		StateManager.Instance.ActivateState(cardSelectionState);
-
-		AudioController.Play("cardSlide");
-
-	}
-	
 	public override void HintRequest()
 	{
-		List<Card> hintCards = new List<Card>();
+		List<Card> hintCards = new List<Card>();		
 
-		// TODO foreach loops for these
 		foreach(CardPile pile in AllowedPiles) 
 		{
 			hintCards.Clear();
@@ -393,9 +274,12 @@ public class Klondyke : SolitaireGame
 			}
 			if (hintCards.Count > 0)
 			{
+				SelectionPile hintPile = new SelectionPile();
+				hintPile.cards = hintCards;
+
 				foreach(CardPile toPile in AllowedPiles)
 				{
-					if (TryMove(toPile, hintCards, true))
+					if (TryMove(toPile, hintPile, true))
 					{
 						ShowHint(hintCards[0].Pile);
 						return;
@@ -409,10 +293,7 @@ public class Klondyke : SolitaireGame
 	{
 		// no hint when theres only one card in foundation
 		if (pile.Type == CardPileType.Foundation && pile.cards.Count == 1)
-        {
-			Debug.Log("Foundation hint");
-			return;
-        }
+			return;        
 		
 		List<Card> hintCards = new List<Card>();
 		
@@ -428,7 +309,7 @@ public class Klondyke : SolitaireGame
 				}
 			}
 		}
-		else
+		else // waste or foundation
 		{			
 			hintCards.Add(pile.GetLastCard());
 		}
@@ -473,7 +354,7 @@ public class Klondyke : SolitaireGame
 				}
 				if (pileType == CardPileType.Tableau)
 				{
-					cpile = pileaus[tcount];
+					cpile = tableauPiles[tcount];
 					tcount++;
 				}
 			}

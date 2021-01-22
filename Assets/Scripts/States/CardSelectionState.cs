@@ -3,38 +3,15 @@ using UnityEngine;
 
 public class CardSelectionState : StateBase
 {
-    public CardPile Pile { get; set; }
+    public SelectionPile Pile { get; set; }
 
-    SolitaireGame activeGame;
-
-    Vector3 startHit = Vector3.zero;
+    private SolitaireGame activeGame;
+    private Vector3 startHit = Vector3.zero;
+    private float pileDraggingSpeed = 10;
 
     private void Awake()
     {
-        Pile = gameObject.AddComponent<CardPile>();
-    }
-
-    public void Initialize(List<Card> cards, Vector3 _startHit)
-    {        
-        transform.position = cards[0].transform.position;        
-        Pile.sourcePile = cards[0].Pile;
-        Pile.yStep = cards[0].Pile.yStep;
-
-        int i = 0;
-        foreach (Card card in cards)
-        {
-            Pile.AddCard(card);
-            card.Pick(i);
-
-            i++;
-        }
-        Pile.AlignCards();
-
-        _startHit.y -= cards[0].transform.position.y;
-        _startHit.x -= cards[0].transform.position.x;
-        _startHit.z = 0;
-
-        startHit = _startHit;
+        Pile = gameObject.AddComponent<SelectionPile>();
     }
 
     public override void OnActivateState()
@@ -51,19 +28,35 @@ public class CardSelectionState : StateBase
     // Update is called once per frame
     public override void UpdateState()
     {
-        if (Pile == null || Pile.IsEmpty) return;
-        
         RaycastHit hit = new RaycastHit();
         Ray ray = GameManager.Instance.MainCam.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0)) // try selection
+		{
+			if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+			{
+				Card c = hit.collider.gameObject.GetComponent<Card>();
+				iTween[] tweens = hit.collider.gameObject.GetComponents<iTween>();
+				
+				if (c == null || tweens.Length > 0)
+					return;
+				
+				startHit = hit.point;
+				
+	            SetSelection(activeGame.Select(c));
+			}
+		}
+
+        if (Pile == null || Pile.IsEmpty) return;
+
+        if (Input.GetMouseButton(0)) // dragging pile
         {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 Vector3 pos = hit.point - startHit;
                 pos.z = -0.5f;
 
-                Pile.transform.position = Vector3.Lerp(Pile.transform.position, pos, Time.deltaTime * 10);
+                Pile.transform.position = Vector3.Lerp(Pile.transform.position, pos, Time.deltaTime * pileDraggingSpeed);
             }
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 9))
@@ -73,24 +66,19 @@ public class CardSelectionState : StateBase
                 if (c != null && c.Pile != null && c.Pile != Pile)
                 {
                     CardPile pile = c.Pile;
-
-                    for (int i = 0; i < activeGame.AllowedPiles.Count; i++)
+                    
+                    foreach(CardPile p in activeGame.AllowedPiles)
                     {
-                        if (activeGame.AllowedPiles[i] == pile)
-                        {
-                            pile.Highlight();
-                        }
+                        if (p == pile)
+                            p.Highlight();
                         else
-                        {
-                            activeGame.AllowedPiles[i].Unhighlight();
-                        }
+                            p.Unhighlight();
                     }
                 }
             }
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)) // try move to target pile
         {
-            AudioController.Play("cardSlide");
             bool successfullMove = false;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 9))
@@ -98,22 +86,41 @@ public class CardSelectionState : StateBase
                 Card c = hit.collider.gameObject.GetComponent<Card>();
 
                 if (c != null && c.Pile != null && c.Pile != Pile)
-                {
-                    CardPile toPile = c.Pile;
-
-                    successfullMove = activeGame.TryMove(toPile, Pile.cards);
-                }
+                    successfullMove = activeGame.TryMove(c.Pile, Pile);
             }
+
             if (!successfullMove)
-                CancelMove();
+                CancelMove();             
             else
-            {
-                Pile.cards.Clear();
-            }
+                Reset();                 
+        }        
+    }
 
-            StateManager.Instance.ActivateState(previousState);
+    void SetSelection(List<Card> cards)
+    {   
+        if (cards == null || cards.Count == 0)
+            return;
+
+        transform.position = cards[0].transform.position;      
+        Pile.sourcePile = cards[0].Pile;
+        Pile.yStep = cards[0].Pile.yStep;
+
+        int i = 0;
+        foreach (Card card in cards)
+        {
+            Pile.AddCard(card);
+            card.Pick(i);
+
+            i++;
         }
-        
+
+        Pile.AlignCards();
+
+        startHit.y -= cards[0].transform.position.y;
+        startHit.x -= cards[0].transform.position.x;
+        startHit.z = 0;
+
+        AudioController.Play("cardSlide");
     }
 
     void CancelMove()
@@ -129,12 +136,19 @@ public class CardSelectionState : StateBase
 
         toPile.AlignCards();
 
+        Reset();
+    }
+
+    void Reset() 
+    {
         foreach (CardPile pile in activeGame.AllowedPiles)
         {
             pile.Unhighlight();
         }
 
         Pile.Clear();
+
+        AudioController.Play("cardSlide");
     }
 
 }

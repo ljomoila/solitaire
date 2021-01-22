@@ -2,124 +2,94 @@ using UnityEngine;
 using System.Collections;
 using System.Xml;
 using System.Xml.Linq;
-using UnityEngine.UI;
 
 public class GameManager : StateBase 
 {
 	public Camera MainCam;
-	
 	public SolitaireGame activeGame;
-	
-	public static GameManager Instance;
-
-	public Text timeTxt;
+	public GameTime gameTime;
 
 	public GameState state = GameState.Menu;
 
+	public static GameManager Instance;
+
+	private CardSelectionState cardSelectionState;	
+	
 	void Awake()
 	{
 		Instance = this;
 	}
-	
-	public float time = 0;
 
-	// Use this for initialization
-	public override void Start ()
+	void Start ()
 	{
 		Screen.sleepTimeout = (int) SleepTimeout.NeverSleep;
-
-		//NotificationCenter.DefaultCenter.AddObserver(this, GameEvents.OnStoredStateLoaded);
 	}
-
-	//void OnStoredStateLoaded(NotificationCenter.Notification n)
-	//{
-
-	//}
 
 	public IEnumerator Initialize(XDocument storedGameState)
     {
-		yield return null;
-		string viewType = "menu";
+		yield return StartCoroutine(activeGame.Initialize());
 
 		if (storedGameState == null)
 		{
-			viewType = storedGameState.Root.Element("view").Value;
-			time = previousState != null ? float.Parse(storedGameState.Root.Element("time").Value) : 0;
+			gameTime.Time = float.Parse(storedGameState.Root.Element("time").Value);
 
-			StartCoroutine(activeGame.RestoreState(storedGameState));
-
-			yield return null;
+			yield return StartCoroutine(activeGame.RestoreState(storedGameState));
 		}
 		else
 		{
-			yield return StartCoroutine(activeGame.ShuffleAndDeal());
+			yield return StartCoroutine(StartGame());
 		}
-
-		state = GameState.Running;
 	}
-	
-	// Update is called once per frame
+
 	public override void UpdateState ()
 	{
 		Time.timeScale = state == GameState.Paused ? 0 : 1;
-
-		if (state == GameState.Running)
-		{
-			time += Time.deltaTime;
-			timeTxt.text = GetTimeText();
-		}
 	}
 
-
+	// TODO move these to menu state?
 	public void NewGame()
 	{
 		StartCoroutine(StartGame());
 	}
 
-	
 	public void RestartGame()
-	{
-		if (state != GameState.Running)
-			return;
-		
+	{		
 		state = GameState.Restarting;
+
+		// TODO deck seed
 		
 		StartCoroutine(StartGame());
 	}
-	
-	IEnumerator StartGame()
-	{
-		bool restart = state == GameState.Restarting;
-		time = 0;		
-		state = GameState.Dealing;
 
-		activeGame.GatherDeck();
-		activeGame.stock.rnd = new Random();
-
-		GetComponent<CommandHistory>().Clear();
-		
-		yield return StartCoroutine(activeGame.ShuffleAndDeal());
-		
-		state = GameState.Running;
-	}
-	
 	public void Hint()
 	{
 		activeGame.HintRequest();
 	}
-	
-	void OnApplicationQuit()
+
+	IEnumerator StartGame()
 	{
-		Debug.Log("OnApplicationQuit");
-		
-		StoreState();
+		gameTime.Time = 0;
+
+		GetComponent<CommandHistory>().Clear();
+
+		state = GameState.Dealing;
+
+		StateManager.Instance.ActivateState(activeGame.DealState);
+		yield return null;
+
+		if (cardSelectionState == null)
+			cardSelectionState = new GameObject("CardSelectionState").AddComponent<CardSelectionState>();
+
+		StateManager.Instance.ActivateState(cardSelectionState);
+
+		state = GameState.Running;
+
+		yield return null;
 	}
-	
+
 	void StoreState()
 	{
 		string filename = Application.persistentDataPath + "/gameState.xml";
-		
-		Debug.Log("StoreState to: "+filename);
 		
 		XmlWriterSettings s = new XmlWriterSettings();
 		s.Indent = true;
@@ -139,7 +109,7 @@ public class GameManager : StateBase
 				view = "game";
 			
 			
-			w.WriteElementString("time", time.ToString());
+			w.WriteElementString("time", gameTime.Time.ToString());
 			w.WriteElementString("view", view);
 			w.WriteElementString("type", activeGame.gameType.ToString());
 			
@@ -176,21 +146,13 @@ public class GameManager : StateBase
 		if (activeGame.allPiles.Contains(activeGame.stock))
 			activeGame.allPiles.Remove(activeGame.stock);
 	}
-	
-	public string GetTimeText()
-	{
-		System.TimeSpan ts = System.TimeSpan.FromSeconds(time);
-		
-		string timeStr = System.String.Format("{0:D2}:{1:D2}", ts.Minutes, ts.Seconds);
-		
-		if (ts.Hours > 0)
-		{
-			timeStr = System.String.Format("{0:D2}:{1:D2}:{2:D2}", ts.Hours, ts.Minutes, ts.Seconds);
-		}
-		
-		return timeStr;		
-	}
 
+	void OnApplicationQuit()
+	{
+		Debug.Log("OnApplicationQuit");
+
+		StoreState();
+	}
 
 	#region CommandHistory
 	public void StoreCommand(Cmd cmd)

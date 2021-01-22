@@ -63429,7 +63429,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1040966682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57b9052c143b547dab50108c69109d87, type: 3}
+  m_Script: {fileID: 11500000, guid: 842654ecac5844fa0b6582c5ce269c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!21 &1042971564
@@ -63520,7 +63520,7 @@ GameObject:
   - component: {fileID: 1043698813}
   - component: {fileID: 1043698814}
   - component: {fileID: 1043698816}
-  - component: {fileID: 1043698815}
+  - component: {fileID: 1043698817}
   m_Layer: 0
   m_Name: __GameManager
   m_TagString: Untagged
@@ -63551,16 +63551,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043698810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d706cea6e5fb4b17b1bab48ea3e92ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 6de0961a16ecd412bb06a1861e593ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentState: {fileID: 0}
   previousState: {fileID: 0}
   MainCam: {fileID: 1494594570}
   activeGame: {fileID: 1496531209}
-  timeTxt: {fileID: 2047913198}
+  gameTime: {fileID: 2047913200}
   state: 0
-  time: 0
+  dealState: {fileID: 1043698817}
 --- !u!114 &1043698813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63590,18 +63590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62d296f6e704043f59c7b6a6ce3ea6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1043698815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043698810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45257c636cc2f42038f116e6b94f453f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1043698816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63611,14 +63599,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043698810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68e3e6e61feb443cbb5911e7e92cf895, type: 3}
+  m_Script: {fileID: 11500000, guid: 158c6a96ef6d44de6b59eb30550243f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  straightToGame: 0
   firstState: {fileID: 1043698812}
   activeState: {fileID: 0}
   deactivating: 0
   UICamera: {fileID: 0}
+--- !u!114 &1043698817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043698810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649b9e5d765ee4cc2977b6885799d7a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentState: {fileID: 0}
+  previousState: {fileID: 0}
+  deck: {fileID: 0}
 --- !u!1 &1053026322
 GameObject:
   m_ObjectHideFlags: 0
@@ -90906,6 +90908,7 @@ MonoBehaviour:
   waste: {fileID: 0}
   seed: 123456
   allPiles: []
+  tableauPiles: []
   wasteHolder: {fileID: 1186920042}
   pileauHolder: {fileID: 236023952}
   foundHolder: {fileID: 769404319}
@@ -111292,6 +111295,7 @@ GameObject:
   - component: {fileID: 2047913197}
   - component: {fileID: 2047913199}
   - component: {fileID: 2047913198}
+  - component: {fileID: 2047913200}
   m_Layer: 5
   m_Name: Time
   m_TagString: Untagged
@@ -111359,6 +111363,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047913196}
   m_CullTransparentMesh: 0
+--- !u!114 &2047913200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047913196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4014f8cf8c04329ae52741c1028d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047964493
 GameObject:
   m_ObjectHideFlags: 0

@@ -286,11 +286,6 @@ public class CardPile : MonoBehaviour
 		{
             RemoveCard(card);
         }
-		
-		if (Type == CardPileType.SelectionPile)
-        {
-			Destroy (gameObject);
-		}
     }
 
     public virtual void RemoveCard(Card card)

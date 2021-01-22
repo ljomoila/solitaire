@@ -8,8 +8,6 @@ public class StateManager : MonoBehaviour, IBackButtonListener
 {
     public static StateManager Instance;
 
-    public bool straightToGame = false;
-
     public GameManager firstState;
 
     public StateBase activeState;

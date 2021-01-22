@@ -42,17 +42,5 @@ public class StateBase : MonoBehaviour
 			StateManager.Instance.ActivateState(previousState);
 		}
 	}
-
-	// Use this for initialization
-	public virtual void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
 }
 

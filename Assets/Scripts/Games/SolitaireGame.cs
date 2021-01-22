@@ -15,11 +15,14 @@ public class SolitaireGame : MonoBehaviour
 	public int seed = 123456;
 
 	public List<CardPile> allPiles = new List<CardPile>();
+    public List<CardPile> tableauPiles;
 
     public List<CardPile> AllowedPiles { get; set; } = new List<CardPile>();
 
-    // Use this for initialization
-    void Start ()
+	public DealState DealState { get; set; } = null;
+
+	// Use this for initialization
+	void Start ()
 	{
 		
 	}
@@ -44,7 +47,7 @@ public class SolitaireGame : MonoBehaviour
 		return false;
 	}
 
-	public virtual bool TryMove(CardPile toPile, List<Card> cards, bool hint = false)
+	public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile, bool hint = false)
 	{
 		return false;
 	}
@@ -110,34 +113,10 @@ public class SolitaireGame : MonoBehaviour
 		}
 	}
 
-	public void GatherDeck()
-    {
-		CardPile deck = stock;
-
-		foreach (CardPile pile in allPiles)
-		{
-			if (pile == null)
-				continue;
-
-			foreach (Card c in pile.cards)
-			{
-				if (c != null)
-				{
-					c.Turn(true);
-					deck.AddCard(c);
-				}
-			}
-			pile.CardZ = 0;
-			pile.NextPos = Vector3.zero;
-			pile.Clear();			
-		}
-
-
-		deck.AlignCards();
-		stock = deck;
+	public virtual List<Card> Select(Card card) 
+	{
+		return null;
 	}
-
-
 }
 
 public enum GameType
