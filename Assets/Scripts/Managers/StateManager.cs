@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Xml;
 using System.Xml.Linq;
-using UnityEngine.UI;
 
 public class StateManager : MonoBehaviour, IBackButtonListener
 {
     public static StateManager Instance;
 
-    public GameManager firstState;
+    public StateBase firstState;
 
     public StateBase activeState;
 
@@ -21,19 +18,9 @@ public class StateManager : MonoBehaviour, IBackButtonListener
 
     void Start()
     {
-        StartCoroutine(firstState.Initialize(LoadStoredState()));
-    }
+        XDocument storedState = StorageManager.Instance.LoadStoredState();
 
-    XDocument LoadStoredState()
-    {
-        string filename = Application.persistentDataPath + "/gameState.xml";
-
-        if (System.IO.File.Exists(filename))
-        {
-            return XDocument.Load(filename);
-        }
-
-        return null;
+        StartCoroutine(GameManager.Instance.Initialize(storedState));
     }
 
     public void ActivateState(StateBase s)
@@ -47,6 +34,7 @@ public class StateManager : MonoBehaviour, IBackButtonListener
         }
 
         activeState = s;
+
         s.OnActivateState();
     }
 
@@ -111,6 +99,4 @@ public class StateManager : MonoBehaviour, IBackButtonListener
 
         return false;
     }
-
-    public Camera UICamera;
 }

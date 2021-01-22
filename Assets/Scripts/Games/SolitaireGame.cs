@@ -8,46 +8,20 @@ public class SolitaireGame : MonoBehaviour
 {
 	public GameType gameType;
 
-	public Transform stockHolder;	
+	public CardPile stock, waste;
 
-	public CardPile stock, waste;	
-	
-	public int seed = 123456;
-
-	public List<CardPile> allPiles = new List<CardPile>();
-    public List<CardPile> tableauPiles;
-
-    public List<CardPile> AllowedPiles { get; set; } = new List<CardPile>();
+	public List<CardPile> AllPiles { get; set; } = new List<CardPile>();
+	public List<CardPile> TableauPiles { get; set; } = new List<CardPile>();
+	public List<CardPile> AllowedPiles { get; set; } = new List<CardPile>();
 
 	public DealState DealState { get; set; } = null;
-
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-
-	void Update()
-	{
-
-	}
 
 	public virtual IEnumerator Initialize()
 	{
 		yield return null;
 	}
 	
-	public virtual IEnumerator ShuffleAndDeal()
-	{
-		yield return null;
-	}
-
-	public virtual bool CheckCard(Card card)
-	{
-		return false;
-	}
-
-	public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile, bool hint = false)
+	public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile)
 	{
 		return false;
 	}
@@ -71,37 +45,14 @@ public class SolitaireGame : MonoBehaviour
 		return c;
 	}
 	
-	public bool GetCardHit(ref RaycastHit returned)
-	{
-		RaycastHit hit = new RaycastHit();
-		Ray ray = GameManager.Instance.MainCam.ScreenPointToRay(Input.mousePosition);
-		
-		int layerMask = 1 << 9;
-		bool hitTarget = false;
-		
-		if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
-		{	
-			returned = hit;
-			hitTarget = true;
-		}
-	
-		return hitTarget;
-		
-	}
-	
 	public virtual IEnumerator RestoreState(XDocument xdoc)
 	{
 		yield return null;	
 	}
-		
-	public virtual void HintRequest()
-	{
-		
-	}
 
 	public void MenuState()
     {
-		foreach (CardPile pile in allPiles)
+		foreach (CardPile pile in AllPiles)
 		{
 			foreach (Card card in pile.cards)
 			{

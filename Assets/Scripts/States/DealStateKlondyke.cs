@@ -10,7 +10,7 @@ public class DealStateKlondyke : DealState
 
     public override IEnumerator Deal()
     {
-        List<CardPile> piles = GameManager.Instance.activeGame.tableauPiles;
+        List<CardPile> piles = GameManager.Instance.activeGame.TableauPiles;
 
         float dealTime = 0;
         int pileCount = 0;
@@ -22,7 +22,7 @@ public class DealStateKlondyke : DealState
             card.Pile = piles[pileCount];
             card.transform.parent = card.Pile.transform;
 
-            ThrowCard(card, dealTime);
+            DealCard(card, dealTime);
 
             yield return new WaitForSeconds(dealTime);
 

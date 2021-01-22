@@ -1,23 +1,25 @@
 using UnityEngine;
 using System.Collections;
-using System.Xml;
 using System.Xml.Linq;
 
-public class GameManager : StateBase 
+public class GameManager : MonoBehaviour 
 {
 	public Camera MainCam;
 	public SolitaireGame activeGame;
 	public GameTime gameTime;
 
-	public GameState state = GameState.Menu;
-
 	public static GameManager Instance;
 
-	private CardSelectionState cardSelectionState;	
-	
+	private CardSelectionState cardSelectionState;
+	private HintState hintState;
+
+	private CommandHistory commandHistory;
+
 	void Awake()
 	{
 		Instance = this;
+
+		commandHistory = GetComponent<CommandHistory>();
 	}
 
 	void Start ()
@@ -29,11 +31,9 @@ public class GameManager : StateBase
     {
 		yield return StartCoroutine(activeGame.Initialize());
 
-		if (storedGameState == null)
+		if (storedGameState != null)
 		{
-			gameTime.Time = float.Parse(storedGameState.Root.Element("time").Value);
-
-			yield return StartCoroutine(activeGame.RestoreState(storedGameState));
+			yield return StartCoroutine(RestoreGame(storedGameState));
 		}
 		else
 		{
@@ -41,9 +41,9 @@ public class GameManager : StateBase
 		}
 	}
 
-	public override void UpdateState ()
+    void Update ()
 	{
-		Time.timeScale = state == GameState.Paused ? 0 : 1;
+		//Time.timeScale = state == GameState.Paused ? 0 : 1;
 	}
 
 	// TODO move these to menu state?
@@ -54,8 +54,6 @@ public class GameManager : StateBase
 
 	public void RestartGame()
 	{		
-		state = GameState.Restarting;
-
 		// TODO deck seed
 		
 		StartCoroutine(StartGame());
@@ -63,132 +61,71 @@ public class GameManager : StateBase
 
 	public void Hint()
 	{
-		activeGame.HintRequest();
+		if (hintState == null)
+			hintState = new GameObject("HintState").AddComponent<HintState>();
+
+		StateManager.Instance.ActivateState(hintState);
 	}
 
 	IEnumerator StartGame()
 	{
 		gameTime.Time = 0;
 
-		GetComponent<CommandHistory>().Clear();
-
-		state = GameState.Dealing;
+		commandHistory.Clear();
 
 		StateManager.Instance.ActivateState(activeGame.DealState);
+
 		yield return null;
 
-		if (cardSelectionState == null)
+		SetupCardSelectionState();
+
+		yield return null;
+	}
+
+	IEnumerator RestoreGame(XDocument storedGameState)
+	{
+		gameTime.Time = float.Parse(storedGameState.Root.Element("time").Value);
+
+		yield return StartCoroutine(activeGame.RestoreState(storedGameState));
+
+		SetupCardSelectionState();
+	}
+
+	private void SetupCardSelectionState()
+    {
+        if (cardSelectionState == null)
 			cardSelectionState = new GameObject("CardSelectionState").AddComponent<CardSelectionState>();
 
 		StateManager.Instance.ActivateState(cardSelectionState);
-
-		state = GameState.Running;
-
-		yield return null;
-	}
-
-	void StoreState()
-	{
-		string filename = Application.persistentDataPath + "/gameState.xml";
-		
-		XmlWriterSettings s = new XmlWriterSettings();
-		s.Indent = true;
-		s.NewLineOnAttributes = true;
-		
-		if (!activeGame.allPiles.Contains(activeGame.stock))
-			activeGame.allPiles.Add(activeGame.stock);
-		
-		using (XmlWriter w = XmlWriter.Create(filename, s))
-		{
-			w.WriteStartDocument();
-			w.WriteStartElement("game");
-			
-			string view = "menu";
-			
-			if (state == GameState.Running)
-				view = "game";
-			
-			
-			w.WriteElementString("time", gameTime.Time.ToString());
-			w.WriteElementString("view", view);
-			w.WriteElementString("type", activeGame.gameType.ToString());
-			
-			w.WriteStartElement("piles");
-			
-			foreach(CardPile p in activeGame.allPiles)
-			{
-				w.WriteStartElement("pile");
-				w.WriteElementString("type", p.Type.ToString());
-				
-				if (p.cards.Count > 0)
-				{
-					w.WriteStartElement("cards");
-					foreach(Card c in p.cards)
-					{
-						w.WriteStartElement("card");
-						w.WriteElementString("suit", c.suit.ToString());
-						w.WriteElementString("number", c.number.ToString());
-						w.WriteElementString("turned", c.IsTurned().ToString());
-						w.WriteElementString("position", XmlHelpers.ConvertVector3ToString(c.transform.localPosition));
-						w.WriteEndElement();
-					}
-					w.WriteEndElement();
-				}
-
-				w.WriteEndElement();
-			}
-
-			w.WriteEndElement();
-			w.WriteEndElement();
-			w.WriteEndDocument();
-		}
-		
-		if (activeGame.allPiles.Contains(activeGame.stock))
-			activeGame.allPiles.Remove(activeGame.stock);
-	}
+    } 
 
 	void OnApplicationQuit()
 	{
 		Debug.Log("OnApplicationQuit");
 
-		StoreState();
+		StorageManager.Instance.StoreState();
 	}
 
 	#region CommandHistory
 	public void StoreCommand(Cmd cmd)
 	{
-		GetComponent<CommandHistory>().StoreCommand(cmd);
+		commandHistory.StoreCommand(cmd);
 	}
 
 	public void Undo()
 	{
-		CommandHistory c = GetComponent<CommandHistory>();
-
-		if (c.UndoDescription != "N/A")
+		if (commandHistory.UndoDescription != "N/A")
 		{
-			c.Undo();
+			commandHistory.Undo();
 		}
 	}
 
 	public void Redo()
 	{
-		CommandHistory c = GetComponent<CommandHistory>();
-
-		if (c.RedoDescription != "N/A")
+		if (commandHistory.RedoDescription != "N/A")
 		{
-			c.Redo();
+			commandHistory.Redo();
 		}
 	}
 	#endregion
-
-}
-
-public enum GameState
-{
-	Running,
-	Paused,
-	GameOver,
-	Menu,
-	Dealing,
-	Restarting	
 }

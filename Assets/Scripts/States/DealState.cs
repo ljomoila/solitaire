@@ -29,36 +29,9 @@ public class DealState : StateBase
         yield return null;
     }
 
-    public void ThrowCard(Card card, float animTime)
+    private IEnumerator GatherDeck()
     {
-        card.Pile.AddCard(card);
-
-        Vector3 nextPos = card.Pile.NextPos;
-
-        iTween.MoveTo(card.gameObject, iTween.Hash("position", nextPos, "time", 0.5f, "delay", animTime, "isLocal", true));
-
-        nextPos.x += card.IsTurned() ? card.Pile.xStepTurned : card.Pile.xStep;
-        nextPos.y -= card.IsTurned() ? card.Pile.yStepTurned : card.Pile.yStep;
-        nextPos.z -= card.Pile.zStep; 
-    }
-
-    public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)
-    {
-        foreach (CardPile pileau in piles)
-        {
-            Card c = pileau.GetLastCard();
-            c.Turn(false, .05f);
-        }
-        yield return new WaitForSeconds(delay);
-
-        AudioController.Play("cardSlide");
-
-        yield return null;
-    }
-
-    public IEnumerator GatherDeck()
-    {
-        List<CardPile> piles = GameManager.Instance.activeGame.allPiles;
+        List<CardPile> piles = GameManager.Instance.activeGame.AllPiles;
 
         foreach (CardPile pile in piles)
         {
@@ -84,7 +57,7 @@ public class DealState : StateBase
         yield return null;
     }
 
-    internal IEnumerator Shuffle()
+    private IEnumerator Shuffle()
     {
         ShuffleCards();
         yield return null;
@@ -205,5 +178,32 @@ public class DealState : StateBase
         }
 
         deck.AlignCards();
+    }
+
+    public void DealCard(Card card, float animTime)
+    {
+        card.Pile.AddCard(card);
+
+        Vector3 nextPos = card.Pile.NextPos;
+
+        iTween.MoveTo(card.gameObject, iTween.Hash("position", nextPos, "time", 0.5f, "delay", animTime, "isLocal", true));
+
+        nextPos.x += card.IsTurned() ? card.Pile.xStepTurned : card.Pile.xStep;
+        nextPos.y -= card.IsTurned() ? card.Pile.yStepTurned : card.Pile.yStep;
+        nextPos.z -= card.Pile.zStep;
+    }
+
+    public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)
+    {
+        foreach (CardPile pileau in piles)
+        {
+            Card c = pileau.GetLastCard();
+            c.Turn(false, .05f);
+        }
+        yield return new WaitForSeconds(delay);
+
+        AudioController.Play("cardSlide");
+
+        yield return null;
     }
 }
