@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Xml.Linq;
 
 public class StateManager : MonoBehaviour, IBackButtonListener
 {
@@ -14,13 +13,6 @@ public class StateManager : MonoBehaviour, IBackButtonListener
     void Awake()
     {
         Instance = this;
-    }
-
-    void Start()
-    {
-        XDocument storedState = StorageManager.Instance.LoadStoredState();
-
-        StartCoroutine(GameManager.Instance.Initialize(storedState));
     }
 
     public void ActivateState(StateBase s)

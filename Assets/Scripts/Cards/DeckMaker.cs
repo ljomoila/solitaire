@@ -7,18 +7,18 @@ public class DeckMaker : MonoBehaviour
 	public int numberOfCards = 52;
 	public Card card;
 	public CardPile deck;
-	public PileSlot slotDeco;
+
+	public SolitaireGame game;
 	
 	float yStep = 0.1535f;
 	float xStep = 0.06257325f;
 	
 	private Vector2[] cardTextureOffsets = new Vector2[52];
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
 	{
-		if (!Application.isPlaying)
-			return;
+		gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -40,11 +40,9 @@ public class DeckMaker : MonoBehaviour
 				int suitIndex = i / 13;
 				int numberIndex = i % 13 + 1;
 				
-				Card newCard = Instantiate(card, Vector3.zero, Quaternion.identity);
+				Card newCard = Instantiate(card, Vector3.zero, Quaternion.identity, newDeck.transform);
 				newCard.Initialize(numberIndex, (CardSuit)suitIndex);
-				newCard.Pile = newDeck;
-				
-				newCard.transform.parent = newDeck.transform;
+				newCard.Pile = newDeck;				
 				newCard.transform.Translate(0, 0, zPos);
 
 				if (yIndex == 6)
@@ -64,19 +62,20 @@ public class DeckMaker : MonoBehaviour
 				newCard.spriteSkinned.GetComponent<Renderer>().materials[1].SetTextureOffset("_MainTex", textureOffset);
 
 				newDeck.cards.Add(newCard);
+
 				yIndex++;
 				zPos -= .015f;
 			}
 
 			card.gameObject.SetActive(false);
 
-			if (this.deck)
-            {
-				newDeck.transform.parent = deck.transform.parent;
-				DestroyImmediate(deck.gameObject);
-			}				
+			if (game.stock != null)
+				DestroyImmediate(game.stock.gameObject);
 
-			this.deck = newDeck;			
+			newDeck.gameObject.name = game.name + "Stock";
+			newDeck.transform.parent = game.transform.parent;
+			game.stock = newDeck;				
+		
 			makeDeck = false;
 		}
     }

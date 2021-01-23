@@ -18,13 +18,15 @@ public class GameManager : MonoBehaviour
 	void Awake()
 	{
 		Instance = this;
-
-		commandHistory = GetComponent<CommandHistory>();
 	}
 
 	void Start ()
 	{
+		commandHistory = GetComponent<CommandHistory>();
+
 		Screen.sleepTimeout = (int) SleepTimeout.NeverSleep;
+
+		StartCoroutine(Initialize(StorageManager.Instance.LoadStoredState()));
 	}
 
 	public IEnumerator Initialize(XDocument storedGameState)

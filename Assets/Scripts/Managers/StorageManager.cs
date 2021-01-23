@@ -52,7 +52,8 @@ public class StorageManager : MonoBehaviour
 			w.WriteStartDocument();
 			w.WriteStartElement("game");
 
-
+			// TODO menu/game state
+			//w.WriteElementString("viewType", StateManager.Instance.activeState is MenuState ? "menu" : "game");
 			w.WriteElementString("time", GameManager.Instance.gameTime.Time.ToString());
 			w.WriteElementString("type", activeGame.gameType.ToString());
 
