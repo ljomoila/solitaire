@@ -7,7 +7,7 @@ public class CardSelectionState : StateBase
 
     private SolitaireGame activeGame;
     private Vector3 startHit = Vector3.zero;
-    private float pileDraggingSpeed = 10;
+    private float pileDraggingFactor = 10;
 
     private void Awake()
     {
@@ -24,12 +24,10 @@ public class CardSelectionState : StateBase
         Pile.cards.Clear();
     }
 
-
-    // Update is called once per frame
     public override void UpdateState()
     {
         RaycastHit hit = new RaycastHit();
-        Ray ray = GameManager.Instance.MainCam.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0)) // try selection
 		{
@@ -56,18 +54,18 @@ public class CardSelectionState : StateBase
                 Vector3 pos = hit.point - startHit;
                 pos.z = -0.5f;
 
-                Pile.transform.position = Vector3.Lerp(Pile.transform.position, pos, Time.deltaTime * pileDraggingSpeed);
+                Pile.transform.position = Vector3.Lerp(Pile.transform.position, pos, Time.deltaTime * pileDraggingFactor);
             }
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 9))
             {
                 Card c = hit.collider.gameObject.GetComponent<Card>();
 
-                if (c != null && c.Pile != null && c.Pile != Pile)
+                if (c != null && c.pile != null && c.pile != Pile)
                 {
-                    CardPile pile = c.Pile;
+                    CardPile pile = c.pile;
                     
-                    foreach(CardPile p in activeGame.AllowedPiles)
+                    foreach(CardPile p in activeGame.Piles)
                     {
                         if (p == pile)
                             p.Highlight();
@@ -85,8 +83,8 @@ public class CardSelectionState : StateBase
             {
                 Card c = hit.collider.gameObject.GetComponent<Card>();
 
-                if (c != null && c.Pile != null && c.Pile != Pile)
-                    successfullMove = activeGame.TryMove(c.Pile, Pile);
+                if (c != null && c.pile != null && c.pile != Pile)
+                    successfullMove = activeGame.TryMove(c.pile, Pile);
             }
 
             if (!successfullMove)
@@ -102,8 +100,8 @@ public class CardSelectionState : StateBase
             return;
 
         transform.position = cards[0].transform.position;      
-        Pile.sourcePile = cards[0].Pile;
-        Pile.yStep = cards[0].Pile.yStep;
+        Pile.sourcePile = cards[0].pile;
+        Pile.yStep = cards[0].pile.yStep;
 
         int i = 0;
         foreach (Card card in cards)
@@ -141,7 +139,7 @@ public class CardSelectionState : StateBase
 
     void Reset() 
     {
-        foreach (CardPile pile in activeGame.AllowedPiles)
+        foreach (CardPile pile in activeGame.Piles)
         {
             pile.Unhighlight();
         }

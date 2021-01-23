@@ -12,30 +12,27 @@ public class Klondyke : SolitaireGame
 
 	private List<CardPile> foundations;
 
-	private float xStep = 3.5f;
-	private int stockDrawAmount = 3;
+	public float xStep = 3.5f;
 
-	private List<Cmd> commands = new List<Cmd>();
-
-    private void Awake()
+    private void Start()
     {
 		gameType = GameType.Klondyke;
+		stockDrawAmount = 3;
 
 		DealState = gameObject.AddComponent<DealStateKlondyke>();
     }
-	
-	public override IEnumerator Initialize()
+
+    public override IEnumerator Initialize()
 	{
-		waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
-		waste.transform.parent = transform;
-		waste.transform.position = wasteHolder.position;
-		waste.zStep = stock.zStep;
-		waste.Type = CardPileType.KlondikeWaste;
-		AllPiles.Add(waste);
-		AllowedPiles.Add(waste);
+		Waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
+		Waste.transform.parent = transform;
+		Waste.transform.position = wasteHolder.position;
+		Waste.zStep = stock.zStep;
+		Waste.Type = PileType.KlondikeWaste;
+		Piles.Add(Waste);
 		
-		PileSlot wasteSlot = Instantiate(pileSlot, waste.transform.position, Quaternion.identity, waste.transform);
-		wasteSlot.Initialize(waste);
+		PileSlot wasteSlot = Instantiate(pileSlot, Waste.transform.position, Quaternion.identity, Waste.transform);
+		wasteSlot.Initialize(Waste);
 		
 		TableauPiles = new List<CardPile>();
 		
@@ -45,10 +42,9 @@ public class Klondyke : SolitaireGame
 			pile.gameObject.name = "KlondykeTableu " + (i + 1);
 			pile.transform.parent = transform;
 			pile.transform.position = new Vector3(pileauHolder.position.x + (xStep * i), pileauHolder.position.y, pileauHolder.position.z);
-			pile.Type = CardPileType.Tableau;
+			pile.Type = PileType.Tableau;
 			pile.yStep = .65f;
-			pile.yStepTurned = .3f;			
-			pile.cardCount = i+1;
+			pile.yStepTurned = .3f;
 			
 			TableauPiles.Add(pile);
 			
@@ -57,29 +53,27 @@ public class Klondyke : SolitaireGame
 
 			TableauPiles[i].slot = slot;
 			
-			AllPiles.Add(pile);
-			AllowedPiles.Add(pile);
+			Piles.Add(pile);
 		}
 
 		foundations = new List<CardPile>();
 
 		for (int i = 0; i < 4; i++)
 		{
-			CardPile foundation = new GameObject("KlondykeFoundation " + (CardSuit)i).AddComponent<CardPile>();
-			foundation.Type = CardPileType.Foundation;
+			CardPile foundation = new GameObject("KlondykeFoundation " + (Suit)i).AddComponent<CardPile>();
+			foundation.Type = PileType.Foundation;
 			foundation.transform.parent = transform;
 			foundation.transform.position = new Vector3(foundHolder.position.x + (xStep * i), foundHolder.position.y, foundHolder.position.z);
-			foundation.CardSuit = (CardSuit)i;
+			foundation.Suit = (Suit)i;
 
 			foundations.Add(foundation);
 
 			FoundationSlot slot = Instantiate(foundationSlot, foundation.transform.position, Quaternion.identity, foundation.transform) as FoundationSlot;
-			slot.Initialize((CardSuit)i, foundation);
+			slot.Initialize((Suit)i, foundation);
 
 			foundation.slot = slot;
 
-			AllPiles.Add(foundation);
-			AllowedPiles.Add(foundation);
+			Piles.Add(foundation);
 		}
 
 		yield return null;
@@ -87,23 +81,19 @@ public class Klondyke : SolitaireGame
 
 	public override List<Card> Select(Card c)
 	{
-		CardPile pile = c.Pile;
+		CardPile pile = c.pile;
 		List<Card> selection = new List<Card>();
 
-        if (pile.Type == CardPileType.Stock)
+        if (pile.Type == PileType.Stock)
         {
-            CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
-            cmd.Execute(false);
-
-            GameManager.Instance.StoreCommand(cmd);
-			AudioController.Play("cardSlide");
+			DrawCards();
 		} 
-        else if (pile.Type == CardPileType.KlondikeWaste)
+        else if (pile.Type == PileType.KlondikeWaste)
 		{
             if (!pile.IsEmpty)
 				selection = new List<Card>() { pile.GetLastCard() };            
         }		
-		else if (pile.Type == CardPileType.Foundation)
+		else if (pile.Type == PileType.Foundation)
 		{
             foreach(CardPile foundation in foundations)
             {
@@ -157,7 +147,7 @@ public class Klondyke : SolitaireGame
 		
 		List<Card> movedCards = new List<Card>();
 
-		if (toPile.Type == CardPileType.Foundation)
+		if (toPile.Type == PileType.Foundation)
 		{
 			if (cards.Count > 1)
 				return false;
@@ -165,12 +155,12 @@ public class Klondyke : SolitaireGame
             Card selectedCard = cards[0];
 			Card lastCard = toPile.GetLastCard();
 
-			if (lastCard != null && lastCard.CardSuit != selectedCard.CardSuit)
+			if (lastCard != null && lastCard.suit != selectedCard.suit)
 				return false;
 
-			int lastCardNum = lastCard != null ? lastCard.Number : 0;
+			int lastCardNum = lastCard != null ? lastCard.number : 0;
 
-            if (selectedCard.Number == lastCardNum + 1)
+            if (selectedCard.number == lastCardNum + 1)
             {
 				movedCards.Add(selectedCard);
 
@@ -178,7 +168,7 @@ public class Klondyke : SolitaireGame
 					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
 			}
 		}		
-		else if (toPile.Type == CardPileType.Tableau)
+		else if (toPile.Type == PileType.Tableau)
 		{
 			foreach(CardPile tableauPile in TableauPiles)			
             {
@@ -187,7 +177,7 @@ public class Klondyke : SolitaireGame
 				Card firstCard = cards[0];
 				bool move = false;
 
-				if (toPile.cards.Count == 0 && firstCard.Number == 13)
+				if (toPile.cards.Count == 0 && firstCard.number == 13)
 				{
 					move = true;				
 				}
@@ -197,7 +187,7 @@ public class Klondyke : SolitaireGame
 
 					if (lastPileCard == null) continue;				
 
-					if (lastPileCard.Number - firstCard.Number == 1 && Card.IsDifferentSuit(firstCard, lastPileCard))
+					if (lastPileCard.number - firstCard.number == 1 && Card.IsDifferentSuit(firstCard, lastPileCard))
 						move = true;				
 				}
 				if (move) 
@@ -215,7 +205,8 @@ public class Klondyke : SolitaireGame
 			if (!(activeState is HintState))
             {
 				commands.Clear();
-				StoreMoveCommand(movedCards, sourcePile, toPile);
+
+				MoveCards(movedCards, sourcePile, toPile);
 				UpdateTableuPiles();
 
 				GameManager.Instance.StoreCommand(new CmdComposite(commands));
@@ -225,13 +216,6 @@ public class Klondyke : SolitaireGame
 		return movedCards.Count > 0;
 	}
 
-	void StoreMoveCommand(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
-    {
-		CmdMoveCards cmdMoveCards = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
-		cmdMoveCards.Execute(false);
-		commands.Add(cmdMoveCards);
-	}
-	
 	void UpdateTableuPiles()
     {
         // Turn last cards after movement
@@ -241,13 +225,10 @@ public class Klondyke : SolitaireGame
 
             if (lastCard != null && lastCard.IsTurned())
             {
-                CmdTurnCard cmdTurn = new CmdTurnCard(lastCard, "Update last card move Klondyke") { Animate = true };
-                cmdTurn.Execute(false);
-                commands.Add(cmdTurn);
+				TurnCard(lastCard);
             }
         }
     }
-	
 	public override IEnumerator RestoreState(XDocument xdoc)
 	{
 		XElement piles = xdoc.Root.Element("piles");
@@ -257,26 +238,26 @@ public class Klondyke : SolitaireGame
 		
 		foreach (XElement pileNode in piles.Elements("pile"))
 		{
-			CardPileType pileType = (CardPileType) System.Enum.Parse(typeof(CardPileType), pileNode.Element("type").Value);
+			PileType pileType = (PileType) System.Enum.Parse(typeof(PileType), pileNode.Element("type").Value);
 			
 			CardPile cpile = null;
 
-			if (pileType == CardPileType.Stock)
+			if (pileType == PileType.Stock)
 			{
 				cpile = stock;
 			}
 			else
 			{
-				if (pileType == CardPileType.KlondikeWaste)
+				if (pileType == PileType.KlondikeWaste)
 				{
-					cpile = waste;
+					cpile = Waste;
 				}
-				if (pileType == CardPileType.Foundation)
+				if (pileType == PileType.Foundation)
 				{
 					cpile = foundations[fcount];
 					fcount++;
 				}
-				if (pileType == CardPileType.Tableau)
+				if (pileType == PileType.Tableau)
 				{
 					cpile = TableauPiles[tcount];
 					tcount++;
@@ -291,10 +272,10 @@ public class Klondyke : SolitaireGame
 				{
 					Vector3 pos = XmlHelpers.ConvertStringToVector3(cardNode.Element("position").Value);
 					int number = int.Parse(cardNode.Element("number").Value);
-					CardSuit suit = (CardSuit) System.Enum.Parse(typeof(CardSuit), cardNode.Element("suit").Value);   
+					Suit suit = (Suit) System.Enum.Parse(typeof(Suit), cardNode.Element("suit").Value);   
 
-					Card c = GetCard(number, suit);
-					c.Pile = cpile;
+					Card c = stock.GetCard(number, suit);
+					c.pile = cpile;
 					c.Turn(System.Convert.ToBoolean(cardNode.Element("turned").Value));
 					
 					cpile.AddCard(c);

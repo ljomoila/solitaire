@@ -16,12 +16,10 @@ public class CmdDrawCards : Cmd
         this.drawAmount = drawAmount;
 
         stock = game.stock;
-        waste = game.waste;
-
-        if (CollectCardPickInfo() == false)
-        {
-            turnStock = true;
-        }
+        waste = game.Waste;
+        turnStock = CollectCardPickInfo() ? false : true;
+       
+        GameManager.Instance.StoreCommand(this);
     }
 
     List<PickedCard> cardInfos = new List<PickedCard>();
@@ -55,8 +53,6 @@ public class CmdDrawCards : Cmd
 
         return cardsOnStock;
     }
-
-
 
     public override void Execute(bool immediate = true)
     {
@@ -194,7 +190,6 @@ class PickedCard
 
 public class CmdMoveCards : Cmd
 {
-
 	CardPile fromPile;
 	CardPile toPile;
 	List<Card> cards;
@@ -204,7 +199,9 @@ public class CmdMoveCards : Cmd
 		this.toPile = toPile;
 		this.fromPile = fromPile;
 		this.cards = cards;
-	}
+
+        GameManager.Instance.StoreCommand(this);
+    }
 	
 	public override void Execute (bool immediate = true)
 	{
@@ -219,7 +216,7 @@ public class CmdMoveCards : Cmd
 				AudioController.Play("cardSlide");
 		}
 		
-		Align();
+		AlignPiles();
 	}
 	
 	public override void Unexecute ()
@@ -234,10 +231,10 @@ public class CmdMoveCards : Cmd
 			cards[i] = c;
 		}
 
-		Align ();
+		AlignPiles ();
 	}
 	
-	void Align()
+	void AlignPiles()
 	{
 		fromPile.AlignCards();
 		toPile.AlignCards();

@@ -1,6 +1,4 @@
-﻿
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,7 +29,7 @@ public class DealState : StateBase
 
     private IEnumerator GatherDeck()
     {
-        List<CardPile> piles = GameManager.Instance.activeGame.AllPiles;
+        List<CardPile> piles = GameManager.Instance.activeGame.Piles;
 
         foreach (CardPile pile in piles)
         {
@@ -59,21 +57,23 @@ public class DealState : StateBase
 
     private IEnumerator Shuffle()
     {
-        ShuffleCards();
+        deck.Shuffle();
         yield return null;
 
         float t = .5f;
 
-        DividedInTwo(t);
+        Split(t);
         yield return new WaitForSeconds(t);
 
-        AnimBend();
-        deck.AlignCards(t, 0, 0);
+        Bend();        
 
         yield return new WaitForSeconds(1f);
+        deck.AlignCards(t, 0, 0);
+
+        yield return new WaitForSeconds(.2f);
     }
 
-    private void AnimBend()
+    private void Bend()
     {
         AudioController.Play("shuffle");
 
@@ -125,7 +125,7 @@ public class DealState : StateBase
         //}
     }
 
-    private void DividedInTwo(float animTime)
+    private void Split(float animTime)
     {
         AudioController.Play("cardSlide");
 
@@ -146,51 +146,17 @@ public class DealState : StateBase
         }
     }
 
-    private void ShuffleCards()
-    {
-        int cardCount = deck.cards.Count;        
-
-        List<Card> newDeck = new List<Card>();
-
-        for (int i = 0; i < cardCount; i++)
-        {
-            newDeck.Add(null);
-        }
-
-        foreach (Card card in deck.cards)
-        {
-            int nextIndex = Random.Range(0, cardCount);
-
-            while (newDeck[nextIndex] != null)
-            {
-                nextIndex = Random.Range(0, cardCount);
-            }
-
-            card.transform.position = deck.cards[nextIndex].transform.position;
-            newDeck.RemoveAt(nextIndex);
-            newDeck.Insert(nextIndex, card);
-        }
-        deck.cards.Clear();
-
-        for (int i = 0; i < cardCount; i++)
-        {
-            deck.cards.Add(newDeck[i]);
-        }
-
-        deck.AlignCards();
-    }
-
     public void DealCard(Card card, float animTime)
     {
-        card.Pile.AddCard(card);
+        card.pile.AddCard(card);
 
-        Vector3 nextPos = card.Pile.NextPos;
+        Vector3 nextPos = card.pile.NextPos;
 
         iTween.MoveTo(card.gameObject, iTween.Hash("position", nextPos, "time", 0.5f, "delay", animTime, "isLocal", true));
 
-        nextPos.x += card.IsTurned() ? card.Pile.xStepTurned : card.Pile.xStep;
-        nextPos.y -= card.IsTurned() ? card.Pile.yStepTurned : card.Pile.yStep;
-        nextPos.z -= card.Pile.zStep;
+        nextPos.x += card.IsTurned() ? card.pile.xStepTurned : card.pile.xStep;
+        nextPos.y -= card.IsTurned() ? card.pile.yStepTurned : card.pile.yStep;
+        nextPos.z -= card.pile.zStep;
     }
 
     public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)

@@ -1,72 +1,64 @@
 
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using UnityEngine;
 
 public class SolitaireGame : MonoBehaviour
 {
 	public GameType gameType;
 
-	public CardPile stock, waste;
+	public CardPile stock;
+	public CardPile Waste { get; set; } = new CardPile();
 
-	public List<CardPile> AllPiles { get; set; } = new List<CardPile>();
+	public List<CardPile> Piles { get; set; } = new List<CardPile>();
 	public List<CardPile> TableauPiles { get; set; } = new List<CardPile>();
-	public List<CardPile> AllowedPiles { get; set; } = new List<CardPile>();
 
 	public DealState DealState { get; set; } = null;
+
+	public int stockDrawAmount = 3;
+
+	public List<Cmd> commands = new List<Cmd>();
 
 	public virtual IEnumerator Initialize()
 	{
 		yield return null;
 	}
-	
+
+	public virtual IEnumerator RestoreState(XDocument xdoc)
+	{
+		yield return null;
+	}
+
+	public virtual List<Card> Select(Card card)
+	{
+		return null;
+	}
+
 	public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile)
 	{
 		return false;
 	}
 
-
-	public Card GetCard(int number, CardSuit suit)
+	public virtual void DrawCards()
 	{
-		Card c = null;
-		
-		for(int i = 0; i < stock.cards.Count; i++)
-		{
-			c = stock.cards[i];
-			
-			if (c.number == number && c.suit == suit)
-			{
-				stock.RemoveCard(c);
-				break;
-			}
-		}
-		
-		return c;
-	}
-	
-	public virtual IEnumerator RestoreState(XDocument xdoc)
-	{
-		yield return null;	
+		CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
+		cmd.Execute(false);
+		GameManager.Instance.StoreCommand(cmd);
 	}
 
-	public void MenuState()
-    {
-		foreach (CardPile pile in AllPiles)
-		{
-			foreach (Card card in pile.cards)
-			{
-				if (!card.IsTurned())
-				{
-					card.sprite.transform.localEulerAngles = new Vector3(0, 180, 0);
-				}
-			}
-		}
+	public virtual void MoveCards(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
+	{
+		CmdMoveCards cmdMoveCards = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
+		cmdMoveCards.Execute(false);
+		commands.Add(cmdMoveCards);
 	}
 
-	public virtual List<Card> Select(Card card) 
+	public virtual void TurnCard(Card card)
 	{
-		return null;
+		CmdTurnCard cmdTurn = new CmdTurnCard(card, "Turn Klondyke card") { Animate = true };
+		cmdTurn.Execute(false);
+		commands.Add(cmdTurn);
 	}
 }
 

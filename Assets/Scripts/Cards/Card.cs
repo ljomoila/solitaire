@@ -5,19 +5,11 @@ public class Card : MonoBehaviour
 	public GameObject sprite;
 	public GameObject spriteSkinned;
 
-	// Use this for initialization
-	void Start () 
-	{
-			
-	}
-
-	// Update is called once per frame
-	void Update () 
-	{
-
-	}
+	public Suit suit;
+	public int number;
+	public CardPile pile;
 	
-	public void Initialize(int number, CardSuit suit)
+	public void Initialize(int number, Suit suit)
 	{
 		this.number = number;
 		this.suit = suit;
@@ -25,9 +17,14 @@ public class Card : MonoBehaviour
 		gameObject.name = suit+"_"+number;		
 		transform.localEulerAngles = new Vector3(0, 0, 0);
 	}
-	
-	bool picked = true;
-	
+
+	private bool turned = true;
+	public bool IsTurned()
+	{
+		return turned;
+	}
+
+	bool picked = true;	
 	public void Pick(int indexInPile)
 	{
 		// TODO fix animation: at the moment z-index problem, if more than 3 cards pile
@@ -48,12 +45,10 @@ public class Card : MonoBehaviour
 		picked = false;
 		
 	}
-	
-	private bool turned = true;
 
-	public bool IsTurned()
+	void Align()
 	{
-		return turned;
+		pile.AlignCards();
 	}
 
 	internal void Turn(bool faceDown)
@@ -87,48 +82,15 @@ public class Card : MonoBehaviour
 
 		iTween.MoveBy(gameObject, iTween.Hash("x", -pos*.2, "z", -((pos*.1f) + time), "time", time, "isLocal", true));
     }
-	
-	void Align()
-	{
-		pile.AlignCards();
-	}    
-
-    public CardSuit suit;
-
-    public CardSuit CardSuit
-    {
-        get { return suit; }
-        set { suit = value; }
-    }
-
-    public CardPile pile = null;
-
-    public CardPile Pile
-    {
-        get { return pile; }
-        set { pile = value; }
-    }
-
-    public int number = 1;
-
-    public int Number
-    {
-        get { return number; }
-    }
 
     public bool IsRed
     {
-        get { return (suit == CardSuit.Heart || suit == CardSuit.Diamond); }
+        get { return (suit == Suit.Heart || suit == Suit.Diamond); }
     }
 
     public bool IsBlack
     {
         get { return !IsRed; }
-    }
-	
-	public static bool IsDifferentSuit(Card card1, Card card2)
-    {
-        return ((card1.IsRed && card2.IsBlack) || ((card1.IsBlack && card2.IsRed)));
     }
 	
 	internal void Highlight()
@@ -151,10 +113,14 @@ public class Card : MonoBehaviour
 		animation[animName].speed = speed;
 		animation.Play(animName, playMode);
 	}
+
+	public static bool IsDifferentSuit(Card card1, Card card2)
+	{
+		return ((card1.IsRed && card2.IsBlack) || ((card1.IsBlack && card2.IsRed)));
+	}
 }
 
-
-public enum CardSuit
+public enum Suit
 {   
     Heart = 0,
     Spade = 1,

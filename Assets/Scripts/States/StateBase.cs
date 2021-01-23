@@ -2,7 +2,6 @@
 
 public class StateBase : MonoBehaviour
 {
-
 	public StateBase parentState, previousState;
 
 	public virtual void OnActivateState()

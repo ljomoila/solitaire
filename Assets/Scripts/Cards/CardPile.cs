@@ -1,35 +1,19 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class CardPile : MonoBehaviour
 {
-	public CardPile sourcePile;
-	
 	public List<Card> cards = new List<Card>();
-	public CardPileType Type = CardPileType.Piled;
+	public PileType Type = PileType.Piled;
 	public PileSlot slot;
-	
-	public Random rnd;
-	
-	public int cardCount = 0;
 
 	public float xStep = 0f, yStep = 0f, xStepTurned = 0f, yStepTurned = 0f;
 	public float zStep = .05f;
 
-	float cardZ = 0;
-	public float CardZ
-    {
-		get { return cardZ; }
-		set
-		{
-			cardZ = value;
-		}
-	}
+	public float CardZ { get; set; }
+    public Suit Suit { get; set; }
 
-    public CardSuit CardSuit { get; set; }
-
-    Vector2 nextPos;
+	private Vector2 nextPos;
 	public Vector2 NextPos
 	{
 		get { return nextPos; }
@@ -39,20 +23,7 @@ public class CardPile : MonoBehaviour
 		}
 	}
 
-
 	float animTime = 0;
-
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
 
 	public virtual void AddCard(Card card)
 	{
@@ -61,7 +32,7 @@ public class CardPile : MonoBehaviour
 
 		this.animTime = 0;
 
-		card.Pile = this;
+		card.pile = this;
 		card.transform.parent = transform;
 		card.gameObject.layer = 9; // TODO naming
 
@@ -82,7 +53,7 @@ public class CardPile : MonoBehaviour
 
 		this.animTime = time;
 		
-		iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(nextPos.x, nextPos.y, cardZ), "time", time, "delay", delay, "isLocal", true));
+		iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(NextPos.x, NextPos.y, CardZ), "time", time, "delay", delay, "isLocal", true));
 		
 		if (time > 0)
 			card.Leave();
@@ -92,12 +63,12 @@ public class CardPile : MonoBehaviour
 	{
 		AddCard (card);
 		
-		iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(nextPos.x, nextPos.y, cardZ), "time", time, "delay", delay, "isLocal", true));
-		
+		iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(NextPos.x, NextPos.y, CardZ), "time", time, "delay", delay, "isLocal", true));
+
 		nextPos.x += card.IsTurned() ? xStepTurned : xStep;
 		nextPos.y -= card.IsTurned() ? yStepTurned : yStep;
 		
-		cardZ -= zStep;
+		CardZ -= zStep;
 	}
 	
 	public bool IsEmpty
@@ -105,101 +76,7 @@ public class CardPile : MonoBehaviour
         get { return cards.Count == 0; }
     }
 
-	internal IEnumerator Shuffle()
-	{
-		ShuffleCards();
-		yield return null;
-
-		yield return StartCoroutine(AnimShuffle());
-	}
-
-	private IEnumerator AnimShuffle()
-    {
-		float t = .5f;
-
-		DividedInTwo(t);
-		yield return new WaitForSeconds(t);
-
-		AnimBend();
-		AlignCards(t, 0, 0);
-
-		yield return new WaitForSeconds(1.25f);
-	}
-
-    private void AnimBend()
-    {
-		AudioController.Play("shuffle");
-
-		// TODO one single animation for both sides
-
-		//for (int i = 0; i < cards.Count; i++)
-		//{
-		//	if (i % 2 == 0)
-		//	{
-		//		cards[i].sprite.GetComponent<Animation>()["cardBend_01"].speed = 1;
-		//		cards[i].sprite.GetComponent<Animation>().Play("cardBend_01");
-		//	}
-		//	else
-		//	{
-		//		cards[i].sprite.GetComponent<Animation>()["cardBend_02"].speed = 1;
-		//		cards[i].sprite.GetComponent<Animation>().Play("cardBend_02");
-		//	}
-		//}
-
-		//yield return new WaitForSeconds(.1f);
-
-		//for (int i = 0; i < cards.Count; i++)
-		//{
-		//	if (i % 2 == 0)
-		//	{
-		//		cards[i].sprite.GetComponent<Animation>()["cardBend_01"].speed = 0;
-		//	}
-		//	else
-		//	{
-		//		cards[i].sprite.GetComponent<Animation>()["cardBend_02"].speed = 0;
-		//	}
-		//}
-
-		//for (int i = 0; i < cards.Count; i++)
-		//{
-		//	if (i % 2 == 0)
-		//	{
-		//		cards[i].sprite.GetComponent<Animation>()["cardBend_01"].speed = -1;
-		//		//cards[i].sprite.animation.Play("cardBend_01");
-		//	}
-		//	else
-		//	{
-		//		yield return new WaitForSeconds(.0001f);
-		//		cards[i].sprite.GetComponent<Animation>()["cardBend_02"].speed = -1;
-		//		cards[i].sprite.GetComponent<Animation>().Play("cardBend_02");
-		//	}
-
-		//	//AudioController.Play("cardTurn");
-		//}
-	}
-    
-    private void DividedInTwo(float animTime)
-    {
-		AudioController.Play("cardSlide");
-		
-		for (int i = 0; i < cards.Count; i++)
-		{
-			float moveAmount = 1.6f;
-			float rotateAmount = -150;
-
-			if (i % 2 == 0)
-			{
-				moveAmount = -moveAmount;
-				rotateAmount = -rotateAmount;
-			}
-
-			cards[i].transform.Translate(0, 0, .45f);
-			iTween.MoveBy(cards[i].gameObject, iTween.Hash("x", moveAmount, "time", animTime, "isLocal", true));
-			iTween.RotateTo(cards[i].sprite.gameObject, iTween.Hash("z", rotateAmount, "time", animTime, "isLocal", true));
-		}
-	}
-
-	void ShuffleCards()
+	public void Shuffle()
     {
 		int cardCount = cards.Count;
 
@@ -223,6 +100,7 @@ public class CardPile : MonoBehaviour
 			deck.RemoveAt(nextIndex);
 			deck.Insert(nextIndex, card);
 		}
+
 		cards.Clear();
 
 		for (int i = 0; i < cardCount; i++)
@@ -246,7 +124,7 @@ public class CardPile : MonoBehaviour
 
     public virtual void AlignCards(float time, float delay, int startIndex)
     {
-		cardZ = 0;
+		CardZ = 0;
 		float cardX = 0;
 		float cardY = 0;
 		float sizeY = 3.5f;
@@ -261,15 +139,15 @@ public class CardPile : MonoBehaviour
 			
 			iTween.RotateTo(card.sprite.gameObject, iTween.Hash("rotation", new Vector3(0, card.IsTurned() ? 180 : 0, 0), "time", animTime));
 			iTween.MoveTo(card.sprite.gameObject, iTween.Hash("position", Vector3.zero, "time", animTime, "isLocal", true));
-            iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(cardX, cardY, cardZ), "time", animTime, "isLocal", true));
+            iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(cardX, cardY, CardZ), "time", animTime, "isLocal", true));
 
             cardX += card.IsTurned() ? xStepTurned : xStep;
             cardY -= card.IsTurned() ? yStepTurned : yStep;			
 			sizeY += card.IsTurned() ? yStepTurned : sizeY;
 			boxY -= card.IsTurned() ? yStepTurned * 1.1f : yStep * 1.2f;
-			nextPos = card.IsTurned() ? new Vector2(cardX + xStepTurned, cardY - yStepTurned) : new Vector2(cardX + xStep, cardY - yStep);
+			NextPos = card.IsTurned() ? new Vector2(cardX + xStepTurned, cardY - yStepTurned) : new Vector2(cardX + xStep, cardY - yStep);
 
-			cardZ -= zStep;		
+			CardZ -= zStep;		
 			delay += index > startIndex ? time : 0;
                             
             index++;
@@ -321,7 +199,24 @@ public class CardPile : MonoBehaviour
         return null;
     }
 
-    internal void Unhighlight()
+	public Card GetCard(int number, Suit suit)
+	{
+		Card card = null;
+
+		foreach (Card c in cards)
+		{
+			card = c;
+
+			if (c.number == number && c.suit == suit)
+			{
+				RemoveCard(c);
+				break;
+			}
+		}
+		return card;
+	}
+
+	internal void Unhighlight()
     {
 		if (slot == null)
 			return;
@@ -338,7 +233,7 @@ public class CardPile : MonoBehaviour
     }
 }
 
-public enum CardPileType
+public enum PileType
 {
     Piled,
     Tableau,

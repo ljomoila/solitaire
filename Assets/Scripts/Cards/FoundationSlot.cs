@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FoundationSlot : PileSlot
 {
-	public CardSuit suit;
+	public Suit suit;
 	
 	public SpriteRenderer suitSprite;
 	public List<Sprite> suits;
@@ -11,7 +11,7 @@ public class FoundationSlot : PileSlot
 	public GameObject spadeEffect, heartEffect, diamondEffect, clubEffect;
 	GameObject suitEffect = null;
 
-	public void Initialize(CardSuit suit, CardPile pile)
+	public void Initialize(Suit suit, CardPile pile)
 	{
 		base.Initialize(pile);
 
@@ -29,11 +29,11 @@ public class FoundationSlot : PileSlot
 
 		GameObject go;
 
-		if (suit == CardSuit.Spade)
+		if (suit == Suit.Spade)
 			go = spadeEffect;
-		else if (suit == CardSuit.Heart)
+		else if (suit == Suit.Heart)
 			go = heartEffect;
-		else if (suit == CardSuit.Club)
+		else if (suit == Suit.Club)
 			go = clubEffect;
 		else
 			go = diamondEffect;
@@ -46,7 +46,7 @@ public class FoundationSlot : PileSlot
 
 	void FoundationMoveDone(NotificationCenter.Notification n)
 	{
-		if ((CardSuit)n.data["suit"] == suit)
+		if ((Suit)n.data["suit"] == suit)
 			suitEffect.SetActive(true);
 	}
 }

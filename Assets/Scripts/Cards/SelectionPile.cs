@@ -1,10 +1,12 @@
 
 public class SelectionPile : CardPile
 {
+	public CardPile sourcePile;
+
 	// Use this for initialization
 	void Start () 
 	{
-		Type = CardPileType.SelectionPile;		
+		Type = PileType.SelectionPile;		
 		CardZ = .75f;
 	}
 	// Update is called once per frame

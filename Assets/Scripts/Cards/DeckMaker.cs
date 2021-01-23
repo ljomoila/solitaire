@@ -26,8 +26,10 @@ public class DeckMaker : MonoBehaviour
 	{
 		if (makeDeck)
 		{
-			CardPile newDeck = new GameObject("Deck").AddComponent<CardPile>();
-			newDeck.Type = CardPileType.Stock;
+			CardPile newDeck = new GameObject(game.name + "Deck").AddComponent<CardPile>();		
+			newDeck.transform.parent = game.transform;
+			//newDeck.transform.localPosition = game.stock.transform.localPosition;
+			newDeck.Type = PileType.Stock;
 
 			card.gameObject.SetActive(true);
 
@@ -41,8 +43,8 @@ public class DeckMaker : MonoBehaviour
 				int numberIndex = i % 13 + 1;
 				
 				Card newCard = Instantiate(card, Vector3.zero, Quaternion.identity, newDeck.transform);
-				newCard.Initialize(numberIndex, (CardSuit)suitIndex);
-				newCard.Pile = newDeck;				
+				newCard.Initialize(numberIndex, (Suit)suitIndex);
+				newCard.pile = newDeck;				
 				newCard.transform.Translate(0, 0, zPos);
 
 				if (yIndex == 6)
@@ -69,11 +71,9 @@ public class DeckMaker : MonoBehaviour
 
 			card.gameObject.SetActive(false);
 
-			if (game.stock != null)
-				DestroyImmediate(game.stock.gameObject);
+			//if (game.stock != null)
+			//	DestroyImmediate(game.stock.gameObject);
 
-			newDeck.gameObject.name = game.name + "Stock";
-			newDeck.transform.parent = game.transform.parent;
 			game.stock = newDeck;				
 		
 			makeDeck = false;

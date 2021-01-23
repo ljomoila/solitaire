@@ -19,8 +19,8 @@ public class DealStateKlondyke : DealState
         for (int i = 0; i < dealAmount; i++)
         {
             Card card = deck.GetFirstCard();
-            card.Pile = piles[pileCount];
-            card.transform.parent = card.Pile.transform;
+            card.pile = piles[pileCount];
+            card.transform.parent = card.pile.transform;
 
             DealCard(card, dealTime);
 

@@ -44,8 +44,8 @@ public class StorageManager : MonoBehaviour
 		s.Indent = true;
 		s.NewLineOnAttributes = true;
 
-		if (!activeGame.AllPiles.Contains(activeGame.stock))
-			activeGame.AllPiles.Add(activeGame.stock);
+		if (!activeGame.Piles.Contains(activeGame.stock))
+			activeGame.Piles.Add(activeGame.stock);
 
 		using (XmlWriter w = XmlWriter.Create(GetFilePath(), s))
 		{
@@ -59,7 +59,7 @@ public class StorageManager : MonoBehaviour
 
 			w.WriteStartElement("piles");
 
-			foreach (CardPile p in activeGame.AllPiles)
+			foreach (CardPile p in activeGame.Piles)
 			{
 				w.WriteStartElement("pile");
 				w.WriteElementString("type", p.Type.ToString());
@@ -87,7 +87,7 @@ public class StorageManager : MonoBehaviour
 			w.WriteEndDocument();
 		}
 
-		if (activeGame.AllPiles.Contains(activeGame.stock))
-			activeGame.AllPiles.Remove(activeGame.stock);
+		if (activeGame.Piles.Contains(activeGame.stock))
+			activeGame.Piles.Remove(activeGame.stock);
 	}
 }

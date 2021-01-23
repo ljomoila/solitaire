@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PileSlot : MonoBehaviour
 {
-	public CardPileType pileType;
+	public PileType pileType;
 	public Card card;
 
 	public SpriteRenderer border;
@@ -17,7 +17,7 @@ public class PileSlot : MonoBehaviour
 		gameObject.SetActive(true);
 
 		pileType = pile.Type;
-		card.Pile = pile;
+		card.pile = pile;
 	}
 
 	internal void Unhighlight()
