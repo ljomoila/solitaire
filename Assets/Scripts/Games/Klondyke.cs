@@ -18,8 +18,6 @@ public class Klondyke : Game
     {
 		gameType = GameType.Klondyke;
 		stockDrawAmount = 3;
-
-		DealState = gameObject.AddComponent<DealStateKlondyke>();
     }
 
     public override IEnumerator SetupTable()
@@ -28,7 +26,7 @@ public class Klondyke : Game
 		Waste.transform.parent = transform;
 		Waste.transform.position = wasteHolder.position;
 		Waste.zStep = stock.zStep;
-		Waste.Type = PileType.KlondikeWaste;
+		Waste.Type = PileType.Waste;
 		Piles.Add(Waste);
 		
 		PileSlot wasteSlot = Instantiate(pileSlot, Waste.transform.position, Quaternion.identity, Waste.transform);
@@ -38,8 +36,7 @@ public class Klondyke : Game
 		
 		for (int i = 0; i < 7; i++)
         {
-			CardPile pile = new GameObject("Tableu "+i).AddComponent<CardPile>();
-			pile.gameObject.name = "KlondykeTableu " + (i + 1);
+			CardPile pile = new GameObject("KlondykeTableu " + i).AddComponent<CardPile>();
 			pile.transform.parent = transform;
 			pile.transform.position = new Vector3(pileauHolder.position.x + (xStep * i), pileauHolder.position.y, pileauHolder.position.z);
 			pile.Type = PileType.Tableau;
@@ -88,7 +85,7 @@ public class Klondyke : Game
         {
 			DrawCards();
 		} 
-        else if (pile.Type == PileType.KlondikeWaste)
+        else if (pile.Type == PileType.Waste)
 		{
             if (!pile.IsEmpty)
 				selection = new List<Card>() { pile.GetLastCard() };            
@@ -135,11 +132,10 @@ public class Klondyke : Game
 		return selection;
 	}
 
-	public override bool TryMove(CardPile toPile, SelectionPile selectionPile)
+	public override bool TryMove(CardPile toPile, SelectionPile selectionPile = null)
 	{
 		CardPile sourcePile = selectionPile.sourcePile;
 		List<Card> cards = selectionPile.cards;
-		StateBase activeState = StateManager.Instance.activeState;
 
 		// Try foundation
 		if (cards.Count == 1 && toPile == sourcePile)
@@ -164,7 +160,7 @@ public class Klondyke : Game
             {
 				movedCards.Add(selectedCard);
 
-				if (!(activeState is HintState))
+				if (!hintMode)
 					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
 			}
 		}		
@@ -202,15 +198,14 @@ public class Klondyke : Game
 		}	
 		if (movedCards.Count > 0)
 		{
-			if (!(activeState is HintState))
-            {
-				commands.Clear();
+			if (hintMode) return true;
 
-				MoveCards(movedCards, sourcePile, toPile);
-				UpdateTableuPiles();
+			commands.Clear();
 
-				GameManager.Instance.StoreCommand(new CmdComposite(commands));
-			}			
+			MoveCards(movedCards, sourcePile, toPile);
+			UpdateTableuPiles();
+
+			GameManager.Instance.StoreCommand(new CmdComposite(commands));
 		}
 
 		return movedCards.Count > 0;
@@ -248,7 +243,7 @@ public class Klondyke : Game
 			}
 			else
 			{
-				if (pileType == PileType.KlondikeWaste)
+				if (pileType == PileType.Waste)
 				{
 					cpile = Waste;
 				}
@@ -286,5 +281,111 @@ public class Klondyke : Game
 		}
 		
 		yield return null;
+	}
+
+	public override IEnumerator Deal()
+	{
+		List<CardPile> piles = TableauPiles;
+
+		float dealTime = 0;
+		int pileCount = 0;
+		int j = 0;
+
+		for (int i = 0; i < 28; i++)
+		{
+			Card card = stock.GetFirstCard();
+			card.pile = piles[pileCount];
+			card.transform.parent = card.pile.transform;
+
+			DealCard(card, dealTime);
+
+			yield return new WaitForSeconds(dealTime);
+
+			if (pileCount > 0 && pileCount % 6 == 0)
+			{
+				j++;
+				pileCount = j;
+			}
+			else
+			{
+				pileCount++;
+				AudioController.Play("cardSlide", 1, dealTime);
+			}
+			dealTime = i * 0.01f;
+		}
+
+		// TODO Turn while throwing
+		yield return StartCoroutine(TurnLastCards(piles, dealTime));
+	}
+
+	public override void HintRequest()
+	{
+		base.HintRequest();
+
+		List<Card> hintCards = new List<Card>();
+		bool hintShown = false;
+
+		foreach (CardPile pile in Piles)
+		{
+			if (hintShown) break;
+
+			hintCards.Clear();
+
+			foreach (Card card in pile.cards)
+			{
+				if (card.IsTurned()) continue;
+
+				hintCards.Add(card);
+
+				if (pile.Type == PileType.Waste)
+				{
+					hintCards.Clear();
+					hintCards.Add(pile.GetLastCard());
+				}
+			}
+
+			if (hintCards.Count == 0) continue;
+
+			SelectionPile hintPile = hintCards[0].pile.gameObject.AddComponent<SelectionPile>();
+			hintPile.cards = hintCards;
+			hintPile.sourcePile = pile;
+
+			foreach (CardPile toPile in Piles)
+			{
+				if (TryMove(toPile, hintPile))
+				{
+					ShowHint(GetHintCards(hintCards[0].pile));
+					hintShown = true;
+					break;
+				}
+			}
+		}
+
+		hintMode = false;
+	}
+
+	List<Card> GetHintCards(CardPile pile)
+	{
+		// no hint when theres only one card in foundation
+		if (pile.Type == PileType.Foundation && pile.cards.Count == 1)
+			return new List<Card>();
+
+		List<Card> hintCards = new List<Card>();
+
+		if (pile.Type == PileType.Tableau)
+		{
+			foreach (Card card in pile.cards)
+			{
+				if (card.IsTurned()) continue;
+
+				hintCards.Add(card);
+			}
+		}
+		else // waste or foundation
+		{
+			hintCards.Add(pile.GetLastCard());
+		}
+
+		return hintCards;
 	}
 }

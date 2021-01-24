@@ -54,7 +54,7 @@ public class StorageManager : MonoBehaviour
 
 			w.WriteElementString("viewType", StateManager.Instance.activeState is Menu ? "menu" : "game");
 			w.WriteElementString("time", GameManager.Instance.gameTime.Time.ToString());
-			w.WriteElementString("type", activeGame.gameType.ToString());
+			w.WriteElementString("gameType", activeGame.gameType.ToString());
 
 			w.WriteStartElement("piles");
 

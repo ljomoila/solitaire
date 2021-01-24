@@ -242,7 +242,7 @@ public enum PileType
     Tableau,
     SelectionPile,
     PyramidPile,
-    KlondikeWaste,
+    Waste,
 	Stock,
 	Foundation
 }

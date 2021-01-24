@@ -14,8 +14,6 @@ public class Game : StateBase
 	public List<CardPile> Piles { get; set; } = new List<CardPile>();
 	public List<CardPile> TableauPiles { get; set; } = new List<CardPile>();
 
-	public DealState DealState { get; set; } = null;
-
 	public int stockDrawAmount = 3;
 
 	public List<Cmd> commands = new List<Cmd>();
@@ -23,7 +21,9 @@ public class Game : StateBase
     public SelectionPile selectionPile;
 
     private Vector3 startHit = Vector3.zero;
+
     private float pileDraggingFactor = 10;
+    public bool hintMode = false;
 
     public override void OnActivateState()
     {
@@ -35,11 +35,21 @@ public class Game : StateBase
 	{
 		yield return StartCoroutine(SetupTable());
 
-		if (storedGameState != null)
-			yield return StartCoroutine(RestoreState(storedGameState));
-		else
-			yield return StartCoroutine(DealState.DoDeal());
+        bool deal = true;
 
+        if (storedGameState != null)
+        {
+            GameType storedType = (GameType) System.Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value);
+
+            if (storedType == gameType)
+            {
+                deal = false;
+                yield return StartCoroutine(RestoreState(storedGameState));
+            }               
+        }
+		
+        if (deal)
+            yield return StartCoroutine(DoDeal());
 	}
 
 	public virtual IEnumerator SetupTable()
@@ -112,7 +122,7 @@ public class Game : StateBase
                 Card c = hit.collider.gameObject.GetComponent<Card>();
 
                 if (c != null && c.pile != null && c.pile != selectionPile)
-                    successfullMove = TryMove(c.pile, selectionPile);
+                    successfullMove = TryMove(c.pile);
             }
 
             if (!successfullMove)
@@ -175,8 +185,6 @@ public class Game : StateBase
         selectionPile.Clear();
 
         AudioController.Play("cardSlide");
-
-        //StateManager.Instance.ActivateState(game);
     }
 
     public virtual List<Card> Select(Card card)
@@ -184,12 +192,144 @@ public class Game : StateBase
 		return null;
 	}
 
-	public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile)
+    public bool TryMove(CardPile toPile)
+    {
+        return TryMove(toPile, selectionPile);
+    }
+
+    public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile)
 	{
 		return false;
 	}
 
-	public virtual void DrawCards()
+    public IEnumerator DoDeal()
+    {
+        yield return StartCoroutine(GatherDeck());
+
+        yield return StartCoroutine(Shuffle());
+
+        yield return StartCoroutine(Deal());
+    }
+
+    public virtual IEnumerator Deal()
+    {
+        yield return null;
+    }
+
+    private IEnumerator GatherDeck()
+    {
+        List<CardPile> piles = GameManager.Instance.activeGame.Piles;
+
+        foreach (CardPile pile in Piles)
+        {
+            foreach (Card c in pile.cards)
+            {
+                if (c != null)
+                {
+                    c.Turn(true);
+                    stock.AddCard(c);
+                }
+            }
+            pile.Clear();
+        }
+
+        stock.AlignCards();
+
+        yield return null;
+    }
+
+    private IEnumerator Shuffle()
+    {
+        stock.Shuffle();
+        yield return null;
+
+        float t = .5f;
+
+        Split(t);
+        yield return new WaitForSeconds(t);
+
+        Bend();
+
+        yield return new WaitForSeconds(1f);
+        stock.AlignCards(t, 0, 0);
+
+        yield return new WaitForSeconds(.2f);
+    }
+
+    private void Bend()
+    {
+        AudioController.Play("shuffle");
+    }
+
+    private void Split(float animTime)
+    {
+        AudioController.Play("cardSlide");
+
+        for (int i = 0; i < stock.cards.Count; i++)
+        {
+            float moveAmount = 1.6f;
+            float rotateAmount = -150;
+
+            if (i % 2 == 0)
+            {
+                moveAmount = -moveAmount;
+                rotateAmount = -rotateAmount;
+            }
+
+            stock.cards[i].transform.Translate(0, 0, .45f);
+            iTween.MoveBy(stock.cards[i].gameObject, iTween.Hash("x", moveAmount, "time", animTime, "isLocal", true));
+            iTween.RotateTo(stock.cards[i].sprite.gameObject, iTween.Hash("z", rotateAmount, "time", animTime, "isLocal", true));
+        }
+    }
+
+    public void DealCard(Card card, float animTime)
+    {
+        card.pile.AddCard(card);
+
+        Vector3 nextPos = card.pile.NextPos;
+
+        iTween.MoveTo(card.gameObject, iTween.Hash("position", nextPos, "time", 0.5f, "delay", animTime, "isLocal", true));
+
+        nextPos.x += card.IsTurned() ? card.pile.xStepTurned : card.pile.xStep;
+        nextPos.y -= card.IsTurned() ? card.pile.yStepTurned : card.pile.yStep;
+        nextPos.z -= card.pile.zStep;
+    }
+
+    public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)
+    {
+        foreach (CardPile pileau in piles)
+        {
+            Card c = pileau.GetLastCard();
+            c.Turn(false, .05f);
+        }
+        yield return new WaitForSeconds(delay);
+
+        AudioController.Play("cardSlide");
+
+        yield return null;
+    }
+
+    public virtual void HintRequest()
+    {
+        hintMode = true;
+    }
+
+    public virtual void ShowHint(Card card)
+    {
+        ShowHint(new List<Card> { card });
+    }
+
+    public virtual void ShowHint(List<Card> cards)
+    {
+        foreach (Card card in cards)
+        {
+            // TODO make one single animation
+            card.sprite.GetComponent<Animation>().Play("cardHint_01", AnimationPlayMode.Stop);
+            card.sprite.GetComponent<Animation>().Play("cardHint_01", AnimationPlayMode.Queue);
+        }
+    }
+
+    public virtual void DrawCards()
 	{
 		CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
 		cmd.Execute(false);
@@ -198,16 +338,16 @@ public class Game : StateBase
 
 	public virtual void MoveCards(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
 	{
-		CmdMoveCards cmdMoveCards = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
-		cmdMoveCards.Execute(false);
-		commands.Add(cmdMoveCards);
+		CmdMoveCards cmd = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
+        cmd.Execute(false);
+		commands.Add(cmd);
 	}
 
 	public virtual void TurnCard(Card card)
 	{
-		CmdTurnCard cmdTurn = new CmdTurnCard(card, "Turn Klondyke card") { Animate = true };
-		cmdTurn.Execute(false);
-		commands.Add(cmdTurn);
+		CmdTurnCard cmd = new CmdTurnCard(card, "Turn card") { Animate = true };
+        cmd.Execute(false);
+		commands.Add(cmd);
 	}
 }
 

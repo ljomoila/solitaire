@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
 
 	public static GameManager Instance;
 
-	private HintState hintState;
-
 	private CommandHistory commandHistory;
 
 	void Awake()
@@ -40,20 +38,9 @@ public class GameManager : MonoBehaviour
 		else if (viewType.Equals("game"))
         {
 			yield return StartCoroutine(activeGame.Initialize(storedGameState));
+
 			StateManager.Instance.ActivateState(activeGame);			
 		}
-			
-
-		//yield return StartCoroutine(activeGame.Initialize());
-
-  //      if (storedGameState != null)
-  //      {
-  //          yield return StartCoroutine(RestoreGame(storedGameState));
-  //      }
-  //      else
-  //      {
-  //          yield return StartCoroutine(StartGame());
-  //      }
     }
 
 	IEnumerator StartGame()
@@ -62,19 +49,9 @@ public class GameManager : MonoBehaviour
 
 		commandHistory.Clear();
 
-		yield return StartCoroutine(activeGame.DealState.DoDeal());
+		yield return StartCoroutine(activeGame.DoDeal());
+
 		StateManager.Instance.ActivateState(activeGame);
-
-		yield return null;
-
-		//ActivateCardSelectionState();
-
-		//yield return null;
-	}
-
-	void Update()
-	{
-		//Time.timeScale = state == GameState.Paused ? 0 : 1;
 	}
 
 	void OnApplicationQuit()
@@ -85,6 +62,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	#region GameMenu
+
 	public void NewGame()
 	{
 		StartCoroutine(StartGame());
@@ -99,11 +77,9 @@ public class GameManager : MonoBehaviour
 
 	public void Hint()
 	{
-		if (hintState == null)
-			hintState = new GameObject("HintState").AddComponent<HintState>();
-
-		StateManager.Instance.ActivateState(hintState);
+		activeGame.HintRequest();
 	}
+
     #endregion
 
 	#region CommandHistory

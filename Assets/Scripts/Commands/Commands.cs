@@ -23,56 +23,44 @@ public class CmdDrawCards : Cmd
 
     private bool CollectCardPickInfo()
     {
-        bool cardsOnStock = false;
-
         cardInfos.Clear();
 
         if (stock.cards.Count > 0)
         {                
             for (int i = 0; i < drawAmount; i++)
             {
-                if (stock.cards.Count - i <= 0)
-                {
-                    break;
-                }
+                if (stock.cards.Count - i <= 0) break;                
                 
-                Card pickedCard = stock.cards[stock.cards.Count-1 - i];
+                Card pickedCard = stock.cards[stock.cards.Count - 1 - i];
                 PickedCard pc = new PickedCard() { Card = pickedCard };
                 cardInfos.Add(pc);
             }
 
-            cardsOnStock = true;
-        }
-        else
-        {                
-            cardsOnStock = false;
-        }
+            return true;
+        }        
 
-        return cardsOnStock;
+        return false;
     }
 
     public override void Execute(bool immediate = true)
     {
         if (turnStock)
-        {
             TurnStock();
-        }
+        
         else
-        {
             MoveAndTurnCards(immediate);
-        }
+
+        if (!immediate)
+            AudioController.Play("cardTurn");
     }
 
     public override void Unexecute()
     {
         if (turnStock)
-        {
             UnturnStock();
-        }
+        
         else
-        {
             MoveAndTurnCardsBack();
-        }
     }
 
     private void MoveAndTurnCards(bool immediate)
@@ -100,9 +88,6 @@ public class CmdDrawCards : Cmd
 				waste.AddCard(card);
 				card.transform.localPosition = new Vector3(nextPos.x, nextPos.y, waste.CardZ);
 				card.Turn(false);
-				
-				if (!immediate)
-					AudioController.Play("cardTurn");
 			}
 
 			nextPos.x += .5f;
@@ -111,7 +96,7 @@ public class CmdDrawCards : Cmd
 			waste.CardZ -= .05f;
 			
 			i--;
-        }
+        }       
     }
 
     private void MoveAndTurnCardsBack()
@@ -431,25 +416,10 @@ public class CmdComposite : Cmd
     /// </summary>
     public override void Execute(bool immediate = true)
     {
-
-        // TODO Siirsin unexecuteen
-
-        //m_reversed = new List<Cmd>();
-
-        //m_reversed.AddRange(Commands);
-
-        //m_reversed.Reverse();
-
-        //            if (BeforeExecute != null)
-        //                BeforeExecute(this);
-
         foreach (Cmd cmd in Commands)
         {
             cmd.Execute(immediate);
         }
-
-        //            if (AfterExecute != null)
-        //                AfterExecute(this);
     }
 
     public override void Unexecute()
@@ -459,31 +429,7 @@ public class CmdComposite : Cmd
         {
             Commands[i].Unexecute();
         }
-
-
     }
-
-    /// <summary>
-    /// Unexecutes a command.
-    /// </summary>
-    /*public override void Unexecute()
-    {
-        m_reversed = new List<Cmd>();
-        m_reversed.AddRange(Commands);
-
-        m_reversed.Reverse();
-
-//            if (BeforeUnexecute != null)
-//                BeforeUnexecute(this);
-
-        foreach (Cmd cmd in Reversed)
-        {
-            cmd.Unexecute();
-        }
-
-//            if (AfterUnexecute != null)
-//                AfterUnexecute(this);
-    }*/
 
     #endregion  // Methods
 }
