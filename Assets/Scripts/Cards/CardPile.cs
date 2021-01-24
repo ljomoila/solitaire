@@ -156,6 +156,9 @@ public class CardPile : MonoBehaviour
 	
 	public void Clear()
     {
+		CardZ = 0;
+		NextPos = Vector3.zero;
+
 		Unhighlight();
 
 		List<Card> cardsToRemove = new List<Card>(cards);

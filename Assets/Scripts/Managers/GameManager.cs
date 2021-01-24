@@ -4,12 +4,12 @@ using System.Xml.Linq;
 
 public class GameManager : MonoBehaviour
 {
-	public SolitaireGame activeGame;
+	public Game activeGame;
+	public Menu menu;
 	public GameTime gameTime;
 
 	public static GameManager Instance;
 
-	private CardSelectionState cardSelectionState;
 	private HintState hintState;
 
 	private CommandHistory commandHistory;
@@ -31,17 +31,29 @@ public class GameManager : MonoBehaviour
 	public IEnumerator Initialize()
     {
 		XDocument storedGameState = StorageManager.Instance.LoadStoredState();
+		yield return null;
 
-		yield return StartCoroutine(activeGame.Initialize());
+		string viewType = "game";// storedGameState != null ? storedGameState.Root.Element("view").Value : "game";
 
-        if (storedGameState != null)
+		if (viewType.Equals("menu"))
+			StateManager.Instance.ActivateState(menu);
+		else if (viewType.Equals("game"))
         {
-            yield return StartCoroutine(RestoreGame(storedGameState));
-        }
-        else
-        {
-            yield return StartCoroutine(StartGame());
-        }
+			yield return StartCoroutine(activeGame.Initialize(storedGameState));
+			StateManager.Instance.ActivateState(activeGame);			
+		}
+			
+
+		//yield return StartCoroutine(activeGame.Initialize());
+
+  //      if (storedGameState != null)
+  //      {
+  //          yield return StartCoroutine(RestoreGame(storedGameState));
+  //      }
+  //      else
+  //      {
+  //          yield return StartCoroutine(StartGame());
+  //      }
     }
 
 	IEnumerator StartGame()
@@ -50,30 +62,14 @@ public class GameManager : MonoBehaviour
 
 		commandHistory.Clear();
 
-		StateManager.Instance.ActivateState(activeGame.DealState);
+		yield return StartCoroutine(activeGame.DealState.DoDeal());
+		StateManager.Instance.ActivateState(activeGame);
 
 		yield return null;
 
-		ActivateCardSelectionState();
+		//ActivateCardSelectionState();
 
-		yield return null;
-	}
-
-	IEnumerator RestoreGame(XDocument storedGameState)
-	{
-		gameTime.Time = float.Parse(storedGameState.Root.Element("time").Value);
-
-		yield return StartCoroutine(activeGame.RestoreState(storedGameState));
-
-		ActivateCardSelectionState();
-	}
-
-	private void ActivateCardSelectionState()
-	{
-		if (cardSelectionState == null)
-			cardSelectionState = new GameObject("CardSelectionState").AddComponent<CardSelectionState>();
-
-		StateManager.Instance.ActivateState(cardSelectionState);
+		//yield return null;
 	}
 
 	void Update()

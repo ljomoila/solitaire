@@ -8,7 +8,7 @@ public class DeckMaker : MonoBehaviour
 	public Card card;
 	public CardPile deck;
 
-	public SolitaireGame game;
+	public Game game;
 	
 	float yStep = 0.1535f;
 	float xStep = 0.06257325f;

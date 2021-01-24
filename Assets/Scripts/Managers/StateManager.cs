@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Xml.Linq;
+using UnityEngine;
 
 public class StateManager : MonoBehaviour, IBackButtonListener
 {
@@ -20,7 +21,6 @@ public class StateManager : MonoBehaviour, IBackButtonListener
         if (activeState != null)
         {
             activeState.OnDeactivateState();
-            deactivating = true;
 
             s.previousState = activeState;
         }
@@ -39,8 +39,6 @@ public class StateManager : MonoBehaviour, IBackButtonListener
 
         return true;
     }
-
-    public bool deactivating = false;
 
     // Update is called once per frame
     void Update()

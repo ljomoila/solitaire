@@ -5,16 +5,21 @@ using UnityEngine;
 public class DealState : StateBase
 {
     public CardPile deck;
+    public Game game;
 
-    public override void OnActivateState()
-    {
-        this.deck = GameManager.Instance.activeGame.stock;
+    //public override void OnActivateState()
+    //{
+    //    this.game = gameObject.GetComponent<Game>();
+    //    this.deck = game.stock;
 
-        StartCoroutine(DoDeal());
-    }
+    //    StartCoroutine(DoDeal());
+    //}
 
     public IEnumerator DoDeal()
     {
+        this.game = gameObject.GetComponent<Game>();
+        this.deck = game.stock;
+
         yield return StartCoroutine(GatherDeck());
 
         yield return StartCoroutine(Shuffle());
@@ -33,9 +38,6 @@ public class DealState : StateBase
 
         foreach (CardPile pile in piles)
         {
-            if (pile == null)
-                continue;
-
             foreach (Card c in pile.cards)
             {
                 if (c != null)
@@ -43,14 +45,12 @@ public class DealState : StateBase
                     c.Turn(true);
                     deck.AddCard(c);
                 }
-            }
-            pile.CardZ = 0;
-            pile.NextPos = Vector3.zero;
+            }            
             pile.Clear();
         }
 
         deck.AlignCards();
-        GameManager.Instance.activeGame.stock = deck;
+        game.stock = deck;
 
         yield return null;
     }

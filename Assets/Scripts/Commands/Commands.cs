@@ -4,22 +4,19 @@ using System.Collections.Generic;
 public class CmdDrawCards : Cmd
 {
     int drawAmount = 0;
-    SolitaireGame game = null;
 
     CardPile stock = null;
     CardPile waste = null;
 
     bool turnStock = false;
 
-    public CmdDrawCards(SolitaireGame game, int drawAmount, string desc = ""):base(desc)
+    public CmdDrawCards(Game game, int drawAmount, string desc = ""):base(desc)
     {
         this.drawAmount = drawAmount;
 
         stock = game.stock;
         waste = game.Waste;
         turnStock = CollectCardPickInfo() ? false : true;
-       
-        GameManager.Instance.StoreCommand(this);
     }
 
     List<PickedCard> cardInfos = new List<PickedCard>();
@@ -119,8 +116,6 @@ public class CmdDrawCards : Cmd
 
     private void MoveAndTurnCardsBack()
     {
-		Debug.Log("MoveAndTurnCardsBack cardInfos count: "+cardInfos.Count);
-		
         for (int i = cardInfos.Count-1; i >= 0; i--)
 		{
             Card card = cardInfos[i].Card;

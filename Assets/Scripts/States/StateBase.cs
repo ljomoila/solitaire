@@ -9,6 +9,12 @@ public class StateBase : MonoBehaviour
 
 	}
 
+
+	public virtual void OnActivateState(StateBase parentState)
+	{
+
+	}
+
 	public virtual void OnDeactivateState()
 	{
 

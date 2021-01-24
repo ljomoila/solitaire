@@ -38,7 +38,7 @@ public class StorageManager : MonoBehaviour
 
 	public void StoreState()
 	{
-		SolitaireGame activeGame = GameManager.Instance.activeGame;
+		Game activeGame = GameManager.Instance.activeGame;
 
 		XmlWriterSettings s = new XmlWriterSettings();
 		s.Indent = true;
@@ -52,8 +52,7 @@ public class StorageManager : MonoBehaviour
 			w.WriteStartDocument();
 			w.WriteStartElement("game");
 
-			// TODO menu/game state
-			//w.WriteElementString("viewType", StateManager.Instance.activeState is MenuState ? "menu" : "game");
+			w.WriteElementString("viewType", StateManager.Instance.activeState is Menu ? "menu" : "game");
 			w.WriteElementString("time", GameManager.Instance.gameTime.Time.ToString());
 			w.WriteElementString("type", activeGame.gameType.ToString());
 

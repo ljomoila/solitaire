@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
 
-public class Klondyke : SolitaireGame
+public class Klondyke : Game
 {
 	// TODO position piles according to camera position, no need for these after that
 	public Transform wasteHolder, pileauHolder, foundHolder;
@@ -22,7 +22,7 @@ public class Klondyke : SolitaireGame
 		DealState = gameObject.AddComponent<DealStateKlondyke>();
     }
 
-    public override IEnumerator Initialize()
+    public override IEnumerator SetupTable()
 	{
 		Waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
 		Waste.transform.parent = transform;

@@ -10,7 +10,7 @@ public class DealStateKlondyke : DealState
 
     public override IEnumerator Deal()
     {
-        List<CardPile> piles = GameManager.Instance.activeGame.TableauPiles;
+        List<CardPile> piles = game.TableauPiles;
 
         float dealTime = 0;
         int pileCount = 0;
@@ -39,7 +39,7 @@ public class DealStateKlondyke : DealState
             dealTime = i * animTime;
         }
 
-        GameManager.Instance.activeGame.stock = deck;
+        game.stock = deck;
 
         // TODO Turn while throwing
         yield return StartCoroutine(TurnLastCards(piles, dealTime));

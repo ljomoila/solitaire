@@ -5,7 +5,7 @@ public class HintState : StateBase
 {
     public override void OnActivateState()
     {
-		SolitaireGame activeGame = GameManager.Instance.activeGame;
+		Game activeGame = GameManager.Instance.activeGame;
 		List<Card> hintCards = new List<Card>();
 		bool hintShown = false;
 
