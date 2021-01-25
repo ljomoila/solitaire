@@ -16,10 +16,9 @@ public class DealStateGolf : DealState
 		{
 			Card card = deck.GetFirstCard();
 			card.pile = piles[pileIndex];
-			card.transform.parent = card.pile.transform;
-			card.Turn(false, animTime);
 
-			card.pile.AddCardDeal(card, animTime, dealTime);
+			DealCard(card, animTime, dealTime);
+			card.Turn(false, animTime);
 
 			yield return new WaitForSeconds(.1f);			
 

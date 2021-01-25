@@ -16,12 +16,11 @@ public class DealStateKlondyke : DealState
 		{
 			Card card = deck.GetFirstCard();
 			card.pile = piles[pileIndex];
-			card.transform.parent = card.pile.transform;
 
 			//if (turn)
 			//	card.Turn(false, .5f);
 
-			card.pile.AddCardDeal(card, .5f, dealTime);
+			DealCard(card, .5f, dealTime);
 
 			yield return new WaitForSeconds(dealTime);
 

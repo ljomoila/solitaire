@@ -127,7 +127,7 @@ public class CardSelectionState : StateBase
 
         foreach (Card c in pile.cards)
         {
-            pile.AddCard(c, .5f, 0);
+            pile.AddCard(c, .5f);
         }
 
         pile.AlignCards();

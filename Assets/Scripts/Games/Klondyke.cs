@@ -37,9 +37,7 @@ public class Klondyke : Game
 		
 		PileSlot wasteSlot = Instantiate(pileSlot, Waste.transform.position, Quaternion.identity, Waste.transform);
 		wasteSlot.Initialize(Waste);
-		
-		TableauPiles = new List<CardPile>();
-		
+
 		for (int i = 0; i < 7; i++)
         {
 			CardPile pile = new GameObject("KlondykeTableu " + i).AddComponent<CardPile>();
@@ -58,8 +56,6 @@ public class Klondyke : Game
 			
 			Piles.Add(pile);
 		}
-
-		foundations = new List<CardPile>();
 
 		for (int i = 0; i < 4; i++)
 		{

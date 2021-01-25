@@ -100,6 +100,16 @@ public class DealState : StateBase
         }
     }
 
+    public void DealCard(Card card, float time, float delay)
+    {
+        CardPile pile = card.pile;       
+
+        iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(pile.NextPos.x, pile.NextPos.y, pile.NextPos.z), "time", time, "delay", delay, "isLocal", true));
+
+        pile.AddCard(card);
+
+    }
+
     public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)
     {
         foreach (CardPile pileau in piles)

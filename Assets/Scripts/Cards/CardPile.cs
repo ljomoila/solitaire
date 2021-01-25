@@ -13,8 +13,8 @@ public class CardPile : MonoBehaviour
 	public float CardZ { get; set; }
     public Suit Suit { get; set; }
 
-	private Vector2 nextPos;
-	public Vector2 NextPos
+	private Vector3 nextPos;
+	public Vector3 NextPos
 	{
 		get { return nextPos; }
 		set
@@ -36,18 +36,14 @@ public class CardPile : MonoBehaviour
 		card.transform.parent = transform;
 		card.gameObject.layer = 9; // TODO naming
 
+		nextPos.x += card.IsTurned() ? xStepTurned : xStep;
+		nextPos.y -= card.IsTurned() ? yStepTurned : yStep;
+		nextPos.z -= zStep;
+
 		iTween.RotateTo(card.gameObject, iTween.Hash("rotation", Vector3.zero, "time", 0));
 	}
 
-	public void AddCard(List<Card> cards)
-	{
-		foreach (Card card in cards)
-		{
-			AddCard(card);
-		}
-	}
-
-	public virtual void AddCard(Card card, float time, float delay)
+	public virtual void AddCard(Card card, float time, float delay = 0)
 	{
 		AddCard (card);
 
@@ -57,18 +53,6 @@ public class CardPile : MonoBehaviour
 		
 		if (time > 0)
 			card.Leave();
-	}
-	
-	public void AddCardDeal(Card card, float time, float delay)
-	{
-		AddCard (card);
-		
-		iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(NextPos.x, NextPos.y, CardZ), "time", time, "delay", delay, "isLocal", true));
-
-		nextPos.x += card.IsTurned() ? xStepTurned : xStep;
-		nextPos.y -= card.IsTurned() ? yStepTurned : yStep;
-		
-		CardZ -= zStep;
 	}
 	
 	public bool IsEmpty
@@ -114,7 +98,7 @@ public class CardPile : MonoBehaviour
 
     public virtual void AlignCards()
     {
-        AlignCards(0, 0);
+        AlignCards(0, 0, 0);
     }
 
     internal void AlignCards(float delay, int startIndex)
