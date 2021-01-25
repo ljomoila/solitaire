@@ -20,12 +20,6 @@ public class Klondyke : Game
 		hintState = gameObject.AddComponent<HintKlondyke>();
     }
 
-    private void Start()
-    {
-		gameType = GameType.Klondyke;
-		stockDrawAmount = 3;
-    }
-
     public override IEnumerator Initialize()
 	{ 		Waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
 		Waste.transform.parent = transform;
@@ -95,7 +89,7 @@ public class Klondyke : Game
         {
             selection = SelectFromPiles(c, foundations);
         }
-        else // tableu piles
+        else if (pile.Type == PileType.Tableau)
 		{
 			selection = SelectFromPiles(c, TableauPiles);
 			
@@ -156,10 +150,8 @@ public class Klondyke : Game
 
 			MoveCards(movedCards, sourcePile, toPile);
 
-			if (sourcePile.Type == PileType.Tableau)
+			if (sourcePile.Type == PileType.Tableau && sourcePile.cards.Count > 0)
 				TurnCard(sourcePile.GetLastCard());
-
-			//TurnLastTableauCards();
 		}
 
 		return movedCards.Count > 0;

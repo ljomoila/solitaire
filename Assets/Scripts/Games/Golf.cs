@@ -19,12 +19,6 @@ public class Golf : Game
 		hintState = gameObject.AddComponent<HintGolf>();
 	}
 
-	private void Start()
-    {
-		gameType = GameType.Golf;
-		stockDrawAmount = 1;
-    }
-
     public override IEnumerator Initialize()
 	{
 		Waste = new GameObject("GolfWaste").AddComponent<CardPile>();
@@ -90,6 +84,9 @@ public class Golf : Game
 			if (IsHintActive()) return true;
 
 			MoveCards(new List<Card> { card }, card.pile, Waste);
+
+			// TODO effect
+			//NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
 
 			if (Waste.cards.Count == 52)
 				State = GameState.Solved;

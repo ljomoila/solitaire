@@ -15,8 +15,6 @@ public class Game : StateBase
 
     public GameState State { get; set; } = GameState.Playing;
 
-	public int stockDrawAmount = 3;
-
 	public List<Cmd> commands = new List<Cmd>();
 
     public CardSelectionState cardSelectionState;
@@ -24,7 +22,17 @@ public class Game : StateBase
     public DealState dealState;
     public HintState hintState;
 
-	public virtual IEnumerator Initialize()
+    public override void OnActivateState()
+    {
+        stock.gameObject.SetActive(true);
+    }
+
+    public override void OnDeactivateState()
+    {
+        stock.gameObject.SetActive(false);
+    }
+
+    public virtual IEnumerator Initialize()
     {
 		yield return null;
     }
