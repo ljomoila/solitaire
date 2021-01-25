@@ -76,7 +76,7 @@ public class Klondyke : Game
 		yield return null;
 	}
 
-	public override List<Card> Select(Card c)
+	public override List<Card> SelectCards(Card c)
 	{
 		CardPile pile = c.pile;
 		List<Card> selection = new List<Card>();
@@ -132,7 +132,7 @@ public class Klondyke : Game
 		return selection;
 	}
 
-	public override bool TryMove(CardPile toPile, SelectionPile selectionPile = null)
+	public override bool TryMoveToPile(CardPile toPile, SelectionPile selectionPile = null)
 	{
 		CardPile sourcePile = selectionPile.sourcePile;
 		List<Card> cards = selectionPile.cards;
@@ -160,8 +160,9 @@ public class Klondyke : Game
             {
 				movedCards.Add(selectedCard);
 
-				if (!hintMode)
-					NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
+				if (hintMode) return true;
+
+				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
 			}
 		}		
 		else if (toPile.Type == PileType.Tableau)
@@ -196,22 +197,19 @@ public class Klondyke : Game
 				}
             }
 		}	
-		if (movedCards.Count > 0)
+		if (movedCards.Count > 0 && hintMode)
 		{
-			if (hintMode) return true;
-
 			commands.Clear();
 
 			MoveCards(movedCards, sourcePile, toPile);
-			UpdateTableuPiles();
 
-			GameManager.Instance.StoreCommand(new CmdComposite(commands));
+			TurnLastTableauCards();
 		}
 
 		return movedCards.Count > 0;
 	}
 
-	void UpdateTableuPiles()
+	void TurnLastTableauCards()
     {
         // Turn last cards after movement
         foreach (CardPile pile in TableauPiles)
@@ -352,7 +350,7 @@ public class Klondyke : Game
 
 			foreach (CardPile toPile in Piles)
 			{
-				if (TryMove(toPile, hintPile))
+				if (TryMoveToPile(toPile, hintPile))
 				{
 					ShowHint(GetHintCards(hintCards[0].pile));
 					hintShown = true;

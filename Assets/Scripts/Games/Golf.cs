@@ -55,7 +55,7 @@ public class Golf : Game
 		yield return null;
 	}
 
-	public override List<Card> Select(Card card)
+	public override List<Card> SelectCards(Card card)
 	{
 		CardPile pile = card.pile;
 
@@ -65,13 +65,13 @@ public class Golf : Game
 		} 
         else if (pile.Type == PileType.Tableau)
 		{
-			TryMove(card.pile);
+			TryMoveToPile(card.pile);
 		}
 
 		return null;
 	}
 
-	public override bool TryMove(CardPile pile, SelectionPile selectionPile = null)
+	public override bool TryMoveToPile(CardPile pile, SelectionPile selectionPile = null)
 	{
 		Card card = pile.GetLastCard();
 		Card lastWasteCard = Waste.GetLastCard();
@@ -189,7 +189,7 @@ public class Golf : Game
 
 		foreach (CardPile pile in TableauPiles)
 		{
-			if (TryMove(pile))
+			if (TryMoveToPile(pile))
 			{
 				ShowHint(pile.GetLastCard());
 				break;

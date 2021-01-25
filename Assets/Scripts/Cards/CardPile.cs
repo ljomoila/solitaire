@@ -219,7 +219,7 @@ public class CardPile : MonoBehaviour
 		return card;
 	}
 
-	internal void Unhighlight()
+	public void Unhighlight()
     {
 		if (slot == null)
 			return;
@@ -227,7 +227,7 @@ public class CardPile : MonoBehaviour
 		slot.Unhighlight();
     }
 
-    internal void Highlight()
+    public void Highlight()
     {
 		if (slot == null)
 			return;

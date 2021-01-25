@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -18,18 +19,10 @@ public class Game : StateBase
 
 	public List<Cmd> commands = new List<Cmd>();
 
-    public SelectionPile selectionPile;
-
-    private Vector3 startHit = Vector3.zero;
-
-    private float pileDraggingFactor = 10;
     public bool hintMode = false;
 
-    public override void OnActivateState()
-    {
-        if (selectionPile == null)
-		    selectionPile = new GameObject("SelectionPile").AddComponent<SelectionPile>();
-    }
+    public CardSelectionState cardSelectionState;
+
 
     public virtual IEnumerator Initialize(XDocument storedGameState)
 	{
@@ -64,11 +57,16 @@ public class Game : StateBase
 
     public override void UpdateState()
     {
-        RaycastHit hit = new RaycastHit();
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        TrySelection();
+    }
 
-        if (Input.GetMouseButtonDown(0)) // try selection
+    void TrySelection()
+    {
+        if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit hit = new RaycastHit();
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 Card c = hit.collider.gameObject.GetComponent<Card>();
@@ -77,127 +75,36 @@ public class Game : StateBase
                 if (c == null || tweens.Length > 0)
                     return;
 
-                startHit = hit.point;
-
-                SetSelection(Select(c));
+                SetSelectionPile(SelectCards(c), hit.point);
             }
-        }
-
-        if (selectionPile == null || selectionPile.IsEmpty) return;
-
-        if (Input.GetMouseButton(0)) // dragging pile
-        {
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                Vector3 pos = hit.point - startHit;
-                pos.z = -0.5f;
-
-                selectionPile.transform.position = Vector3.Lerp(selectionPile.transform.position, pos, Time.deltaTime * pileDraggingFactor);
-            }
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 9))
-            {
-                Card c = hit.collider.gameObject.GetComponent<Card>();
-
-                if (c != null && c.pile != null && c.pile != selectionPile)
-                {
-                    CardPile pile = c.pile;
-
-                    foreach (CardPile p in Piles)
-                    {
-                        if (p == pile)
-                            p.Highlight();
-                        else
-                            p.Unhighlight();
-                    }
-                }
-            }
-        }
-        if (Input.GetMouseButtonUp(0)) // try move to target pile
-        {
-            bool successfullMove = false;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 9))
-            {
-                Card c = hit.collider.gameObject.GetComponent<Card>();
-
-                if (c != null && c.pile != null && c.pile != selectionPile)
-                    successfullMove = TryMove(c.pile);
-            }
-
-            if (!successfullMove)
-                CancelMove();
-            else
-                Reset();
         }
     }
 
-    void SetSelection(List<Card> cards)
+    private void SetSelectionPile(List<Card> cards, Vector3 hitPoint)
     {
         if (cards == null || cards.Count == 0)
             return;
 
-        selectionPile.transform.position = cards[0].transform.position;
-        selectionPile.sourcePile = cards[0].pile;
-        selectionPile.yStep = cards[0].pile.yStep;
+        if (cardSelectionState == null)
+            cardSelectionState = new GameObject("CardSelectionState").AddComponent<CardSelectionState>();
 
-        int i = 0;
-        foreach (Card card in cards)
-        {
-            selectionPile.AddCard(card);
-            card.Pick(i);
+        cardSelectionState.Initialize(this, cards, hitPoint);
 
-            i++;
-        }
-
-        selectionPile.AlignCards();
-
-        startHit.y -= cards[0].transform.position.y;
-        startHit.x -= cards[0].transform.position.x;
-        startHit.z = 0;
-
-        AudioController.Play("cardSlide");
+        StateManager.Instance.ActivateState(cardSelectionState);
+        
     }
 
-    void CancelMove()
-    {
-        CardPile toPile = selectionPile.sourcePile;
-
-        selectionPile.cards[0].Leave();
-
-        foreach (Card c in selectionPile.cards)
-        {
-            toPile.AddCard(c, .5f, 0);
-        }
-
-        toPile.AlignCards();
-
-        Reset();
-    }
-
-    void Reset()
-    {
-        foreach (CardPile pile in Piles)
-        {
-            pile.Unhighlight();
-        }
-
-        selectionPile.Clear();
-
-        AudioController.Play("cardSlide");
-    }
-
-    public virtual List<Card> Select(Card card)
+    public virtual List<Card> SelectCards(Card card)
 	{
 		return null;
 	}
 
-    public bool TryMove(CardPile toPile)
+    public virtual bool TryMoveToPile(CardPile toPile)
     {
-        return TryMove(toPile, selectionPile);
+        return TryMoveToPile(toPile, null);
     }
 
-    public virtual bool TryMove(CardPile toPile, SelectionPile sourcePile)
+    public virtual bool TryMoveToPile(CardPile toPile, SelectionPile selectionPile)
 	{
 		return false;
 	}
@@ -333,7 +240,8 @@ public class Game : StateBase
 	{
 		CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
 		cmd.Execute(false);
-		GameManager.Instance.StoreCommand(cmd);
+
+		CommandManager.Instance.StoreCommand(cmd);
 	}
 
 	public virtual void MoveCards(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
@@ -341,14 +249,18 @@ public class Game : StateBase
 		CmdMoveCards cmd = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
         cmd.Execute(false);
 		commands.Add(cmd);
-	}
+
+        CommandManager.Instance.StoreCommand(new CmdComposite(commands));
+    }
 
 	public virtual void TurnCard(Card card)
 	{
 		CmdTurnCard cmd = new CmdTurnCard(card, "Turn card") { Animate = true };
         cmd.Execute(false);
 		commands.Add(cmd);
-	}
+
+        CommandManager.Instance.StoreCommand(new CmdComposite(commands));
+    }
 }
 
 public enum GameType

@@ -179,8 +179,6 @@ public class CmdMoveCards : Cmd
 		this.toPile = toPile;
 		this.fromPile = fromPile;
 		this.cards = cards;
-
-        GameManager.Instance.StoreCommand(this);
     }
 	
 	public override void Execute (bool immediate = true)

@@ -2,29 +2,16 @@
 using System.Xml.Linq;
 using UnityEngine;
 
-public class StorageManager : MonoBehaviour
+public class StorageManager
 {
     private static string filename = "gameState.xml";
 
-    private static StorageManager _instance;
-    public static StorageManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new GameObject("StorageManager").AddComponent<StorageManager>();                
-            }
-            return _instance;
-        }
-    }
-
-	string GetFilePath()
+	private static string GetFilePath()
     {
 		return Application.persistentDataPath + "/" + filename;
 	}
 
-    public XDocument LoadStoredState()
+    public static XDocument LoadStoredState()
     {
 		string filePath = GetFilePath();
 
@@ -36,7 +23,7 @@ public class StorageManager : MonoBehaviour
         return null;
     }
 
-	public void StoreState()
+	public static void StoreState()
 	{
 		Game activeGame = GameManager.Instance.activeGame;
 

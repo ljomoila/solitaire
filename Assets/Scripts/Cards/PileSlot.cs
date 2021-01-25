@@ -7,12 +7,19 @@ public class PileSlot : MonoBehaviour
 
 	public SpriteRenderer border;
 
+	private MaterialPropertyBlock propertyBlock;
+
 	void Awake()
     {
-		Unhighlight();
+		propertyBlock = new MaterialPropertyBlock();
     }
 
-	public void Initialize(CardPile pile)
+    private void Start()
+    {
+		Unhighlight();
+	}
+
+    public void Initialize(CardPile pile)
 	{		
 		gameObject.SetActive(true);
 
@@ -22,15 +29,21 @@ public class PileSlot : MonoBehaviour
 
 	internal void Unhighlight()
 	{
-		Color c = border.color;
-		c.a = .3f;
-		border.color = c;
+		SetColor(.3f);
 	}
 
 	internal void Highlight()
 	{
+		SetColor(1f);
+	}
+
+	private void SetColor(float alpha)
+    {
 		Color c = border.color;
-		c.a = 1f;
-		border.color = c;
+		c.a = alpha;
+
+		border.GetPropertyBlock(propertyBlock);
+		propertyBlock.SetColor("_Color", c);
+		border.SetPropertyBlock(propertyBlock);
 	}
 }

@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
 	public Menu menu;
 	public GameTime gameTime;
 
-	public static GameManager Instance;
-
 	private CommandHistory commandHistory;
+
+	public static GameManager Instance { get; private set; }
 
 	void Awake()
 	{
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
 	public IEnumerator Initialize()
     {
-		XDocument storedGameState = StorageManager.Instance.LoadStoredState();
+		XDocument storedGameState = StorageManager.LoadStoredState();
 		yield return null;
 
 		string viewType = "game";// storedGameState != null ? storedGameState.Root.Element("view").Value : "game";
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
 	{
 		Debug.Log("OnApplicationQuit");
 
-		StorageManager.Instance.StoreState();
+		StorageManager.StoreState();
 	}
 
 	#region GameMenu
@@ -79,29 +79,5 @@ public class GameManager : MonoBehaviour
 	{
 		activeGame.HintRequest();
 	}
-
     #endregion
-
-	#region CommandHistory
-	public void StoreCommand(Cmd cmd)
-	{
-		commandHistory.StoreCommand(cmd);
-	}
-
-	public void Undo()
-	{
-		if (commandHistory.UndoDescription != "N/A")
-		{
-			commandHistory.Undo();
-		}
-	}
-
-	public void Redo()
-	{
-		if (commandHistory.RedoDescription != "N/A")
-		{
-			commandHistory.Redo();
-		}
-	}
-	#endregion
 }
