@@ -14,6 +14,12 @@ public class Klondyke : Game
 
 	public float xStep = 3.5f;
 
+    private void Awake()
+    {
+		dealState = gameObject.AddComponent<DealStateKlondyke>();
+		hintState = gameObject.AddComponent<HintKlondyke>();
+    }
+
     private void Start()
     {
 		gameType = GameType.Klondyke;
@@ -83,7 +89,7 @@ public class Klondyke : Game
 
         if (pile.Type == PileType.Stock)
         {
-			DrawCards();
+			DrawCards(3);
 		} 
         else if (pile.Type == PileType.Waste)
 		{
@@ -140,7 +146,7 @@ public class Klondyke : Game
 		// Try foundation
 		if (cards.Count == 1 && toPile == sourcePile)
 			toPile = foundations[(int)cards[0].suit];
-		
+
 		List<Card> movedCards = new List<Card>();
 
 		if (toPile.Type == PileType.Foundation)
@@ -148,7 +154,7 @@ public class Klondyke : Game
 			if (cards.Count > 1)
 				return false;
 
-            Card selectedCard = cards[0];
+			Card selectedCard = cards[0];
 			Card lastCard = toPile.GetLastCard();
 
 			if (lastCard != null && lastCard.suit != selectedCard.suit)
@@ -156,19 +162,19 @@ public class Klondyke : Game
 
 			int lastCardNum = lastCard != null ? lastCard.number : 0;
 
-            if (selectedCard.number == lastCardNum + 1)
-            {
+			if (selectedCard.number == lastCardNum + 1)
+			{
 				movedCards.Add(selectedCard);
 
-				if (hintMode) return true;
+				if (IsHintActive()) return true;
 
 				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
 			}
-		}		
+		}
 		else if (toPile.Type == PileType.Tableau)
 		{
-			foreach(CardPile tableauPile in TableauPiles)			
-            {
+			foreach (CardPile tableauPile in TableauPiles)
+			{
 				if (toPile != tableauPile) continue;
 
 				Card firstCard = cards[0];
@@ -176,28 +182,28 @@ public class Klondyke : Game
 
 				if (toPile.cards.Count == 0 && firstCard.number == 13)
 				{
-					move = true;				
+					move = true;
 				}
 				else
 				{
-					Card lastPileCard = tableauPile.GetLastCard();	
+					Card lastPileCard = tableauPile.GetLastCard();
 
-					if (lastPileCard == null) continue;				
+					if (lastPileCard == null) continue;
 
 					if (lastPileCard.number - firstCard.number == 1 && Card.IsDifferentSuit(firstCard, lastPileCard))
-						move = true;				
+						move = true;
 				}
-				if (move) 
+				if (move)
 				{
-					foreach(Card c in cards)
+					foreach (Card c in cards)
 					{
 						movedCards.Add(c);
 					}
 					break;
 				}
-            }
-		}	
-		if (movedCards.Count > 0 && hintMode)
+			}
+		}
+		if (movedCards.Count > 0 && !IsHintActive())
 		{
 			commands.Clear();
 
@@ -209,19 +215,6 @@ public class Klondyke : Game
 		return movedCards.Count > 0;
 	}
 
-	void TurnLastTableauCards()
-    {
-        // Turn last cards after movement
-        foreach (CardPile pile in TableauPiles)
-        {
-            Card lastCard = pile.GetLastCard();
-
-            if (lastCard != null && lastCard.IsTurned())
-            {
-				TurnCard(lastCard);
-            }
-        }
-    }
 	public override IEnumerator RestoreState(XDocument xdoc)
 	{
 		XElement piles = xdoc.Root.Element("piles");
@@ -281,109 +274,4 @@ public class Klondyke : Game
 		yield return null;
 	}
 
-	public override IEnumerator Deal()
-	{
-		List<CardPile> piles = TableauPiles;
-
-		float dealTime = 0;
-		int pileCount = 0;
-		int j = 0;
-
-		for (int i = 0; i < 28; i++)
-		{
-			Card card = stock.GetFirstCard();
-			card.pile = piles[pileCount];
-			card.transform.parent = card.pile.transform;
-
-			DealCard(card, dealTime);
-
-			yield return new WaitForSeconds(dealTime);
-
-			if (pileCount > 0 && pileCount % 6 == 0)
-			{
-				j++;
-				pileCount = j;
-			}
-			else
-			{
-				pileCount++;
-				AudioController.Play("cardSlide", 1, dealTime);
-			}
-			dealTime = i * 0.01f;
-		}
-
-		// TODO Turn while throwing
-		yield return StartCoroutine(TurnLastCards(piles, dealTime));
-	}
-
-	public override void HintRequest()
-	{
-		base.HintRequest();
-
-		List<Card> hintCards = new List<Card>();
-		bool hintShown = false;
-
-		foreach (CardPile pile in Piles)
-		{
-			if (hintShown) break;
-
-			hintCards.Clear();
-
-			foreach (Card card in pile.cards)
-			{
-				if (card.IsTurned()) continue;
-
-				hintCards.Add(card);
-
-				if (pile.Type == PileType.Waste)
-				{
-					hintCards.Clear();
-					hintCards.Add(pile.GetLastCard());
-				}
-			}
-
-			if (hintCards.Count == 0) continue;
-
-			SelectionPile hintPile = hintCards[0].pile.gameObject.AddComponent<SelectionPile>();
-			hintPile.cards = hintCards;
-			hintPile.sourcePile = pile;
-
-			foreach (CardPile toPile in Piles)
-			{
-				if (TryMoveToPile(toPile, hintPile))
-				{
-					ShowHint(GetHintCards(hintCards[0].pile));
-					hintShown = true;
-					break;
-				}
-			}
-		}
-
-		hintMode = false;
-	}
-
-	List<Card> GetHintCards(CardPile pile)
-	{
-		// no hint when theres only one card in foundation
-		if (pile.Type == PileType.Foundation && pile.cards.Count == 1)
-			return new List<Card>();
-
-		List<Card> hintCards = new List<Card>();
-
-		if (pile.Type == PileType.Tableau)
-		{
-			foreach (Card card in pile.cards)
-			{
-				if (card.IsTurned()) continue;
-
-				hintCards.Add(card);
-			}
-		}
-		else // waste or foundation
-		{
-			hintCards.Add(pile.GetLastCard());
-		}
-
-		return hintCards;
-	}
 }

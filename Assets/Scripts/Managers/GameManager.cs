@@ -43,15 +43,13 @@ public class GameManager : MonoBehaviour
 		}
     }
 
-	IEnumerator StartGame()
+	void StartGame()
 	{
 		gameTime.Time = 0;
 
-		commandHistory.Clear();
+		CommandManager.Instance.Clear();
 
-		yield return StartCoroutine(activeGame.DoDeal());
-
-		StateManager.Instance.ActivateState(activeGame);
+		activeGame.DealNewCards();
 	}
 
 	void OnApplicationQuit()
@@ -65,14 +63,14 @@ public class GameManager : MonoBehaviour
 
 	public void NewGame()
 	{
-		StartCoroutine(StartGame());
+		StartGame();
 	}
 
 	public void RestartGame()
 	{		
 		// TODO deck seed
 		
-		StartCoroutine(StartGame());
+		StartGame();
 	}
 
 	public void Hint()

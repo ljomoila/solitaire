@@ -19,10 +19,10 @@ public class Game : StateBase
 
 	public List<Cmd> commands = new List<Cmd>();
 
-    public bool hintMode = false;
-
     public CardSelectionState cardSelectionState;
 
+    public DealState dealState;
+    public HintState hintState;
 
     public virtual IEnumerator Initialize(XDocument storedGameState)
 	{
@@ -32,7 +32,7 @@ public class Game : StateBase
 
         if (storedGameState != null)
         {
-            GameType storedType = (GameType) System.Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value);
+            GameType storedType = (GameType) Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value);
 
             if (storedType == gameType)
             {
@@ -40,9 +40,9 @@ public class Game : StateBase
                 yield return StartCoroutine(RestoreState(storedGameState));
             }               
         }
-		
+
         if (deal)
-            yield return StartCoroutine(DoDeal());
+            DealNewCards();
 	}
 
 	public virtual IEnumerator SetupTable()
@@ -109,136 +109,39 @@ public class Game : StateBase
 		return false;
 	}
 
-    public IEnumerator DoDeal()
+    public void TurnLastTableauCards()
     {
-        yield return StartCoroutine(GatherDeck());
-
-        yield return StartCoroutine(Shuffle());
-
-        yield return StartCoroutine(Deal());
-    }
-
-    public virtual IEnumerator Deal()
-    {
-        yield return null;
-    }
-
-    private IEnumerator GatherDeck()
-    {
-        List<CardPile> piles = GameManager.Instance.activeGame.Piles;
-
-        foreach (CardPile pile in Piles)
+        foreach (CardPile pile in TableauPiles)
         {
-            foreach (Card c in pile.cards)
+            Card lastCard = pile.GetLastCard();
+
+            if (lastCard != null && lastCard.IsTurned())
             {
-                if (c != null)
-                {
-                    c.Turn(true);
-                    stock.AddCard(c);
-                }
+                TurnCard(lastCard);
             }
-            pile.Clear();
-        }
-
-        stock.AlignCards();
-
-        yield return null;
-    }
-
-    private IEnumerator Shuffle()
-    {
-        stock.Shuffle();
-        yield return null;
-
-        float t = .5f;
-
-        Split(t);
-        yield return new WaitForSeconds(t);
-
-        Bend();
-
-        yield return new WaitForSeconds(1f);
-        stock.AlignCards(t, 0, 0);
-
-        yield return new WaitForSeconds(.2f);
-    }
-
-    private void Bend()
-    {
-        AudioController.Play("shuffle");
-    }
-
-    private void Split(float animTime)
-    {
-        AudioController.Play("cardSlide");
-
-        for (int i = 0; i < stock.cards.Count; i++)
-        {
-            float moveAmount = 1.6f;
-            float rotateAmount = -150;
-
-            if (i % 2 == 0)
-            {
-                moveAmount = -moveAmount;
-                rotateAmount = -rotateAmount;
-            }
-
-            stock.cards[i].transform.Translate(0, 0, .45f);
-            iTween.MoveBy(stock.cards[i].gameObject, iTween.Hash("x", moveAmount, "time", animTime, "isLocal", true));
-            iTween.RotateTo(stock.cards[i].sprite.gameObject, iTween.Hash("z", rotateAmount, "time", animTime, "isLocal", true));
         }
     }
 
-    public void DealCard(Card card, float animTime)
+    public void DealNewCards()
     {
-        card.pile.AddCard(card);
+        dealState.Initialize(this);
 
-        Vector3 nextPos = card.pile.NextPos;
-
-        iTween.MoveTo(card.gameObject, iTween.Hash("position", nextPos, "time", 0.5f, "delay", animTime, "isLocal", true));
-
-        nextPos.x += card.IsTurned() ? card.pile.xStepTurned : card.pile.xStep;
-        nextPos.y -= card.IsTurned() ? card.pile.yStepTurned : card.pile.yStep;
-        nextPos.z -= card.pile.zStep;
-    }
-
-    public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)
-    {
-        foreach (CardPile pileau in piles)
-        {
-            Card c = pileau.GetLastCard();
-            c.Turn(false, .05f);
-        }
-        yield return new WaitForSeconds(delay);
-
-        AudioController.Play("cardSlide");
-
-        yield return null;
+        StateManager.Instance.ActivateState(dealState);
     }
 
     public virtual void HintRequest()
     {
-        hintMode = true;
+        StateManager.Instance.ActivateState(hintState);
     }
 
-    public virtual void ShowHint(Card card)
+    public bool IsHintActive()
     {
-        ShowHint(new List<Card> { card });
+        return StateManager.Instance.activeState == hintState;
     }
 
-    public virtual void ShowHint(List<Card> cards)
-    {
-        foreach (Card card in cards)
-        {
-            // TODO make one single animation
-            card.sprite.GetComponent<Animation>().Play("cardHint_01", AnimationPlayMode.Stop);
-            card.sprite.GetComponent<Animation>().Play("cardHint_01", AnimationPlayMode.Queue);
-        }
-    }
-
-    public virtual void DrawCards()
+    public virtual void DrawCards(int amount)
 	{
-		CmdDrawCards cmd = new CmdDrawCards(this, stockDrawAmount, "Stock draw");
+		CmdDrawCards cmd = new CmdDrawCards(this, amount, "Stock draw");
 		cmd.Execute(false);
 
 		CommandManager.Instance.StoreCommand(cmd);

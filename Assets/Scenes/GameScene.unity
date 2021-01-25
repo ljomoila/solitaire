@@ -116727,8 +116727,9 @@ MonoBehaviour:
   gameType: 3
   stock: {fileID: 656043567}
   stockDrawAmount: 1
-  selectionPile: {fileID: 0}
-  hintMode: 0
+  cardSelectionState: {fileID: 0}
+  dealState: {fileID: 0}
+  hintState: {fileID: 0}
   wasteHolder: {fileID: 959033936}
   pileauHolder: {fileID: 1913285265}
   pileSlot: {fileID: 2129557059}
@@ -117812,8 +117813,9 @@ MonoBehaviour:
   gameType: 0
   stock: {fileID: 732053298}
   stockDrawAmount: 3
-  selectionPile: {fileID: 0}
-  hintMode: 0
+  cardSelectionState: {fileID: 0}
+  dealState: {fileID: 0}
+  hintState: {fileID: 0}
   wasteHolder: {fileID: 1186920042}
   pileauHolder: {fileID: 236023952}
   foundHolder: {fileID: 769404319}

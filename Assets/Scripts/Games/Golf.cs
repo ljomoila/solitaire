@@ -13,7 +13,13 @@ public class Golf : Game
 
 	public float xStep = 3.5f;
 
-    private void Start()
+	private void Awake()
+	{
+		dealState = gameObject.AddComponent<DealStateGolf>();
+		hintState = gameObject.AddComponent<HintGolf>();
+	}
+
+	private void Start()
     {
 		gameType = GameType.Golf;
 		stockDrawAmount = 1;
@@ -61,7 +67,7 @@ public class Golf : Game
 
         if (pile.Type == PileType.Stock)
         {
-			DrawCards();
+			DrawCards(1);
 		} 
         else if (pile.Type == PileType.Tableau)
 		{
@@ -74,13 +80,13 @@ public class Golf : Game
 	public override bool TryMoveToPile(CardPile pile, SelectionPile selectionPile = null)
 	{
 		Card card = pile.GetLastCard();
-		Card lastWasteCard = Waste.GetLastCard();
+		Card lastWasteCard = Waste.GetLastCard();		
 
 		if (card == null || lastWasteCard == null) return false;
 
 		if (Math.Abs(lastWasteCard.number - card.number) == 1)
 		{
-			if (hintMode) return true;
+			if (IsHintActive()) return true;
 
 			MoveCards(new List<Card> { card }, card.pile, Waste);
 
@@ -147,55 +153,5 @@ public class Golf : Game
 		}
 		
 		yield return null;
-	}
-
-	public override IEnumerator Deal()
-	{
-		List<CardPile> piles = TableauPiles;
-
-		float dealTime = 0;
-
-		foreach (CardPile pile in piles)
-		{
-			for (int i = 0; i < 5; i++)
-			{
-				Card card = stock.GetFirstCard();
-				card.pile = pile;
-				card.transform.parent = pile.transform;
-
-				DealCard(card, dealTime);
-
-				yield return new WaitForSeconds(.1f);
-
-				card.Turn(false);
-
-				AudioController.Play("cardSlide", 1, dealTime);
-
-				yield return new WaitForSeconds(dealTime);
-
-				pile.AlignCards();
-
-				dealTime = i * 0.01f;
-			}
-		}
-
-		// Turn first card to waste
-		DrawCards();
-	}
-
-	public override void HintRequest()
-	{
-		base.HintRequest();
-
-		foreach (CardPile pile in TableauPiles)
-		{
-			if (TryMoveToPile(pile))
-			{
-				ShowHint(pile.GetLastCard());
-				break;
-			}
-		}
-
-		hintMode = false;
 	}
 }
