@@ -8,7 +8,7 @@ public class HintState : StateBase
 
     public override void OnActivateState()
     {
-        this.activeGame = GameManager.Instance.activeGame;
+        this.activeGame = GameManager.Instance.ActiveGame;
 
         TryShowingHint();
 

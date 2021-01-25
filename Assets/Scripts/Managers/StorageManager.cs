@@ -25,7 +25,7 @@ public class StorageManager
 
 	public static void StoreState()
 	{
-		Game activeGame = GameManager.Instance.activeGame;
+		Game activeGame = GameManager.Instance.ActiveGame;
 
 		XmlWriterSettings s = new XmlWriterSettings();
 		s.Indent = true;

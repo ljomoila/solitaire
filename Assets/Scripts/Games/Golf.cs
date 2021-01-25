@@ -25,7 +25,7 @@ public class Golf : Game
 		stockDrawAmount = 1;
     }
 
-    public override IEnumerator SetupTable()
+    public override IEnumerator Initialize()
 	{
 		Waste = new GameObject("GolfWaste").AddComponent<CardPile>();
 		Waste.transform.parent = transform;
@@ -65,6 +65,9 @@ public class Golf : Game
 
         if (pile.Type == PileType.Stock)
         {
+			if (stock.cards.Count == 0)
+				return null;            
+
 			DrawCards(1);
 		} 
         else if (pile.Type == PileType.Tableau)
@@ -89,10 +92,7 @@ public class Golf : Game
 			MoveCards(new List<Card> { card }, card.pile, Waste);
 
 			if (Waste.cards.Count == 52)
-			{
-				Debug.Log("Golf solved");
-				// TODO
-			}
+				State = GameState.Solved;
 
 			return true;
 		}

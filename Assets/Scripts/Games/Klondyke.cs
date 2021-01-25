@@ -10,7 +10,7 @@ public class Klondyke : Game
 	
 	public PileSlot pileSlot, foundationSlot;
 
-	private List<CardPile> foundations;
+	private List<CardPile> foundations = new List<CardPile>();
 
 	public float xStep = 3.5f;
 
@@ -26,9 +26,8 @@ public class Klondyke : Game
 		stockDrawAmount = 3;
     }
 
-    public override IEnumerator SetupTable()
-	{
-		Waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
+    public override IEnumerator Initialize()
+	{ 		Waste = new GameObject("KlondykeWaste").AddComponent<CardPile>();
 		Waste.transform.parent = transform;
 		Waste.transform.position = wasteHolder.position;
 		Waste.zStep = stock.zStep;
@@ -93,48 +92,45 @@ public class Klondyke : Game
 				selection = new List<Card>() { pile.GetLastCard() };            
         }		
 		else if (pile.Type == PileType.Foundation)
+        {
+            selection = SelectFromPiles(c, foundations);
+        }
+        else // tableu piles
 		{
-            foreach(CardPile foundation in foundations)
-            {
-				if (pile != foundation) continue;
-				
-				int startIndex = pile.cards.IndexOf(c);
-
-				for (int j = startIndex; j < pile.cards.Count; j++)
-				{
-					Card card = pile.GetCard(j);
-
-					if (card == null) continue;
-
-					if (!card.IsTurned())
-						selection.Add(card);					
-				}								
-            }
-		}
-		else // tableu piles
-		{
-            foreach(CardPile tableauPile in TableauPiles)
-            {
-				if (pile != tableauPile) continue;
-
-				int startIndex = pile.cards.IndexOf(c);
-
-				for (int j = startIndex; j < pile.cards.Count; j++)
-				{
-					Card card = pile.GetCard(j);
-
-					if (card == null) continue;
-
-					if (!card.IsTurned())
-						selection.Add(card);					
-				}				
-            } 
+			selection = SelectFromPiles(c, TableauPiles);
+			
 		}
 
 		return selection;
 	}
 
-	public override bool TryMoveToPile(CardPile toPile, SelectionPile selectionPile = null)
+    private List<Card> SelectFromPiles(Card card, List<CardPile> piles)
+    {
+		CardPile pile = card.pile;
+		List<Card> selection = new List<Card>();
+
+		foreach(CardPile p in piles)
+        {
+            if (pile != p) continue;
+
+            int startIndex = pile.cards.IndexOf(card);
+
+            for (int i = startIndex; i < pile.cards.Count; i++)
+            {
+                Card c = pile.GetCard(i);
+
+                if (c == null) continue;
+
+                if (!c.IsTurned())
+                    selection.Add(c);
+            }
+        }
+
+		return selection;
+    }
+
+
+    public override bool TryMoveToPile(CardPile toPile, SelectionPile selectionPile = null)
 	{
 		CardPile sourcePile = selectionPile.sourcePile;
 		List<Card> cards = selectionPile.cards;
@@ -147,71 +143,84 @@ public class Klondyke : Game
 
 		if (toPile.Type == PileType.Foundation)
 		{
-			if (cards.Count > 1)
-				return false;
-
-			Card selectedCard = cards[0];
-			Card lastCard = toPile.GetLastCard();
-
-			if (lastCard != null && lastCard.suit != selectedCard.suit)
-				return false;
-
-			int lastCardNum = lastCard != null ? lastCard.number : 0;
-
-			if (selectedCard.number == lastCardNum + 1)
-			{
-				movedCards.Add(selectedCard);
-
-				if (IsHintActive()) return true;
-
-				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
-			}
+			TryFoundationMove(toPile, cards, movedCards);
 		}
 		else if (toPile.Type == PileType.Tableau)
-		{
-			foreach (CardPile tableauPile in TableauPiles)
-			{
-				if (toPile != tableauPile) continue;
+        {
+            TryTableuMove(toPile, cards, movedCards);
+        }
 
-				Card firstCard = cards[0];
-				bool move = false;
-
-				if (toPile.cards.Count == 0 && firstCard.number == 13)
-				{
-					move = true;
-				}
-				else
-				{
-					Card lastPileCard = tableauPile.GetLastCard();
-
-					if (lastPileCard == null) continue;
-
-					if (lastPileCard.number - firstCard.number == 1 && Card.IsDifferentSuit(firstCard, lastPileCard))
-						move = true;
-				}
-				if (move)
-				{
-					foreach (Card c in cards)
-					{
-						movedCards.Add(c);
-					}
-					break;
-				}
-			}
-		}
-		if (movedCards.Count > 0 && !IsHintActive())
+        if (movedCards.Count > 0 && !IsHintActive())
 		{
 			commands.Clear();
 
 			MoveCards(movedCards, sourcePile, toPile);
 
-			TurnLastTableauCards();
+			if (sourcePile.Type == PileType.Tableau)
+				TurnCard(sourcePile.GetLastCard());
+
+			//TurnLastTableauCards();
 		}
 
 		return movedCards.Count > 0;
 	}
 
-	public override IEnumerator RestoreState(XDocument xdoc)
+	private void TryFoundationMove(CardPile toPile, List<Card> cards, List<Card> movedCards)
+	{
+		if (cards.Count > 1)
+			return;
+
+		Card selectedCard = cards[0];
+		Card lastCard = toPile.GetLastCard();
+
+		if (lastCard != null && lastCard.suit != selectedCard.suit)
+			return;
+
+		int lastCardNum = lastCard != null ? lastCard.number : 0;
+
+		if (selectedCard.number == lastCardNum + 1)
+		{
+			movedCards.Add(selectedCard);
+
+			if (!IsHintActive())
+				NotificationCenter.DefaultCenter.PostNotification(this, GameEvents.FoundationMoveDone, iTween.Hash("suit", selectedCard.suit));
+		}
+	}
+
+	private void TryTableuMove(CardPile toPile, List<Card> cards, List<Card> movedCards)
+    {
+        foreach (CardPile tableauPile in TableauPiles)
+        {
+            if (toPile != tableauPile) continue;
+
+            Card firstCard = cards[0];
+            bool move = false;
+
+            if (toPile.cards.Count == 0 && firstCard.number == 13)
+            {
+                move = true;
+            }
+            else
+            {
+                Card lastPileCard = tableauPile.GetLastCard();
+
+                if (lastPileCard == null) continue;
+
+                if (lastPileCard.number - firstCard.number == 1 && Card.IsDifferentSuit(firstCard, lastPileCard))
+                    move = true;
+            }
+            if (move)
+            {
+                foreach (Card c in cards)
+                {
+                    movedCards.Add(c);
+                }
+                break;
+            }
+        }
+    }
+
+    public override IEnumerator RestoreState(XDocument xdoc)
 	{
 		XElement piles = xdoc.Root.Element("piles");
 		

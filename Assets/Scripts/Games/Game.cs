@@ -1,5 +1,4 @@
 
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -11,9 +10,10 @@ public class Game : StateBase
 
 	public CardPile stock;
 	public CardPile Waste { get; set; } = new CardPile();
-
 	public List<CardPile> Piles { get; set; } = new List<CardPile>();
 	public List<CardPile> TableauPiles { get; set; } = new List<CardPile>();
+
+    public GameState State { get; set; } = GameState.Playing;
 
 	public int stockDrawAmount = 3;
 
@@ -24,28 +24,7 @@ public class Game : StateBase
     public DealState dealState;
     public HintState hintState;
 
-    public virtual IEnumerator Initialize(XDocument storedGameState)
-	{
-		yield return StartCoroutine(SetupTable());
-
-        bool deal = true;
-
-        if (storedGameState != null)
-        {
-            GameType storedType = (GameType) Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value);
-
-            if (storedType == gameType)
-            {
-                deal = false;
-                yield return StartCoroutine(RestoreState(storedGameState));
-            }               
-        }
-
-        if (deal)
-            DealNewCards();
-	}
-
-	public virtual IEnumerator SetupTable()
+	public virtual IEnumerator Initialize()
     {
 		yield return null;
     }
@@ -57,7 +36,14 @@ public class Game : StateBase
 
     public override void UpdateState()
     {
-        TrySelection();
+        if (State == GameState.Playing)
+        {
+            TrySelection();
+        }
+        else if (State == GameState.Solved)
+        {
+            GameManager.Instance.Solved();
+        }
     }
 
     void TrySelection()
@@ -122,11 +108,13 @@ public class Game : StateBase
         }
     }
 
-    public void DealNewCards()
+    public IEnumerator DealNewCards()
     {
         dealState.Initialize(this);
 
         StateManager.Instance.ActivateState(dealState);
+
+        yield return null;
     }
 
     public virtual void HintRequest()
@@ -164,15 +152,21 @@ public class Game : StateBase
 
         CommandManager.Instance.StoreCommand(new CmdComposite(commands));
     }
+
+    public void Solved()
+    {
+        Debug.Log("Game solved");
+        // TODO
+    }
 }
 
 public enum GameType
 {
-	Klondyke,
-	Spider,
-	Freecell,
-	Golf,
-	Pyramid,
-	EightOff,
-	Clock
+    Klondyke,
+    Spider,
+    Freecell,
+    Golf,
+    Pyramid,
+    EightOff,
+    Clock
 }

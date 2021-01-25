@@ -1,14 +1,24 @@
 using UnityEngine;
 using System.Collections;
 using System.Xml.Linq;
+using System.Collections.Generic;
+using System;
 
 public class GameManager : MonoBehaviour
 {
-	public Game activeGame;
-	public Menu menu;
-	public GameTime gameTime;
+	public List<Game> games;
+	public GameType activeGameType;
 
-	private CommandHistory commandHistory;
+	private Game activeGame;
+	public Game ActiveGame
+	{
+		get { return activeGame; }
+		set { activeGame = value; }
+	}
+
+	public Menu menu;
+
+	public GameTime gameTime;
 
 	public static GameManager Instance { get; private set; }
 
@@ -20,8 +30,6 @@ public class GameManager : MonoBehaviour
 	void Start ()
 	{
 		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-		commandHistory = GetComponent<CommandHistory>();
 
 		StartCoroutine(Initialize());	
 	}
@@ -36,21 +44,59 @@ public class GameManager : MonoBehaviour
 		if (viewType.Equals("menu"))
 			StateManager.Instance.ActivateState(menu);
 		else if (viewType.Equals("game"))
-        {
-			yield return StartCoroutine(activeGame.Initialize(storedGameState));
-
-			StateManager.Instance.ActivateState(activeGame);			
-		}
+			yield return StartCoroutine(BuildGame(storedGameState));			
     }
 
-	void StartGame()
+    private IEnumerator BuildGame(XDocument storedGameState)
+    {
+		GameType storedGameType = storedGameState != null ? (GameType)Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value) : activeGameType;
+
+        SetActiveGameByType();
+        yield return null;
+
+        yield return StartCoroutine(activeGame.Initialize());
+
+        if (storedGameState != null && storedGameType == activeGameType)
+            yield return StartCoroutine(activeGame.RestoreState(storedGameState));
+        else
+            yield return StartCoroutine(activeGame.DealNewCards());
+
+		StateManager.Instance.ActivateState(activeGame);
+	}
+
+    internal void GameOver()
+    {
+		Debug.Log("Game over");
+
+		StateManager.Instance.ActivateState(menu);
+    }
+
+    internal void Solved()
+    {
+		Debug.Log("Solved");
+
+		StateManager.Instance.ActivateState(menu);
+	}
+
+    private void SetActiveGameByType()
+    {
+        foreach (Game game in games)
+        {
+            game.gameObject.SetActive(game.gameType == activeGameType);
+
+            if (game.gameType == activeGameType)
+                activeGame = game;
+        }
+    }
+
+    void StartGame()
 	{
 		gameTime.Time = 0;
 
 		CommandManager.Instance.Clear();
 
-		activeGame.DealNewCards();
-	}
+		StartCoroutine(activeGame.DealNewCards());
+	}	
 
 	void OnApplicationQuit()
 	{
@@ -75,7 +121,14 @@ public class GameManager : MonoBehaviour
 
 	public void Hint()
 	{
-		activeGame.HintRequest();
+		ActiveGame.HintRequest();
 	}
     #endregion
+}
+
+public enum GameState
+{
+	Solved,
+	Playing,
+	Paused
 }
