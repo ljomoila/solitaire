@@ -28,11 +28,14 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 450294ad4877e4fc6ae8030d7e6161ff, type: 3}
-    totalSpriteSurfaceArea: 520789
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 2520576462236888248, guid: 450294ad4877e4fc6ae8030d7e6161ff, type: 3}
@@ -384,5 +387,6 @@ SpriteAtlas:
   - SolitaireAtlas 1_152
   - SolitaireAtlas 1_153
   - PileBorder
+  m_RenderDataMap: {}
   m_Tag: UIAtlas
   m_IsVariant: 0

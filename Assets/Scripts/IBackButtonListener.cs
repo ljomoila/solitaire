@@ -1,5 +1,4 @@
-﻿
-public interface IBackButtonListener
+﻿public interface IBackButtonListener
 {
-	bool BackButtonPressed();
+    bool BackButtonPressed();
 }

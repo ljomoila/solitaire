@@ -548,6 +548,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -558,7 +560,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 2
     aniso: 4
-    mipBias: -100
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -579,9 +581,12 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
@@ -4311,6 +4316,181 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      SolitaireAtlas 1_61: 3923001896061307063
+      SolitaireAtlas 1_98: 3209126291054543120
+      SolitaireAtlas 1_166: 5735352222720098191
+      SolitaireAtlas 1_135: 6096417603580369841
+      SolitaireAtlas 1_167: -6639854282107665617
+      Heart: 846146000121914737
+      SolitaireAtlas 1_33: -2744758344050743057
+      SolitaireAtlas 1_55: -8713209474042903685
+      SolitaireAtlas 1_64: -1213845442000188826
+      SolitaireAtlas 1_118: 7769603800740901696
+      SolitaireAtlas 1_104: -8529255984127511416
+      SolitaireAtlas 1_122: -189563985895705583
+      SolitaireAtlas 1_8: -6173923490741256881
+      SolitaireAtlas 1_10: -2042045607838436076
+      SolitaireAtlas 1_117: 710185521073490081
+      SolitaireAtlas 1_67: 8834340436662006802
+      SolitaireAtlas 1_107: 7627895433645919382
+      SolitaireAtlas 1_59: 7341694593151163597
+      SolitaireAtlas 1_110: 2520576462236888248
+      SolitaireAtlas 1_93: -4307294732325816221
+      SolitaireAtlas 1_41: 7775613640364517852
+      SolitaireAtlas 1_0: -8919708144412820859
+      SolitaireAtlas 1_25: 8436936472788283843
+      SolitaireAtlas 1_40: -1439824640241266711
+      SolitaireAtlas 1_82: 872369467816472751
+      SolitaireAtlas 1_159: 508088937198806649
+      SolitaireAtlas 1_94: -7835265963110640843
+      SolitaireAtlas 1_145: 1193799758720439519
+      SolitaireAtlas 1_18: -6053835352950418028
+      SolitaireAtlas 1_120: 3833515171250413727
+      SolitaireAtlas 1_16: -8418867938085223673
+      SolitaireAtlas 1_81: -2622972271047559661
+      SolitaireAtlas 1_74: -7055807677668649632
+      SolitaireAtlas 1_131: -6441428903420998237
+      Spade: 6875440744263647043
+      SolitaireAtlas 1_106: 6321912280712533713
+      SolitaireAtlas 1_50: -5327626816010587913
+      SolitaireAtlas 1_141: 2971103842183679486
+      SolitaireAtlas 1_105: 7733324961990001929
+      SolitaireAtlas 1_111: 6676303374727833183
+      SolitaireAtlas 1_63: -7267295200144698446
+      SolitaireAtlas 1_87: 8034848575746578243
+      SolitaireAtlas 1_85: 8460288880240348061
+      SolitaireAtlas 1_19: -4349734211918254999
+      SolitaireAtlas 1_15: -5223302525940808742
+      SolitaireAtlas 1_158: 3998993821687141130
+      SolitaireAtlas 1_168: -7623525613076852358
+      SolitaireAtlas 1_20: -3533091286984783234
+      SolitaireAtlas 1_26: 6375075562746330459
+      SolitaireAtlas 1_13: 2707028303078369108
+      SolitaireAtlas 1_24: -594506950369900189
+      SolitaireAtlas 1_138: -2403603249123340426
+      SolitaireAtlas 1_151: -2921578539945114962
+      SolitaireAtlas 1_109: 5389010725820617150
+      SolitaireAtlas 1_133: -6206929138811131863
+      SolitaireAtlas 1_3: -6755055516922256248
+      SolitaireAtlas 1_2: -2802573982801938069
+      SolitaireAtlas 1_32: 2342953500163852363
+      SolitaireAtlas 1_49: 7664063461952055740
+      SolitaireAtlas 1_60: 1164426694828785907
+      SolitaireAtlas 1_100: 3414392637787203467
+      SolitaireAtlas 1_136: 2767312951538758074
+      SolitaireAtlas 1_43: -5047732071188425970
+      SolitaireAtlas 1_126: -169959495113958644
+      SolitaireAtlas 1_80: 4883198610039839410
+      SolitaireAtlas 1_148: 9028734134715501618
+      SolitaireAtlas 1_156: -8218798819195906281
+      SolitaireAtlas 1_51: 4733761646248489809
+      SolitaireAtlas 1_77: 1481451982769045643
+      PileBorder: 2910993983775548600
+      SolitaireAtlas 1_68: 1068170774283179244
+      SolitaireAtlas 1_115: 206573884474788304
+      SolitaireAtlas 1_29: -7298646468127963579
+      SolitaireAtlas 1_123: -1743654136606411104
+      SolitaireAtlas 1_132: 8755464622174372068
+      SolitaireAtlas 1_39: -7570020714277455544
+      SolitaireAtlas 1_69: -5859109194717585180
+      SolitaireAtlas 1_139: -8152290316041101982
+      SolitaireAtlas 1_163: -8508109800714780062
+      SolitaireAtlas 1_153: -1147675844093124202
+      SolitaireAtlas 1_169: 5669677996332610363
+      SolitaireAtlas 1_65: 3969102948794323026
+      SolitaireAtlas 1_73: 7537388673025393955
+      SolitaireAtlas 1_88: 4165685846210562061
+      SolitaireAtlas 1_165: 5533346832868745047
+      SolitaireAtlas 1_137: -3625299294896709552
+      SolitaireAtlas 1_143: -7784304036703093212
+      SolitaireAtlas 1_112: 3003834798722726486
+      SolitaireAtlas 1_150: 8680539127330753950
+      SolitaireAtlas 1_4: 2174692330020333296
+      SolitaireAtlas 1_155: 6861494137931048512
+      SolitaireAtlas 1_78: -5157795974213352808
+      SolitaireAtlas 1_30: 7749152273368196302
+      SolitaireAtlas 1_38: -3616261800920942360
+      SolitaireAtlas 1_58: -3060555023206837783
+      SolitaireAtlas 1_6: 7515451360056697112
+      SolitaireAtlas 1_62: -321792595229820894
+      SolitaireAtlas 1_34: 3390946075992246767
+      SolitaireAtlas 1_164: 5430454587287737986
+      SolitaireAtlas 1_53: -749711259089427129
+      SolitaireAtlas 1_140: 8840495702891333835
+      SolitaireAtlas 1_35: 6414864253766982589
+      SolitaireAtlas 1_129: 5493722419701670154
+      SolitaireAtlas 1_12: -7199396494992871243
+      SolitaireAtlas 1_162: 1136732228271895872
+      Club: -8566884448360563719
+      SolitaireAtlas 1_113: 2097986831097239191
+      SolitaireAtlas 1_124: 7326894453677931285
+      SolitaireAtlas 1_114: 3841270536033420442
+      SolitaireAtlas 1_7: 7635919275966656081
+      SolitaireAtlas 1_56: 7575449767299033987
+      SolitaireAtlas 1_130: 8160855078102679594
+      SolitaireAtlas 1_21: 6552364583504377145
+      SolitaireAtlas 1_5: -5619860189549241732
+      SolitaireAtlas 1_52: 7334688743085290631
+      SolitaireAtlas 1_86: 2644374204165822133
+      SolitaireAtlas 1_142: -9028697832607138705
+      SolitaireAtlas 1_84: -4877201976379302563
+      Diamond: 4263133502362599569
+      SolitaireAtlas 1_54: 8979949293548454367
+      SolitaireAtlas 1_57: -3109367775683246569
+      SolitaireAtlas 1_146: 3358233958552180020
+      SolitaireAtlas 1_37: 9072958051135003388
+      SolitaireAtlas 1_70: 4058691362498504305
+      SolitaireAtlas 1_95: -2285861004242442779
+      SolitaireAtlas 1_11: -4004096070845856266
+      SolitaireAtlas 1_144: 4314377227953602516
+      SolitaireAtlas 1_28: 154949498894735062
+      SolitaireAtlas 1_47: 920606132293574141
+      SolitaireAtlas 1_42: -6102253112938206682
+      SolitaireAtlas 1_36: 7224942776577120132
+      SolitaireAtlas 1_31: -3439685310022609473
+      SolitaireAtlas 1_72: 7804248753312955649
+      SolitaireAtlas 1_154: 3492265169723038257
+      SolitaireAtlas 1_48: 5492432714126596390
+      SolitaireAtlas 1_1: 1532692339388385501
+      SolitaireAtlas 1_101: 3873819127597374792
+      SolitaireAtlas 1_134: -4196938428450635864
+      SolitaireAtlas 1_9: -25788362048212451
+      SolitaireAtlas 1_27: 7273242486190468235
+      SolitaireAtlas 1_83: 8569092101748388287
+      SolitaireAtlas 1_116: -582873514461715071
+      SolitaireAtlas 1_121: -749323557159162569
+      SolitaireAtlas 1_92: -1743682570030028871
+      SolitaireAtlas 1_147: -6013134549164510257
+      SolitaireAtlas 1_71: 6300880074600959607
+      SolitaireAtlas 1_14: -3522495369620453258
+      SolitaireAtlas 1_46: 5428976319709720520
+      SolitaireAtlas 1_17: 7268924535076537981
+      SolitaireAtlas 1_76: 7020632188732485969
+      SolitaireAtlas 1_44: -8377141427516590686
+      SolitaireAtlas 1_75: 239230726124564337
+      SolitaireAtlas 1_97: 1590639088222880931
+      SolitaireAtlas 1_23: 4755679556752198387
+      SolitaireAtlas 1_108: -8581863720778173625
+      SolitaireAtlas 1_99: 1424947694965662997
+      SolitaireAtlas 1_161: -921267320091332644
+      SolitaireAtlas 1_128: 4505169980728255013
+      SolitaireAtlas 1_157: -4940536474429753996
+      SolitaireAtlas 1_96: -5086731117738024182
+      SolitaireAtlas 1_22: 1299063952763872294
+      SolitaireAtlas 1_152: 6905765216780709081
+      SolitaireAtlas 1_119: -8087220049578011849
+      SolitaireAtlas 1_90: -8233254932676145607
+      SolitaireAtlas 1_102: -3901368952611413441
+      SolitaireAtlas 1_66: 8977289738567585073
+      SolitaireAtlas 1_79: -4429636687854489294
+      SolitaireAtlas 1_127: 1305092562044359956
+      SolitaireAtlas 1_103: -5810544480155606148
+      SolitaireAtlas 1_91: 7702896685930728448
+      SolitaireAtlas 1_125: 1814362381715372733
+      SolitaireAtlas 1_45: -2612808597510887690
+      SolitaireAtlas 1_89: 2905015133205540034
+      SolitaireAtlas 1_149: 7856387731532667696
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

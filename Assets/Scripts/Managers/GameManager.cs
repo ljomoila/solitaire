@@ -6,50 +6,54 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-	public List<Game> games;
-	public GameType activeGameType;
+    public List<Game> games;
+    public GameType activeGameType;
 
-	private Game activeGame;
-	public Game ActiveGame
-	{
-		get { return activeGame; }
-		set { activeGame = value; }
-	}
-
-	public Menu menu;
-
-	public GameTime gameTime;
-
-	public static GameManager Instance { get; private set; }
-
-	void Awake()
-	{
-		Instance = this;
-	}
-
-	void Start ()
-	{
-		Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-		StartCoroutine(Initialize());	
-	}
-
-	public IEnumerator Initialize()
+    private Game activeGame;
+    public Game ActiveGame
     {
-		XDocument storedGameState = StorageManager.LoadStoredState();
-		yield return null;
+        get { return activeGame; }
+        set { activeGame = value; }
+    }
 
-		string viewType = "game";// storedGameState != null ? storedGameState.Root.Element("view").Value : "game";
+    public Menu menu;
 
-		if (viewType.Equals("menu"))
-			StateManager.Instance.ActivateState(menu);
-		else if (viewType.Equals("game"))
-			yield return StartCoroutine(BuildGame(storedGameState));			
+    public GameTime gameTime;
+
+    public static GameManager Instance { get; private set; }
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    void Start()
+    {
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        StartCoroutine(Initialize());
+    }
+
+    public IEnumerator Initialize()
+    {
+        XDocument storedGameState = StorageManager.LoadStoredState();
+        yield return null;
+
+        string viewType = "game"; // storedGameState != null ? storedGameState.Root.Element("view").Value : "game";
+
+        if (viewType.Equals("menu"))
+            StateManager.Instance.ActivateState(menu);
+        else if (viewType.Equals("game"))
+            yield return StartCoroutine(BuildGame(storedGameState));
     }
 
     private IEnumerator BuildGame(XDocument storedGameState)
     {
-		GameType storedGameType = storedGameState != null ? (GameType)Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value) : activeGameType;
+        GameType storedGameType =
+            storedGameState != null
+                ? (GameType)
+                    Enum.Parse(typeof(GameType), storedGameState.Root.Element("gameType").Value)
+                : activeGameType;
 
         SetActiveGameByType();
         yield return null;
@@ -61,22 +65,22 @@ public class GameManager : MonoBehaviour
         else
             yield return StartCoroutine(activeGame.DealNewCards());
 
-		StateManager.Instance.ActivateState(activeGame);
-	}
+        StateManager.Instance.ActivateState(activeGame);
+    }
 
     internal void GameOver()
     {
-		Debug.Log("Game over");
+        Debug.Log("Game over");
 
-		StateManager.Instance.ActivateState(menu);
+        StateManager.Instance.ActivateState(menu);
     }
 
     internal void Solved()
     {
-		Debug.Log("Solved");
+        Debug.Log("Solved");
 
-		StateManager.Instance.ActivateState(menu);
-	}
+        StateManager.Instance.ActivateState(menu);
+    }
 
     private void SetActiveGameByType()
     {
@@ -90,45 +94,42 @@ public class GameManager : MonoBehaviour
     }
 
     void StartGame()
-	{
-		gameTime.Time = 0;
+    {
+        gameTime.Time = 0;
 
-		CommandManager.Instance.Clear();
+        CommandManager.Instance.Clear();
 
-		StartCoroutine(activeGame.DealNewCards());
-	}	
+        StartCoroutine(activeGame.DealNewCards());
+    }
 
-	void OnApplicationQuit()
-	{
-		Debug.Log("OnApplicationQuit");
+    void OnApplicationQuit()
+    {
+        Debug.Log("OnApplicationQuit");
 
-		StorageManager.StoreState();
-	}
+        StorageManager.StoreState();
+    }
 
-	#region GameMenu
+    public void NewGame()
+    {
+        StartGame();
+    }
 
-	public void NewGame()
-	{
-		StartGame();
-	}
+    public void RestartGame()
+    {
+        // TODO deck seed
 
-	public void RestartGame()
-	{		
-		// TODO deck seed
-		
-		StartGame();
-	}
+        StartGame();
+    }
 
-	public void Hint()
-	{
-		ActiveGame.HintRequest();
-	}
-    #endregion
+    public void Hint()
+    {
+        ActiveGame.HintRequest();
+    }
 }
 
 public enum GameState
 {
-	Solved,
-	Playing,
-	Paused
+    Solved,
+    Playing,
+    Paused
 }

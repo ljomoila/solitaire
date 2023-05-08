@@ -17,7 +17,7 @@ public class CardSelectionState : StateBase
     }
 
     public override void OnActivateState()
-    { 
+    {
         transform.position = cards[0].transform.position;
 
         startHit.y -= cards[0].transform.position.y;
@@ -25,7 +25,7 @@ public class CardSelectionState : StateBase
         startHit.z = 0;
 
         SetupPile();
-        
+
         AudioController.Play("cardSlide");
     }
 
@@ -51,6 +51,7 @@ public class CardSelectionState : StateBase
 
     RaycastHit hit;
     Ray ray;
+
     public override void UpdateState()
     {
         hit = new RaycastHit();
@@ -60,7 +61,7 @@ public class CardSelectionState : StateBase
         {
             Drag();
             HighlightPiles();
-        }        
+        }
 
         TryMove();
     }
@@ -127,10 +128,10 @@ public class CardSelectionState : StateBase
 
         foreach (Card c in pile.cards)
         {
-            pile.AddCard(c, .5f);
+            pile.sourcePile.AddCard(c, .5f);
         }
 
-        pile.AlignCards();
+        pile.sourcePile.AlignCards();
     }
 
     void Reset()

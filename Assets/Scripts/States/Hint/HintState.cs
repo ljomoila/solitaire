@@ -29,7 +29,7 @@ public class HintState : StateBase
     {
         foreach (Card card in cards)
         {
-            // TODO make one single animation
+            // TODO: make one single animation
             card.sprite.GetComponent<Animation>().Play("cardHint_01", AnimationPlayMode.Stop);
             card.sprite.GetComponent<Animation>().Play("cardHint_01", AnimationPlayMode.Queue);
         }

@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -6,16 +5,16 @@ using UnityEngine;
 
 public class Game : StateBase
 {
-	public GameType gameType;
+    public GameType gameType;
 
-	public CardPile stock;
-	public CardPile Waste { get; set; } = new CardPile();
-	public List<CardPile> Piles { get; set; } = new List<CardPile>();
-	public List<CardPile> TableauPiles { get; set; } = new List<CardPile>();
+    public CardPile stock;
+    public CardPile Waste { get; set; } = new CardPile();
+    public List<CardPile> Piles { get; set; } = new List<CardPile>();
+    public List<CardPile> TableauPiles { get; set; } = new List<CardPile>();
 
     public GameState State { get; set; } = GameState.Playing;
 
-	public List<Cmd> commands = new List<Cmd>();
+    public List<Cmd> commands = new List<Cmd>();
 
     public CardSelectionState cardSelectionState;
 
@@ -29,18 +28,18 @@ public class Game : StateBase
 
     public override void OnDeactivateState()
     {
-        stock.gameObject.SetActive(false);
+        //stock.gameObject.SetActive(false);
     }
 
     public virtual IEnumerator Initialize()
     {
-		yield return null;
+        yield return null;
     }
 
-	public virtual IEnumerator RestoreState(XDocument xdoc)
-	{
-		yield return null;
-	}
+    public virtual IEnumerator RestoreState(XDocument xdoc)
+    {
+        yield return null;
+    }
 
     public override void UpdateState()
     {
@@ -80,18 +79,21 @@ public class Game : StateBase
             return;
 
         if (cardSelectionState == null)
-            cardSelectionState = new GameObject("CardSelectionState").AddComponent<CardSelectionState>();
+        {
+            cardSelectionState = new GameObject(
+                "CardSelectionState"
+            ).AddComponent<CardSelectionState>();
+        }
 
         cardSelectionState.Initialize(this, cards, hitPoint);
 
         StateManager.Instance.ActivateState(cardSelectionState);
-        
     }
 
     public virtual List<Card> SelectCards(Card card)
-	{
-		return null;
-	}
+    {
+        return null;
+    }
 
     public virtual bool TryMoveToPile(CardPile toPile)
     {
@@ -99,9 +101,9 @@ public class Game : StateBase
     }
 
     public virtual bool TryMoveToPile(CardPile toPile, SelectionPile selectionPile)
-	{
-		return false;
-	}
+    {
+        return false;
+    }
 
     public void TurnLastTableauCards()
     {
@@ -136,27 +138,32 @@ public class Game : StateBase
     }
 
     public virtual void DrawCards(int amount)
-	{
-		CmdDrawCards cmd = new CmdDrawCards(this, amount, "Stock draw");
-		cmd.Execute(false);
-
-		CommandManager.Instance.StoreCommand(cmd);
-	}
-
-	public virtual void MoveCards(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
-	{
-		CmdMoveCards cmd = new CmdMoveCards(movedCards, sourcePile, targetPile, "Move cards to: " + targetPile.Type);
+    {
+        CmdDrawCards cmd = new CmdDrawCards(this, amount, "Stock draw");
         cmd.Execute(false);
-		commands.Add(cmd);
+
+        CommandManager.Instance.StoreCommand(cmd);
+    }
+
+    public virtual void MoveCards(List<Card> movedCards, CardPile sourcePile, CardPile targetPile)
+    {
+        CmdMoveCards cmd = new CmdMoveCards(
+            movedCards,
+            sourcePile,
+            targetPile,
+            "Move cards to: " + targetPile.Type
+        );
+        cmd.Execute(false);
+        commands.Add(cmd);
 
         CommandManager.Instance.StoreCommand(new CmdComposite(commands));
     }
 
-	public virtual void TurnCard(Card card)
-	{
-		CmdTurnCard cmd = new CmdTurnCard(card, "Turn card") { Animate = true };
+    public virtual void TurnCard(Card card)
+    {
+        CmdTurnCard cmd = new CmdTurnCard(card, "Turn card") { Animate = true };
         cmd.Execute(false);
-		commands.Add(cmd);
+        commands.Add(cmd);
 
         CommandManager.Instance.StoreCommand(new CmdComposite(commands));
     }

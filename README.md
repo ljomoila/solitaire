@@ -1,2 +1,1 @@
-# solitaire
-Unity solitaire
+# 3D Solitaire created with Unity C#

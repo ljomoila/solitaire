@@ -1,11 +1,10 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DealState : StateBase
 {
-    public CardPile deck;    
+    public CardPile deck;
 
     public Game activeGame;
 
@@ -95,19 +94,36 @@ public class DealState : StateBase
             }
 
             deck.cards[i].transform.Translate(0, 0, .45f);
-            iTween.MoveBy(deck.cards[i].gameObject, iTween.Hash("x", moveAmount, "time", animTime, "isLocal", true));
-            iTween.RotateTo(deck.cards[i].sprite.gameObject, iTween.Hash("z", rotateAmount, "time", animTime, "isLocal", true));
+            iTween.MoveBy(
+                deck.cards[i].gameObject,
+                iTween.Hash("x", moveAmount, "time", animTime, "isLocal", true)
+            );
+            iTween.RotateTo(
+                deck.cards[i].sprite.gameObject,
+                iTween.Hash("z", rotateAmount, "time", animTime, "isLocal", true)
+            );
         }
     }
 
     public void DealCard(Card card, float time, float delay)
     {
-        CardPile pile = card.pile;       
+        CardPile pile = card.pile;
 
-        iTween.MoveTo(card.gameObject, iTween.Hash("position", new Vector3(pile.NextPos.x, pile.NextPos.y, pile.NextPos.z), "time", time, "delay", delay, "isLocal", true));
+        iTween.MoveTo(
+            card.gameObject,
+            iTween.Hash(
+                "position",
+                new Vector3(pile.NextPos.x, pile.NextPos.y, pile.NextPos.z),
+                "time",
+                time,
+                "delay",
+                delay,
+                "isLocal",
+                true
+            )
+        );
 
         pile.AddCard(card);
-
     }
 
     public IEnumerator TurnLastCards(List<CardPile> piles, float delay = 0)

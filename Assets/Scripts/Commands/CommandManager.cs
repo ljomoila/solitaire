@@ -4,11 +4,11 @@ public class CommandManager : MonoBehaviour
 {
     private CommandHistory commandHistory;
 
-	public static CommandManager Instance { get; private set; }
+    public static CommandManager Instance { get; private set; }
 
-	private void Awake()
+    private void Awake()
     {
-		Instance = this;
+        Instance = this;
 
         commandHistory = gameObject.AddComponent<CommandHistory>();
     }
@@ -18,24 +18,24 @@ public class CommandManager : MonoBehaviour
         commandHistory.Clear();
     }
 
-	public void StoreCommand(Cmd cmd)
-	{
-		commandHistory.StoreCommand(cmd);
-	}
+    public void StoreCommand(Cmd cmd)
+    {
+        commandHistory.StoreCommand(cmd);
+    }
 
-	public void Undo()
-	{
-		if (commandHistory.UndoDescription == "N/A")
-			return;
+    public void Undo()
+    {
+        if (commandHistory.UndoDescription == CommandHistory.NoCommandsStr)
+            return;
 
-		commandHistory.Undo();		
-	}
+        commandHistory.Undo();
+    }
 
-	public void Redo()
-	{
-		if (commandHistory.RedoDescription == "N/A")
-			return;
+    public void Redo()
+    {
+        if (commandHistory.RedoDescription == CommandHistory.NoCommandsStr)
+            return;
 
-		commandHistory.Redo();		
-	}
+        commandHistory.Redo();
+    }
 }
