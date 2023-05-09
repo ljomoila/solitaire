@@ -45,6 +45,7 @@ public class StorageManager
             );
             w.WriteElementString("time", GameManager.Instance.gameTime.Time.ToString());
             w.WriteElementString("gameType", activeGame.gameType.ToString());
+            w.WriteElementString("gameTime", GameManager.Instance.gameTime.Time.ToString());
 
             w.WriteStartElement("piles");
 

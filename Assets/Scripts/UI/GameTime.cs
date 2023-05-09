@@ -19,10 +19,6 @@ public class GameTime : MonoBehaviour
         {
             Time += UnityEngine.Time.deltaTime;
         }
-        else
-        {
-            Time = 0;
-        }
 
         timeText.text = GetTimeStr();
     }

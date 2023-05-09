@@ -109,10 +109,10 @@ public class CmdDrawCards : Cmd
             stock.AddCard(card);
 
             card.Turn(true);
-
-            stock.AlignCards();
-            waste.AlignCards();
         }
+
+        stock.AlignCards();
+        waste.AlignCards();
 
         foreach (PickedCard cardInfo in cardInfos)
         {
@@ -124,8 +124,6 @@ public class CmdDrawCards : Cmd
 
     private void TurnStock()
     {
-        Debug.Log("TurnStock");
-
         List<Card> wasteCards = new List<Card>(waste.cards);
         wasteCards.Reverse();
 
@@ -198,14 +196,10 @@ public class CmdMoveCards : Cmd
 
     public override void Unexecute()
     {
-        int i = 0;
-
         foreach (Card c in cards)
         {
             fromPile.AddCard(c);
             toPile.RemoveCard(c);
-
-            cards[i] = c;
         }
 
         AlignPiles();
@@ -213,6 +207,10 @@ public class CmdMoveCards : Cmd
 
     void AlignPiles()
     {
+        // TODO: fix so that waste does not need to be aligned
+        // if (fromPile.Type != PileType.Waste)
+        //     fromPile.AlignCards();
+
         fromPile.AlignCards();
         toPile.AlignCards();
     }

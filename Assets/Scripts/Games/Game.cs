@@ -38,6 +38,8 @@ public class Game : StateBase
 
     public virtual IEnumerator RestoreState(XDocument xdoc)
     {
+        GameManager.Instance.gameTime.Time = (float)xdoc.Root.Element("gameTime");
+
         yield return null;
     }
 
@@ -55,7 +57,7 @@ public class Game : StateBase
 
     void TrySelection()
     {
-        if (Input.GetMouseButtonDown(0) && !IsHintActive())
+        if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit = new RaycastHit();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -68,12 +70,12 @@ public class Game : StateBase
                 if (c == null || tweens.Length > 0)
                     return;
 
-                SetSelectionPile(SelectCards(c), hit.point);
+                SetSelectionPile(SelectCards(c));
             }
         }
     }
 
-    private void SetSelectionPile(List<Card> cards, Vector3 hitPoint)
+    private void SetSelectionPile(List<Card> cards)
     {
         if (cards == null || cards.Count == 0)
             return;

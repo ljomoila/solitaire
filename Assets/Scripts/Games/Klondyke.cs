@@ -211,12 +211,33 @@ public class Klondyke : Game
             movedCards.Add(selectedCard);
 
             if (!IsHintActive())
+            {
+                selectedCard.transform.Translate(0, 0, -1);
+
                 NotificationCenter.DefaultCenter.PostNotification(
                     this,
                     GameEvents.FoundationMoveDone,
                     iTween.Hash("suit", selectedCard.suit)
                 );
+            }
+
+            if (IsGameSolved())
+            {
+                State = GameState.Solved;
+            }
         }
+    }
+
+    private bool IsGameSolved()
+    {
+        int foundationCardCount = 0;
+
+        foreach (CardPile pile in foundations)
+        {
+            foundationCardCount += pile.cards.Count;
+        }
+
+        return foundationCardCount == 52;
     }
 
     private void TryTableuMove(CardPile toPile, List<Card> cards, List<Card> movedCards)
@@ -259,6 +280,8 @@ public class Klondyke : Game
 
     public override IEnumerator RestoreState(XDocument xdoc)
     {
+        yield return base.RestoreState(xdoc);
+
         XElement piles = xdoc.Root.Element("piles");
 
         int fcount = 0;

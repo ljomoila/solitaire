@@ -29,7 +29,6 @@ public class DeckMaker : MonoBehaviour
         {
             CardPile newDeck = new GameObject(game.name + "Deck").AddComponent<CardPile>();
             newDeck.transform.parent = game.transform;
-            //newDeck.transform.localPosition = game.stock.transform.localPosition;
             newDeck.Type = PileType.Stock;
 
             card.gameObject.SetActive(true);
@@ -87,6 +86,13 @@ public class DeckMaker : MonoBehaviour
             }
 
             card.gameObject.SetActive(false);
+
+            newDeck.slot = Instantiate(
+                deck.slot,
+                Vector3.zero,
+                Quaternion.identity,
+                newDeck.transform
+            );
 
             if (game.stock != null)
             {

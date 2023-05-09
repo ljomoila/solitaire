@@ -116,6 +116,8 @@ public class Golf : Game
 
     public override IEnumerator RestoreState(XDocument xdoc)
     {
+        yield return base.RestoreState(xdoc);
+
         XElement piles = xdoc.Root.Element("piles");
 
         int tcount = 0;
