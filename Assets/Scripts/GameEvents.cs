@@ -1,7 +1,6 @@
-using UnityEngine;
 using System.Collections.Generic;
 
-public class GameEvents : MonoBehaviour
+public class GameEvents
 {
     public static Dictionary<string, object> staticData;
 

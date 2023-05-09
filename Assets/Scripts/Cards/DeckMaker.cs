@@ -13,6 +13,7 @@ public class DeckMaker : MonoBehaviour
     float yStep = 0.1535f;
     float xStep = 0.06257325f;
 
+    private Vector2 cardTextureStart = new Vector2(0.500586f, 0.614f);
     private Vector2[] cardTextureOffsets = new Vector2[52];
 
     // Use this for initialization
@@ -59,13 +60,21 @@ public class DeckMaker : MonoBehaviour
                 }
 
                 if (suitIndex == 2 && numberIndex == 1)
+                {
                     yIndex = 3;
+                }
 
                 cardTextureOffsets[i] = new Vector2(xIndex * xStep, yIndex * yStep);
-                // TODO fix texture instead of this ugly thing
-                // TODO fix ace of clubs in texture
-                Vector2 textureOffset =
-                    i > 0 ? cardTextureOffsets[i - 1] : new Vector2(0.500586f, 0.614f);
+
+                Vector2 textureOffset = i > 0 ? cardTextureOffsets[i - 1] : cardTextureStart;
+
+                // TODO: fix texture for ace of clubs instead of this ugly thing
+                if (suitIndex == 2 && numberIndex == 1)
+                {
+                    yIndex = 3;
+                    textureOffset = new Vector2(4 * xStep, 2 * yStep);
+                }
+
                 newCard.spriteSkinned.GetComponent<Renderer>().materials[1].SetTextureOffset(
                     "_MainTex",
                     textureOffset
@@ -79,8 +88,11 @@ public class DeckMaker : MonoBehaviour
 
             card.gameObject.SetActive(false);
 
-            //if (game.stock != null)
-            //	DestroyImmediate(game.stock.gameObject);
+            if (game.stock != null)
+            {
+                newDeck.transform.position = game.stock.transform.position;
+                DestroyImmediate(game.stock.gameObject);
+            }
 
             game.stock = newDeck;
 

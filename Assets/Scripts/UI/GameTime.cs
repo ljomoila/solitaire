@@ -15,11 +15,16 @@ public class GameTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (GameManager.Instance.state == GameState.Running)
-        // {
-        //     Time += UnityEngine.Time.deltaTime;
-        //     timeText.text = GetTimeStr();
-        // }
+        if (StateManager.Instance.activeState is Game)
+        {
+            Time += UnityEngine.Time.deltaTime;
+        }
+        else
+        {
+            Time = 0;
+        }
+
+        timeText.text = GetTimeStr();
     }
 
     string GetTimeStr()

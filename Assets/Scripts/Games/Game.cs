@@ -16,7 +16,7 @@ public class Game : StateBase
 
     public List<Cmd> commands = new List<Cmd>();
 
-    public CardSelectionState cardSelectionState;
+    public CardSelection cardSelection;
 
     public DealState dealState;
     public HintState hintState;
@@ -55,7 +55,7 @@ public class Game : StateBase
 
     void TrySelection()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !IsHintActive())
         {
             RaycastHit hit = new RaycastHit();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -78,16 +78,12 @@ public class Game : StateBase
         if (cards == null || cards.Count == 0)
             return;
 
-        if (cardSelectionState == null)
+        if (cardSelection == null)
         {
-            cardSelectionState = new GameObject(
-                "CardSelectionState"
-            ).AddComponent<CardSelectionState>();
+            cardSelection = new GameObject("CardSelectionState").AddComponent<CardSelection>();
         }
 
-        cardSelectionState.Initialize(this, cards, hitPoint);
-
-        StateManager.Instance.ActivateState(cardSelectionState);
+        cardSelection.Initialize(cards);
     }
 
     public virtual List<Card> SelectCards(Card card)
