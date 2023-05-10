@@ -26,11 +26,6 @@ public class Game : StateBase
         stock.gameObject.SetActive(true);
     }
 
-    public override void OnDeactivateState()
-    {
-        //stock.gameObject.SetActive(false);
-    }
-
     public virtual IEnumerator Initialize()
     {
         yield return null;

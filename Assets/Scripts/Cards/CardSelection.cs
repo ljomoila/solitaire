@@ -50,15 +50,14 @@ public class CardSelection : MonoBehaviour
             Drag();
             HighlightPiles();
         }
-
-        TryMove();
+        if (Input.GetMouseButtonUp(0))
+        {
+            TryMove();
+        }
     }
 
     private void TryMove()
     {
-        if (!Input.GetMouseButtonUp(0))
-            return;
-
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 9))
         {
             Card c = hit.collider.gameObject.GetComponent<Card>();
