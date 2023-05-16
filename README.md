@@ -1,6 +1,6 @@
 # 3D Solitaire
 
-Unity C# project which at the moment contains these solitaire games:
+3D Solitaire is a Unity C# application. Application contains these solitaire games:
 
-- Klondyke
-- Golf
+-   Klondyke
+-   Golf
